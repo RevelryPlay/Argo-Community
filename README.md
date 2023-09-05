@@ -7,7 +7,7 @@ This project is in early development and is missing many of the critical compone
 # Background
 After many years of playing games created by other people, I decided to start looking at building my own. 
 At first, I wanted to use Unity, Unreal, or Godot, but the more I thought about it I decided that I could use this as an opportunity to improve my game development skills. 
-The initial concept would have been written in C# but ultimately I decided this would give me an excellent opportunity to learn more C++ instead.
+The initial concept would have been [written in C#](https://github.com/RevelryPlay/Argo-CS) but ultimately I decided this would give me an excellent opportunity to learn more C++ instead.
 
 # Design Goals
 
