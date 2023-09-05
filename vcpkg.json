@@ -1,0 +1,9 @@
+{
+  "name" : "argo",
+  "version-string" : "0.0.1",
+  "builtin-baseline" : "61c166277f8de15ace592b08eecdcb46def75782",
+  "dependencies" : [ {
+    "name" : "gtest",
+    "version>=" : "1.13.0"
+  } ]
+}
