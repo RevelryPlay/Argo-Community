@@ -7,6 +7,7 @@ project(ArgoCommon
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} SHARED
+
         System/FileSystem/CSVHandler.cpp       System/FileSystem/CSVHandler.hpp
         System/FileSystem/FileHandler.cpp      System/FileSystem/FileHandler.hpp
         System/FileSystem/IniHandler.cpp       System/FileSystem/IniHandler.hpp
@@ -14,10 +15,13 @@ add_library(${PROJECT_NAME} SHARED
         System/FileSystem/YamlHandler.cpp      System/FileSystem/YamlHandler.hpp
         System/FileSystem/XmlHandler.cpp       System/FileSystem/XmlHandler.hpp
 
-        System/ThreadPool.cpp       System/ThreadPool.hpp
+        System/Game.cpp                        System/Game.hpp
+        System/Program.cpp                     System/Program.hpp
+        System/ThreadPool.cpp                  System/ThreadPool.hpp
 
         Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp
+
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
