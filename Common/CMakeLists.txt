@@ -16,7 +16,7 @@ add_library(${PROJECT_NAME} SHARED
 
         System/ThreadPool.cpp       System/ThreadPool.hpp
 
-        Types/CommonColor.hpp
+        Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp
 )
 

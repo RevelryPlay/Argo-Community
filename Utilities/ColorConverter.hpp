@@ -1,6 +1,9 @@
 #pragma once
 
 #include "../Common/Types/CommonColor.hpp"
+#include <iostream>
+
+using namespace std;
 
 namespace Argo::Utilities {
 struct ConvertColor
@@ -38,5 +41,13 @@ struct ConvertColor
    * @return CommonColor
    */
   static CommonColor FromHex(const unsigned int *hex);
+
+  /**
+   * Creates a CommonColor from a hexadecimal string RRGGBB or RRGGBBAA
+   * @param hex
+   * @return CommonColor
+   */
+  static CommonColor FromHex(const string hex);
+  static CommonColor FromHex(const string *hex);
 };
 }// namespace Argo::Utilities

@@ -22,4 +22,27 @@ CommonColor ConvertColor::FromHex(const unsigned int *hex)
 
   return rgba;
 }
+
+CommonColor ConvertColor::FromHex(const std::string hex) { return FromHex(&hex); }
+
+CommonColor ConvertColor::FromHex(const std::string *hex)
+{
+  if (hex->length() != 6 && hex->length() != 8) {
+    std::cout << "Invalid hexadecimal color. Please use the 6 or 8 digit format, e.g. FF0000 or FF0000FF" << '\n';
+  }
+
+  Vec4 rgba = Vec4();
+  rgba.z = 1.0f;
+
+  rgba.w = stoi(hex->substr(0, 2), nullptr, 16);
+  rgba.x = stoi(hex->substr(2, 2), nullptr, 16);
+  rgba.y = stoi(hex->substr(4, 2), nullptr, 16);
+
+  // RGBA Hex
+  if (hex->length() == 8) {
+    rgba.z = stoi(hex->substr(6, 2), nullptr, 16) / 255.0f;
+  }
+
+  return FromRGBA(&rgba);
+}
 }// namespace Argo::Utilities
