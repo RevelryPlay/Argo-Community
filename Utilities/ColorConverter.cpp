@@ -1,11 +1,14 @@
 #include "ColorConverter.hpp"
 
 namespace Argo::Utilities {
+auto const maxValue = 255.0F;
+
 CommonColor ConvertColor::FromRGBA(Argo::Vec4 rgba) { return ConvertColor::FromRGBA(&rgba); }
 
 CommonColor ConvertColor::FromRGBA(Argo::Vec4 *rgba)
 {
-  CommonColor color = { rgba->w / 255, rgba->x / 255, rgba->y / 255, rgba->z };
+  auto alpha = rgba->z != NULL ? rgba->z : 1.0F;
+  CommonColor color = { rgba->w / maxValue, rgba->x / maxValue, rgba->y / maxValue, alpha };
   return color;
 }
 
@@ -15,10 +18,10 @@ CommonColor ConvertColor::FromHex(const unsigned int *hex)
 {
   CommonColor rgba = CommonColor();
 
-  rgba.red = ((*hex >> 24) & 0xFF) / 255.0;
-  rgba.green = ((*hex >> 16) & 0xFF) / 255.0;
-  rgba.blue = ((*hex >> 8) & 0xFF) / 255.0;
-  rgba.alpha = ((*hex) & 0xFF) / 255.0;
+  rgba.red = ((*hex >> 24) & 0xFF) / maxValue;
+  rgba.green = ((*hex >> 16) & 0xFF) / maxValue;
+  rgba.blue = ((*hex >> 8) & 0xFF) / maxValue;
+  rgba.alpha = ((*hex) & 0xFF) / maxValue;
 
   return rgba;
 }
@@ -32,7 +35,7 @@ CommonColor ConvertColor::FromHex(const std::string *hex)
   }
 
   Vec4 rgba = Vec4();
-  rgba.z = 1.0f;
+  rgba.z = 1.0F;
 
   rgba.w = stoi(hex->substr(0, 2), nullptr, 16);
   rgba.x = stoi(hex->substr(2, 2), nullptr, 16);
@@ -40,7 +43,7 @@ CommonColor ConvertColor::FromHex(const std::string *hex)
 
   // RGBA Hex
   if (hex->length() == 8) {
-    rgba.z = stoi(hex->substr(6, 2), nullptr, 16) / 255.0f;
+    rgba.z = stoi(hex->substr(6, 2), nullptr, 16) / maxValue;
   }
 
   return FromRGBA(&rgba);

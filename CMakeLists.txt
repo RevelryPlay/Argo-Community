@@ -52,3 +52,25 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoNetworking
         ArgoUtilities
 )
+
+
+# Testing
+include(CTest)
+
+if (BUILD_TESTING)
+    find_package(PkgConfig)
+    find_package(GTest CONFIG REQUIRED)
+
+    add_executable(${PROJECT_NAME}-tests)
+    target_sources(${PROJECT_NAME}-tests PRIVATE
+            Utilities/ColorConverter.cpp    Utilities/ColorConverter.hpp
+            Utilities/ColorConverter.tests.cpp
+    )
+
+    enable_testing()
+
+    target_link_libraries(${PROJECT_NAME}-tests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+    target_compile_options(${PROJECT_NAME}-tests PRIVATE ${GTEST_CFLAGS})
+
+    add_test(test_color_converter ${PROJECT_NAME}-tests)
+endif ()
