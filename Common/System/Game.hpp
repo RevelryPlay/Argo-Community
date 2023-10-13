@@ -6,7 +6,7 @@ namespace Argo::System {
 struct Game : Program
 {
   Game();
-  ~Game();
+  virtual ~Game();
 
   bool init() override;
   void run() override;
