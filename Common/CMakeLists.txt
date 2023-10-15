@@ -15,16 +15,46 @@ add_library(${PROJECT_NAME} SHARED
         System/FileSystem/YamlHandler.cpp      System/FileSystem/YamlHandler.hpp
         System/FileSystem/XmlHandler.cpp       System/FileSystem/XmlHandler.hpp
 
+        System/Graphics/GLWindow.cpp           System/Graphics/GLWindow.hpp
+
         System/Game.cpp                        System/Game.hpp
-        System/Program.cpp                     System/Program.hpp
+        System/GLGame.cpp                      System/GLGame.hpp
+        System/Application.cpp                 System/Application.hpp
         System/ThreadPool.cpp                  System/ThreadPool.hpp
 
         Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp
-
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Common Libraries
+
+# This is duplicated from the Argo main project. In the future these will be optional and also
+# pruned to only the libraries actually used in this module
+find_package(OpenGL REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
+
+find_package(glad CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
+
+find_package(glfw3 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
+find_package(glm CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
+
+find_package(imgui CONFIG REQUIRED)
+target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
+
+find_package(robin_hood CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE robin_hood::robin_hood)
+
+find_package(Stb REQUIRED)
+target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
+
+# Install ArgoCommon
 
 install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 install(FILES ${PROJECT_NAME} DESTINATION include)

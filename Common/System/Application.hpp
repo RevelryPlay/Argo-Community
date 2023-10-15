@@ -1,10 +1,11 @@
 #pragma once
 namespace Argo::System {
 
-struct Program
+class Application
 {
-  Program();
-  ~Program();
+public:
+  Application();
+  virtual ~Application();
 
   virtual bool init();
   virtual void run();

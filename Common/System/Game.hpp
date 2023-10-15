@@ -1,12 +1,13 @@
 #pragma once
-#include "Program.hpp"
+#include "Application.hpp"
 
 namespace Argo::System {
 
-struct Game : Program
+class Game : Application
 {
+public:
   Game();
-  ~Game();
+  virtual ~Game();
 
   bool init() override;
   void run() override;
