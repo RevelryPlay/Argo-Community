@@ -15,15 +15,15 @@ add_library(${PROJECT_NAME} SHARED
         System/FileSystem/YamlHandler.cpp      System/FileSystem/YamlHandler.hpp
         System/FileSystem/XmlHandler.cpp       System/FileSystem/XmlHandler.hpp
 
+        System/Graphics/GLWindow.cpp           System/Graphics/GLWindow.hpp
+
         System/Game.cpp                        System/Game.hpp
-        System/Program.cpp                     System/Program.hpp
+        System/GLGame.cpp                      System/GLGame.hpp
+        System/Application.cpp                 System/Application.hpp
         System/ThreadPool.cpp                  System/ThreadPool.hpp
 
         Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp
-        System/Graphics/GLWindow.cpp
-        System/Graphics/GLWindow.hpp
-
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

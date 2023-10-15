@@ -1,5 +1,4 @@
 #include "GLWindow.hpp"
-#include <functional>
 
 namespace Argo::System {
   GLWindow::GLWindow() = default;
@@ -30,15 +29,15 @@ namespace Argo::System {
 
     glViewport(0, 0, width, height);
 
-
     // Window resize Callback
     glfwSetFramebufferSizeCallback(window, resizeWindowCallback);
+
+    isOpen = true;
 
     return 0;
   }
 
-  void GLWindow::update(const function<int()> &updateCallback)
-  {
+  void GLWindow::update(float deltaTime, const function<int(float)> &updateCallback) {
     while (!glfwWindowShouldClose(window)) {
       processInput();
 
@@ -46,11 +45,13 @@ namespace Argo::System {
       glClearColor(0.7f, 0.2f, 0.3f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT);
 
-      updateCallback();
+      updateCallback(deltaTime);
 
       glfwSwapBuffers(window);
       glfwPollEvents();
     }
+
+    isOpen = false;
   }
 
   void GLWindow::resizeWindowCallback(GLFWwindow * /*window*/, int width, int height) {
@@ -67,4 +68,4 @@ namespace Argo::System {
   void GLWindow::cleanup() {
     glfwTerminate();
   }
-}// namespace Argo::System
+  }// namespace Argo::System

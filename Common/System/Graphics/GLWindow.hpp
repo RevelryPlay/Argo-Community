@@ -15,8 +15,10 @@ public:
 
   virtual ~GLWindow();
 
+  bool isOpen = false;
+
   int init(const char *title = "Window", int width = 800, int height = 600);
-  void update(const function<int()> &updateCallback);
+  void update(float deltaTime, const function<int(float)> &updateCallback);
   void cleanup();
 
 private:
