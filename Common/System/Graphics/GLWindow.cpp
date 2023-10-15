@@ -1,6 +1,9 @@
 #include "GLWindow.hpp"
 
 namespace Argo::System {
+
+
+
   GLWindow::GLWindow() = default;
 
   GLWindow::~GLWindow() { cleanup(); };
@@ -33,7 +36,6 @@ namespace Argo::System {
     glfwSetFramebufferSizeCallback(window, resizeWindowCallback);
 
     isOpen = true;
-
     return 0;
   }
 

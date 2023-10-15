@@ -16,6 +16,7 @@ add_library(${PROJECT_NAME} SHARED
         System/FileSystem/XmlHandler.cpp       System/FileSystem/XmlHandler.hpp
 
         System/Graphics/GLWindow.cpp           System/Graphics/GLWindow.hpp
+        System/Graphics/GLShader.cpp           System/Graphics/GLShader.hpp
 
         System/Game.cpp                        System/Game.hpp
         System/GLGame.cpp                      System/GLGame.hpp
