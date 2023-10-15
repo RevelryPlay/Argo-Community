@@ -41,10 +41,6 @@ namespace Argo::System {
     while (!glfwWindowShouldClose(window)) {
       processInput();
 
-      // Render something here
-      glClearColor(0.7f, 0.2f, 0.3f, 1.0f);
-      glClear(GL_COLOR_BUFFER_BIT);
-
       updateCallback(deltaTime);
 
       glfwSwapBuffers(window);

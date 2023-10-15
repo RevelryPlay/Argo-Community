@@ -40,6 +40,9 @@ void GLGame::update() { window.update(deltaTime, GLGame::updateCallback); }
 int GLGame::updateCallback(float deltaTime)
 {
   //  cout << "delta:" << deltaTime << '\n';
+  glClearColor(0.3f, 0.5f, 0.7f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
+
   return 0;
 }
 
