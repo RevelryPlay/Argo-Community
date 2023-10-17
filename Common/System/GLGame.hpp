@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Game.hpp"
 #include "Graphics/GLWindow.hpp"
 
@@ -8,17 +9,21 @@ class GLGame : Game
 {
 public:
   GLGame();
+
   ~GLGame();
 
-  bool init() override;
+  bool init(const char *title = "Hello Argo", int width = 1024, int height = 768, const function<int()> &initCallback = nullptr);
   void run() override;
 
 private:
   GLWindow window;
 
   void cleanup();
+
   void handleEvents();
+
   void update();
+
   static int updateCallback(float deltaTime);
 };
 

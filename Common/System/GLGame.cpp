@@ -5,14 +5,19 @@
 
 namespace Argo::System {
 GLGame::GLGame() = default;
+
 GLGame::~GLGame() { cleanup(); };
 
-bool GLGame::init()
+bool GLGame::init(const char *title, int width, int height, const function<int()> &initCallback)
 {
-  window = *new Argo::System::GLWindow();
-  window.init("Hello World", 1024, 768);
+  window = *new GLWindow();
+  window.init(title, width, height);
 
-  return true;
+  if (initCallback != nullptr) {
+    initCallback();
+  }
+
+  return window.isOpen;
 }
 
 void GLGame::run()
@@ -35,9 +40,7 @@ void GLGame::run()
 
 void GLGame::handleEvents() {}
 
-void GLGame::update() {
-  window.update(deltaTime, GLGame::updateCallback);
-}
+void GLGame::update() { window.update(deltaTime, GLGame::updateCallback); }
 
 int GLGame::updateCallback(float deltaTime)
 {
