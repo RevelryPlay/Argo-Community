@@ -7,8 +7,8 @@ project(ArgoNetworking
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} SHARED
-        Networking.cpp      Networking.hpp
-        )
+        Networking.cpp Networking.hpp
+)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
