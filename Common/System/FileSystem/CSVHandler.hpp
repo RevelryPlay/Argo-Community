@@ -2,8 +2,6 @@
 
 namespace Argo::Utilities::FileSystem {
 
-class CSVHandler : FileHandler
-{
-};
+class CSVHandler : FileHandler {};
 
-}// namespace Argo::Utilities::FileSystem
+}  // namespace Argo::Utilities::FileSystem

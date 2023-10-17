@@ -1,7 +1,5 @@
 #pragma once
 
 namespace Argo::System {
-  class ThreadPool
-  {
-  };
-}
+class ThreadPool {};
+}  // namespace Argo::System

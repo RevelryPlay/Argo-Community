@@ -8,53 +8,49 @@ GLGame::GLGame() = default;
 
 GLGame::~GLGame() { cleanup(); };
 
-bool GLGame::init(const char *title, int width, int height, const function<int()> &initCallback)
-{
-  window = *new GLWindow();
-  window.init(title, width, height);
+bool GLGame::init( const char *title, int width, int height, const function< int() > &initCallback ) {
+    window = *new GLWindow();
+    window.init( title, width, height );
 
-  if (initCallback != nullptr) {
-    initCallback();
-  }
+    if ( initCallback != nullptr ) {
+        initCallback();
+    }
 
-  return window.isOpen;
+    return window.isOpen;
 }
 
-void GLGame::run()
-{
-  // TODO: Investigate if this is reliable for games
-  auto previousTime = std::chrono::high_resolution_clock::now();
+void GLGame::run() {
+    // TODO: Investigate if this is reliable for games
+    auto previousTime = std::chrono::high_resolution_clock::now();
 
-  while (window.isOpen) {
-    // Handle Event Loop
-    auto currentTime = std::chrono::high_resolution_clock::now();
-    GLGame::deltaTime = std::chrono::duration<float, std::milli>(currentTime - previousTime).count();
+    while ( window.isOpen ) {
+        // Handle Event Loop
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        GLGame::deltaTime = std::chrono::duration< float, std::milli >( currentTime - previousTime ).count();
 
-    // Game loop events
-    handleEvents();
-    update();
+        // Game loop events
+        handleEvents();
+        update();
 
-    previousTime = currentTime;
-  }
+        previousTime = currentTime;
+    }
 }
 
 void GLGame::handleEvents() {}
 
-void GLGame::update() { window.update(deltaTime, GLGame::updateCallback); }
+void GLGame::update() { window.update( deltaTime, GLGame::updateCallback ); }
 
-int GLGame::updateCallback(float deltaTime)
-{
-  //  cout << "delta:" << deltaTime << '\n';
-  glClearColor(0.3f, 0.5f, 0.7f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
+int GLGame::updateCallback( float deltaTime ) {
+    //  cout << "delta:" << deltaTime << '\n';
+    glClearColor( 0.3f, 0.5f, 0.7f, 1.0f );
+    glClear( GL_COLOR_BUFFER_BIT );
 
-  return 0;
+    return 0;
 }
 
-void GLGame::cleanup()
-{
-  // NOTE: Destroy instances in reverse order of creation
-  window.cleanup();
+void GLGame::cleanup() {
+    // NOTE: Destroy instances in reverse order of creation
+    window.cleanup();
 }
 
-}// namespace Argo::System
+}  // namespace Argo::System

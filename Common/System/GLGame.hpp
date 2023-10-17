@@ -5,26 +5,27 @@
 
 namespace Argo::System {
 
-class GLGame : Game
-{
-public:
-  GLGame();
+class GLGame : Game {
+  public:
+    GLGame();
+    ~GLGame();
 
-  ~GLGame();
+    bool init( const char *title = "Hello Argo",
+        int width = 1024,
+        int height = 768,
+        const function< int() > &initCallback = nullptr );
+    void run() override;
 
-  bool init(const char *title = "Hello Argo", int width = 1024, int height = 768, const function<int()> &initCallback = nullptr);
-  void run() override;
+  private:
+    GLWindow window;
 
-private:
-  GLWindow window;
+    void cleanup();
 
-  void cleanup();
+    void handleEvents();
 
-  void handleEvents();
+    void update();
 
-  void update();
-
-  static int updateCallback(float deltaTime);
+    static int updateCallback( float deltaTime );
 };
 
-}// namespace Argo::System
+}  // namespace Argo::System

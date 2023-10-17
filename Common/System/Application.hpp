@@ -1,17 +1,16 @@
 #pragma once
 namespace Argo::System {
 
-class Application
-{
-public:
-  Application();
-  virtual ~Application();
+class Application {
+  public:
+    Application();
+    virtual ~Application();
 
-  virtual bool init();
-  virtual void run();
+    virtual bool init();
+    virtual void run();
 
-private:
-  void cleanup();
+  private:
+    void cleanup();
 };
 
-}// namespace Argo::System
+}  // namespace Argo::System

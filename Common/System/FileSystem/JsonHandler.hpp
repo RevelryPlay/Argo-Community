@@ -2,8 +2,6 @@
 
 namespace Argo::Utilities::FileSystem {
 
-class JsonHandler : FileHandler
-{
-};
+class JsonHandler : FileHandler {};
 
-}// namespace Argo::Utilities::FileSystem
+}  // namespace Argo::Utilities::FileSystem

@@ -2,8 +2,6 @@
 
 namespace Argo::Utilities::FileSystem {
 
-class YamlHandler : FileHandler
-{
-};
+class YamlHandler : FileHandler {};
 
-}// namespace Argo::Utilities::FileSystem
+}  // namespace Argo::Utilities::FileSystem

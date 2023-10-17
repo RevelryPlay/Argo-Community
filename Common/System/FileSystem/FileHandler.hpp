@@ -1,7 +1,5 @@
 namespace Argo::Utilities::FileSystem {
 
-class FileHandler
-{
-};
+class FileHandler {};
 
-}// namespace Argo::Utilities::FileSystem
+}  // namespace Argo::Utilities::FileSystem

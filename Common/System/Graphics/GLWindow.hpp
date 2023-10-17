@@ -9,26 +9,24 @@ using namespace std;
 
 namespace Argo::System {
 
-class GLWindow
-{
-public:
-  GLWindow();
+class GLWindow {
+  public:
+    GLWindow();
+    virtual ~GLWindow();
 
-  virtual ~GLWindow();
+    bool isOpen = false;
 
-  bool isOpen = false;
+    int init( const char *title = "Window", int width = 800, int height = 600 );
+    void update( float deltaTime, const function< int( float ) > &updateCallback );
 
-  int init(const char *title = "Window", int width = 800, int height = 600);
-  void update(float deltaTime, const function<int(float)> &updateCallback);
+    void cleanup();
 
-  void cleanup();
+  private:
+    GLFWwindow *window{};
 
-private:
-  GLFWwindow *window{};
+    static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
 
-  static void resizeWindowCallback(GLFWwindow * /*window*/, int width, int height);
-
-  void processInput();
+    void processInput();
 };
 
-}// namespace Argo::System
+}  // namespace Argo::System

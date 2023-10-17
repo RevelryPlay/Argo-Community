@@ -2,8 +2,6 @@
 
 namespace Argo::Utilities::FileSystem {
 
-class IniHandler : FileHandler
-{
-};
+class IniHandler : FileHandler {};
 
-}// namespace Argo::Utilities::FileSystem
+}  // namespace Argo::Utilities::FileSystem
