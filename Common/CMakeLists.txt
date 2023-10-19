@@ -25,6 +25,8 @@ add_library(${PROJECT_NAME} SHARED
 
         Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp
+
+        Constants.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

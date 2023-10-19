@@ -1,5 +1,7 @@
 #pragma once
 
+#include "constants.hpp"
+
 #include <functional>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -16,7 +18,9 @@ class GLWindow {
 
     bool isOpen = false;
 
-    int init( const char *title = "Window", int width = 800, int height = 600 );
+    int init( const char *title = "Window",
+        int width = Argo::Common::WINDOW_WIDTH,
+        int height = Argo::Common::WINDOW_HEIGHT );
     void update( float deltaTime, const function< int( float ) > &updateCallback );
 
     void cleanup();
