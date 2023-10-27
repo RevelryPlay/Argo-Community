@@ -1,6 +1,6 @@
 #pragma once
 
-#include "constants.hpp"
+#include "Constants.hpp"
 
 #include <functional>
 #include <glad/glad.h>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-namespace Argo::System {
+namespace Argo::Graphics {
 
 class GLWindow {
   public:
@@ -18,7 +18,7 @@ class GLWindow {
 
     bool isOpen = false;
 
-    int init( const char *title = "Window",
+    int init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
         int width = Argo::Common::WINDOW_WIDTH,
         int height = Argo::Common::WINDOW_HEIGHT );
     void update( float deltaTime, const function< int( float ) > &updateCallback );
@@ -33,4 +33,4 @@ class GLWindow {
     void processInput();
 };
 
-}  // namespace Argo::System
+}  // namespace Argo::Graphics

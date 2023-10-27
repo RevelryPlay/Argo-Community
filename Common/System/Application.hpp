@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Constants.hpp"
+
 namespace Argo::System {
 
 class Application {

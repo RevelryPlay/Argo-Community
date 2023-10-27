@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-namespace Argo::System {
+namespace Argo::Graphics {
 class GLShader {
   public:
     uint32_t ProgramId;
@@ -16,4 +16,4 @@ class GLShader {
     void Compile();
     void Bind();
 };
-};  // namespace Argo::System
+};  // namespace Argo::Graphics

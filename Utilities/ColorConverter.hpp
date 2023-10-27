@@ -6,6 +6,8 @@
 using namespace std;
 
 namespace Argo::Utilities {
+using namespace Argo::Types;
+
 struct ConvertColor {
     /**
      * Creates a CommonColor from a Vec 4 RGBA object

@@ -1,6 +1,6 @@
 #include "GLShader.hpp"
 
-namespace Argo::System {
+namespace Argo::Graphics {
 const char *simpleVertexShader = R"(
  #version 410 core
  layout (location = 0) in vec4 aColor;
@@ -68,4 +68,4 @@ void GLShader::Compile() {
 }
 
 void GLShader::Bind() { glUseProgram( ProgramId ); }
-}  // namespace Argo::System
+}  // namespace Argo::Graphics

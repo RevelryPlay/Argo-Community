@@ -1,6 +1,6 @@
 #include "GLWindow.hpp"
 
-namespace Argo::System {
+namespace Argo::Graphics {
 
 
 GLWindow::GLWindow() = default;
@@ -61,4 +61,4 @@ void GLWindow::processInput() {
 }
 
 void GLWindow::cleanup() { glfwTerminate(); }
-}  // namespace Argo::System
+}  // namespace Argo::Graphics

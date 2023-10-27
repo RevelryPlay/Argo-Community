@@ -5,14 +5,16 @@
 
 namespace Argo::System {
 
+using namespace Argo::Graphics;
+
 class GLGame : Game {
   public:
     GLGame();
     ~GLGame();
 
-    bool init( const char *title = "Hello Argo",
-        int width = 1024,
-        int height = 768,
+    bool init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
+        int width = Argo::Common::WINDOW_WIDTH,
+        int height = Argo::Common::WINDOW_HEIGHT,
         const function< int() > &initCallback = nullptr );
     void run() override;
 

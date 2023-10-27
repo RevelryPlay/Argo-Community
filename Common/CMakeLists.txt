@@ -8,15 +8,15 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} SHARED
 
-        System/FileSystem/CSVHandler.cpp       System/FileSystem/CSVHandler.hpp
-        System/FileSystem/FileHandler.cpp      System/FileSystem/FileHandler.hpp
-        System/FileSystem/IniHandler.cpp       System/FileSystem/IniHandler.hpp
-        System/FileSystem/JsonHandler.cpp      System/FileSystem/JsonHandler.hpp
-        System/FileSystem/YamlHandler.cpp      System/FileSystem/YamlHandler.hpp
-        System/FileSystem/XmlHandler.cpp       System/FileSystem/XmlHandler.hpp
+        FileSystem/CSVHandler.cpp FileSystem/CSVHandler.hpp
+        FileSystem/FileHandler.cpp FileSystem/FileHandler.hpp
+        FileSystem/IniHandler.cpp FileSystem/IniHandler.hpp
+        FileSystem/JsonHandler.cpp FileSystem/JsonHandler.hpp
+        FileSystem/YamlHandler.cpp FileSystem/YamlHandler.hpp
+        FileSystem/XmlHandler.cpp FileSystem/XmlHandler.hpp
 
-        System/Graphics/GLWindow.cpp           System/Graphics/GLWindow.hpp
-        System/Graphics/GLShader.cpp           System/Graphics/GLShader.hpp
+        Graphics/GLWindow.cpp Graphics/GLWindow.hpp
+        Graphics/GLShader.cpp Graphics/GLShader.hpp
 
         System/Game.cpp                        System/Game.hpp
         System/GLGame.cpp                      System/GLGame.hpp

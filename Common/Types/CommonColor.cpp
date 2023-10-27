@@ -1,6 +1,7 @@
 #include "CommonColor.hpp"
 
-string Argo::CommonColor::decimalToHex( int decimal ) {
+namespace Argo::Types {
+string CommonColor::decimalToHex( int decimal ) {
     int remainder = 0;
     int product = 1;
     string hex;
@@ -25,3 +26,4 @@ string Argo::CommonColor::decimalToHex( int decimal ) {
 
     return hex;
 }
+}  // namespace Argo::Types

@@ -66,12 +66,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
 
 # Add Argo Libraries
 add_subdirectory(Common)
-add_subdirectory(Networking)
 add_subdirectory(Utilities)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoCommon
-        ArgoNetworking
         ArgoUtilities
 )
 
@@ -93,5 +91,5 @@ if (BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}-tests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
     target_compile_options(${PROJECT_NAME}-tests PRIVATE ${GTEST_CFLAGS})
 
-    add_test(test_color_converter ${PROJECT_NAME}-tests)
+    add_test(test_utilities ${PROJECT_NAME}-tests)
 endif ()

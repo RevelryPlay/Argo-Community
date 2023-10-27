@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Argo {
+namespace Argo::Types {
 struct Vec4 {
     float w, x, y, z;
 };
-};  // namespace Argo
+}  // namespace Argo::Types

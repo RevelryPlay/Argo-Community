@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace Argo {
+namespace Argo::Types {
 /**
  * Generic color that can be used throughout Argo
  */
@@ -41,4 +41,4 @@ struct CommonColor {
   private:
     static string decimalToHex( int decimal );
 };
-}  // namespace Argo
+}  // namespace Argo::Types
