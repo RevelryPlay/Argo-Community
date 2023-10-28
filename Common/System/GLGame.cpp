@@ -22,6 +22,7 @@ bool GLGame::init( const char *title, int width, int height, const function< int
 void GLGame::run( const function< int( float ) > &runCallback ) {
     // TODO: Investigate if this is reliable for games
     auto previousTime = std::chrono::high_resolution_clock::now();
+    float const targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
     // Update the window before the run loop begins
     window.update( 0, UpdateCallback );
@@ -38,8 +39,6 @@ void GLGame::run( const function< int( float ) > &runCallback ) {
         update( GLGame::deltaTime, runCallback );
 
         // Lock the window update calls to the target frame rate
-        float const targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
-
         if ( deltaTime > targetTime ) {
             window.update( deltaTime, UpdateCallback );
             previousTime = currentTime;
