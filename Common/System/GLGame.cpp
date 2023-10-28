@@ -38,7 +38,7 @@ void GLGame::run( const function< int( float ) > &runCallback ) {
         update( GLGame::deltaTime, runCallback );
 
         // Lock the window update calls to the target frame rate
-        float const targetTime = (1.0 / Argo::Common::TARGET_FPS) * 1000;
+        float const targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
         if (deltaTime > targetTime) {
             window.update( deltaTime, UpdateCallback );
