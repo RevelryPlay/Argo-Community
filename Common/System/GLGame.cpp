@@ -40,7 +40,7 @@ void GLGame::run( const function< int( float ) > &runCallback ) {
         // Lock the window update calls to the target frame rate
         float const targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
-        if (deltaTime > targetTime) {
+        if ( deltaTime > targetTime ) {
             window.update( deltaTime, UpdateCallback );
             previousTime = currentTime;
         }
@@ -57,7 +57,7 @@ void GLGame::update( float deltaTime, const function< int( float ) > &updateCall
 
 int GLGame::UpdateCallback( float deltaTime ) {
     cout << "GLGame delta:" << deltaTime << '\n';
-    cout << "GLGame Time:" << time(nullptr) << '\n';
+    cout << "GLGame Time:" << time( nullptr ) << '\n';
     glClearColor( 0.3f, 0.3f, 0.5f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 

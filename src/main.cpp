@@ -10,8 +10,8 @@ int initCallback() {
 }
 
 int runCallback( float deltaTime ) {
-//    cout << "delta:" << deltaTime << '\n';
-//    fprintf( stdout, "runCallback\n" );
+    //    cout << "delta:" << deltaTime << '\n';
+    //    fprintf( stdout, "runCallback\n" );
     return 0;
 };
 
