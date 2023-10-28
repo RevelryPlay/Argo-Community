@@ -21,6 +21,7 @@ class GLWindow {
     int init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
         int width = Argo::Common::WINDOW_WIDTH,
         int height = Argo::Common::WINDOW_HEIGHT );
+
     void update( float deltaTime, const function< int( float ) > &updateCallback );
 
     void cleanup();

@@ -5,5 +5,7 @@ const int WINDOW_WIDTH = 1024;
 const int WINDOW_HEIGHT = 768;
 const char* const DEFAULT_WINDOW_TITLE = "New Window";
 
-const float TARGET_FPS = 60.0;
+// Lock the window updates to a target framerate.
+// Use -1 to not limit the window updates
+const float TARGET_FPS = 1;
 }  // namespace Argo::Common

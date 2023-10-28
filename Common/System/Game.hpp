@@ -11,8 +11,6 @@ class Game : Application {
     bool init() override;
     void run() override;
 
-    // Initialize this to 60FPS, so we don't start the first frame with any
-    // division by 0 errors or something
     float deltaTime = 1.0F / Argo::Common::TARGET_FPS;
 
   private:

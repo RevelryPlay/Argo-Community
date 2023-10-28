@@ -16,7 +16,8 @@ class GLGame : Game {
         int width = Argo::Common::WINDOW_WIDTH,
         int height = Argo::Common::WINDOW_HEIGHT,
         const function< int() > &initCallback = nullptr );
-    void run() override;
+
+    void run( const function< int( float ) > &runCallback = nullptr );
 
   private:
     GLWindow window;
@@ -25,9 +26,9 @@ class GLGame : Game {
 
     void handleEvents();
 
-    void update();
+    static void update( float deltaTime, const function< int( float ) > &updateCallback = nullptr );
 
-    static int updateCallback( float deltaTime );
+    static int UpdateCallback( float deltaTime );
 };
 
 }  // namespace Argo::System

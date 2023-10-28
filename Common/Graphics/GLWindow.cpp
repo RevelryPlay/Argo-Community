@@ -1,4 +1,5 @@
 #include "GLWindow.hpp"
+#include <unistd.h>
 
 namespace Argo::Graphics {
 
@@ -38,16 +39,20 @@ int GLWindow::init( const char *title, int width, int height ) {
 }
 
 void GLWindow::update( float deltaTime, const function< int( float ) > &updateCallback ) {
-    while ( !glfwWindowShouldClose( window ) ) {
-        processInput();
-
-        updateCallback( deltaTime );
-
-        glfwSwapBuffers( window );
-        glfwPollEvents();
+    if ( glfwWindowShouldClose( window ) ) {
+        fprintf( stdout, "Window will close\n" );
+        isOpen = false;
+        return;
     }
 
-    isOpen = false;
+    processInput();
+
+    if ( updateCallback != nullptr ) {
+        updateCallback( deltaTime );
+    }
+
+    glfwSwapBuffers( window );
+    glfwPollEvents();
 }
 
 void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, int width, int height ) {

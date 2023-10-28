@@ -19,9 +19,12 @@ bool GLGame::init( const char *title, int width, int height, const function< int
     return window.isOpen;
 }
 
-void GLGame::run() {
+void GLGame::run( const function< int( float ) > &runCallback ) {
     // TODO: Investigate if this is reliable for games
     auto previousTime = std::chrono::high_resolution_clock::now();
+
+    // Update the window before the run loop begins
+    window.update( 0, UpdateCallback );
 
     while ( window.isOpen ) {
         // Handle Event Loop
@@ -30,19 +33,32 @@ void GLGame::run() {
 
         // Game loop events
         handleEvents();
-        update();
 
-        previousTime = currentTime;
+        // Update the caller every iteration
+        update( GLGame::deltaTime, runCallback );
+
+        // Lock the window update calls to the target frame rate
+        float const targetTime = (1.0 / Argo::Common::TARGET_FPS) * 1000;
+
+        if (deltaTime > targetTime) {
+            window.update( deltaTime, UpdateCallback );
+            previousTime = currentTime;
+        }
     }
 }
 
 void GLGame::handleEvents() {}
 
-void GLGame::update() { window.update( deltaTime, GLGame::updateCallback ); }
+void GLGame::update( float deltaTime, const function< int( float ) > &updateCallback ) {
+    if ( updateCallback != nullptr ) {
+        updateCallback( deltaTime );
+    }
+}
 
-int GLGame::updateCallback( float deltaTime ) {
-    //  cout << "delta:" << deltaTime << '\n';
-    glClearColor( 0.3f, 0.5f, 0.7f, 1.0f );
+int GLGame::UpdateCallback( float deltaTime ) {
+    cout << "GLGame delta:" << deltaTime << '\n';
+    cout << "GLGame Time:" << time(nullptr) << '\n';
+    glClearColor( 0.3f, 0.3f, 0.5f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 
     return 0;
