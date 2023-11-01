@@ -115,7 +115,7 @@ TEST( ColorConverter, ColorFromRGBAAlpha ) {
 }
 
 TEST( ColorConverter, Vec4FromCommonColor ) {
-    Argo::Vec4 const color = Argo::Utilities::ConvertColor::FromRGBA( { 133, 208, 79 } ).ToVec4();
+    Argo::Types::Vec4 const color = Argo::Utilities::ConvertColor::FromRGBA( { 133, 208, 79 } ).ToVec4();
     EXPECT_FLOAT_EQ( color.w, 0.52156866F );
     EXPECT_FLOAT_EQ( color.x, 0.81568629F );
     EXPECT_FLOAT_EQ( color.y, 0.30980393F );
