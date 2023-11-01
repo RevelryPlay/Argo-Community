@@ -6,7 +6,7 @@ project(ArgoUtilities
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} STATIC
         ColorConverter.cpp ColorConverter.hpp
 )
 

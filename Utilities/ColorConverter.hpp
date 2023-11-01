@@ -2,6 +2,7 @@
 
 #include "../Common/Types/CommonColor.hpp"
 #include <iostream>
+#include <string>
 
 using namespace std;
 

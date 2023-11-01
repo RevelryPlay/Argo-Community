@@ -6,7 +6,7 @@ project(ArgoCommon
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} STATIC
 
         FileSystem/CSVHandler.cpp FileSystem/CSVHandler.hpp
         FileSystem/FileHandler.cpp FileSystem/FileHandler.hpp

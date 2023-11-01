@@ -1,5 +1,4 @@
 #include "GLWindow.hpp"
-#include <unistd.h>
 
 namespace Argo::Graphics {
 
