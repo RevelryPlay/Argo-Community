@@ -55,8 +55,8 @@ void GLGame::update( float deltaTime, const function< int( float ) > &updateCall
 }
 
 int GLGame::UpdateCallback( float deltaTime ) {
-    cout << "GLGame delta:" << deltaTime << '\n';
-    cout << "GLGame Time:" << time( nullptr ) << '\n';
+//    cout << "GLGame delta:" << deltaTime << '\n';
+//    cout << "GLGame Time:" << time( nullptr ) << '\n';
     glClearColor( 0.3f, 0.3f, 0.5f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 

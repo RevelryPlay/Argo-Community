@@ -5,7 +5,7 @@
 using namespace Argo::System;
 
 int initCallback() {
-    fprintf( stdout, "initCallback\n" );
+//    fprintf( stdout, "initCallback\n" );
     return 0;
 }
 

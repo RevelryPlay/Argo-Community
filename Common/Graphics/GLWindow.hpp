@@ -31,7 +31,7 @@ class GLWindow {
 
     static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
 
-    void processInput();
+    void processInput( void ( *inputCallback )( GLFWwindow * window, unsigned int key) );
 };
 
 }  // namespace Argo::Graphics
