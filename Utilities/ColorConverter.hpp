@@ -31,14 +31,14 @@ struct ConvertColor {
     static CommonColor FromRGBA( Vec4 *rgba );
 
     /**
-     * Creates a CommonColor from a hexadecimal value with alpha
+     * Creates a CommonColor from a hexadecimal number value with alpha
      * @param hex - 0xRRGGBBAA
      * @return CommonColor
      */
     static CommonColor FromHex( unsigned int hex );
 
     /**
-     * Creates a CommonColor from a hexadecimal value with alpha pointer
+     * Creates a CommonColor from a hexadecimal number value with alpha pointer
      * @param hex - 0xRRGGBBAA
      * @return CommonColor
      */
@@ -46,7 +46,7 @@ struct ConvertColor {
 
     /**
      * Creates a CommonColor from a hexadecimal string RRGGBB or RRGGBBAA
-     * @param hex
+     * @param hex - string
      * @return CommonColor
      */
     static CommonColor FromHex( const string hex );

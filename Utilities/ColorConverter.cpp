@@ -6,8 +6,7 @@ auto const maxValue = 255.0F;
 CommonColor ConvertColor::FromRGBA( Vec4 rgba ) { return ConvertColor::FromRGBA( &rgba ); }
 
 CommonColor ConvertColor::FromRGBA( Vec4 *rgba ) {
-    auto alpha = rgba->z != NULL ? rgba->z : 1.0F;
-    CommonColor color = { rgba->w / maxValue, rgba->x / maxValue, rgba->y / maxValue, alpha };
+    CommonColor color = { rgba->w / maxValue, rgba->x / maxValue, rgba->y / maxValue, rgba->z };
     return color;
 }
 

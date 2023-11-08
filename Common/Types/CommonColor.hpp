@@ -20,14 +20,14 @@ struct CommonColor {
      * Returns an Vec4 for compatibility with other libraries
      * @return Vec4
      */
-    [[nodiscard]] Vec4 ToVec4() const { return Vec4( { red, green, blue, alpha } ); }
+    Vec4 ToVec4() const { return Vec4( { red, green, blue, alpha } ); }
 
 
     /**
      * Returns a hexadecimal string for the current CommonColor
      * @return string
      */
-    [[nodiscard]] auto ToHex() const {
+    auto ToHex() const {
         string hexRet;
 
         hexRet += decimalToHex( red * 255 );
