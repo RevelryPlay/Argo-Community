@@ -10,7 +10,7 @@ using namespace Argo::Graphics;
 class GLGame : Game {
   public:
     GLGame();
-    ~GLGame();
+    ~GLGame() override;
 
     bool init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
         int width = Argo::Common::DEFAULT_WINDOW_WIDTH,
@@ -19,12 +19,11 @@ class GLGame : Game {
 
     void run( const function< int( float ) > &runCallback = nullptr );
 
-  private:
     GLWindow window;
 
-    void cleanup();
+    void cleanup() override;
 
-    void handleEvents();
+    void handleEvents() override;
 
     static void update( float deltaTime, const function< int( float ) > &updateCallback = nullptr );
 

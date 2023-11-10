@@ -3,7 +3,7 @@
 namespace Argo::System {
 
 Application::Application() = default;
-Application::~Application() { cleanup(); }
+Application::~Application() { Application::cleanup(); }
 
 bool Application::init() { return true; }
 void Application::run() {}

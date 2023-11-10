@@ -12,8 +12,7 @@ class Application {
     virtual bool init();
     virtual void run();
 
-  private:
-    void cleanup();
+    virtual void cleanup();
 };
 
 }  // namespace Argo::System

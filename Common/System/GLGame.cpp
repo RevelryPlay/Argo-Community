@@ -6,9 +6,9 @@
 namespace Argo::System {
 GLGame::GLGame() = default;
 
-GLGame::~GLGame() { cleanup(); };
+GLGame::~GLGame() { GLGame::cleanup(); };
 
-bool GLGame::init( const char *title, int width, int height, const function< int() > &initCallback ) {
+bool GLGame::init( const char *title, const int width, const int height, const function< int() > &initCallback ) {
     window = *new GLWindow();
     window.init( title, width, height );
 

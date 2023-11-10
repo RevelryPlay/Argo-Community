@@ -5,7 +5,7 @@ namespace Argo::System {
 
 Game::Game() = default;
 
-Game::~Game() { cleanup(); };
+Game::~Game() { Game::cleanup(); };
 
 bool Game::init() {
     Game::isRunning = true;

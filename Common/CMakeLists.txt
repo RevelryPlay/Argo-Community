@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
         Graphics/GLWindow.cpp Graphics/GLWindow.hpp
-        Graphics/GLShader.cpp Graphics/GLShader.hpp
 
         System/Game.cpp                        System/Game.hpp
         System/GLGame.cpp                      System/GLGame.hpp

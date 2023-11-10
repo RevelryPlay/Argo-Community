@@ -24,7 +24,7 @@ int GLWindow::init( const char *title, int width, int height ) {
     glfwMakeContextCurrent( window );
 
 
-    if ( !gladLoadGLLoader( ( GLADloadproc ) glfwGetProcAddress ) ) {
+    if ( gladLoadGLLoader( ( GLADloadproc ) glfwGetProcAddress ) == 0 ) {
         std::cout << "Failed to initialize GLAD" << '\n';
         return -1;
     }
@@ -38,8 +38,8 @@ int GLWindow::init( const char *title, int width, int height ) {
     return 0;
 }
 
-void GLWindow::update( float deltaTime, const function< int( float ) > &updateCallback ) {
-    if ( glfwWindowShouldClose( window ) ) {
+void GLWindow::update( const float deltaTime, const function< int( float ) > &updateCallback ) {
+    if ( glfwWindowShouldClose( window ) != 0 ) {
         isOpen = false;
         return;
     }
