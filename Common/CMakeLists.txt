@@ -7,21 +7,12 @@ project(ArgoCommon
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
-
-        FileSystem/CSVHandler.cpp FileSystem/CSVHandler.hpp
-        FileSystem/FileHandler.cpp FileSystem/FileHandler.hpp
-        FileSystem/IniHandler.cpp FileSystem/IniHandler.hpp
-        FileSystem/JsonHandler.cpp FileSystem/JsonHandler.hpp
-        FileSystem/YamlHandler.cpp FileSystem/YamlHandler.hpp
-        FileSystem/XmlHandler.cpp FileSystem/XmlHandler.hpp
-
         Graphics/GLWindow.cpp Graphics/GLWindow.hpp
         Graphics/GLShader.cpp Graphics/GLShader.hpp
 
         System/Game.cpp                        System/Game.hpp
         System/GLGame.cpp                      System/GLGame.hpp
         System/Application.cpp                 System/Application.hpp
-        System/ThreadPool.cpp                  System/ThreadPool.hpp
 
         Types/CommonColor.cpp                  Types/CommonColor.hpp
         Types/Vec4.hpp

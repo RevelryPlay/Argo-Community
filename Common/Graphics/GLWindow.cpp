@@ -40,7 +40,6 @@ int GLWindow::init( const char *title, int width, int height ) {
 
 void GLWindow::update( float deltaTime, const function< int( float ) > &updateCallback ) {
     if ( glfwWindowShouldClose( window ) ) {
-        fprintf( stdout, "Window will close\n" );
         isOpen = false;
         return;
     }
