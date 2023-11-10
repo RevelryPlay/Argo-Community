@@ -1,6 +1,6 @@
 #include "GLWindow.hpp"
 
-void inputCallback(GLFWwindow * /* window */, unsigned int key) {
+void inputCallback(GLFWwindow * /* window */, const unsigned int key) {
     cout << "Key Pressed: " << key << "\n";
 }
 
@@ -8,7 +8,7 @@ namespace Argo::Graphics {
 GLWindow::GLWindow() = default;
 GLWindow::~GLWindow() { cleanup(); };
 
-int GLWindow::init( const char *title, int width, int height ) {
+int GLWindow::init( const char *title, const int width, const int height ) {
     glfwInit();
     glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
     glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
@@ -22,7 +22,6 @@ int GLWindow::init( const char *title, int width, int height ) {
         return -1;
     }
     glfwMakeContextCurrent( window );
-
 
     if ( gladLoadGLLoader( ( GLADloadproc ) glfwGetProcAddress ) == 0 ) {
         std::cout << "Failed to initialize GLAD" << '\n';
@@ -54,7 +53,7 @@ void GLWindow::update( const float deltaTime, const function< int( float ) > &up
     glfwPollEvents();
 }
 
-void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, int width, int height ) {
+void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width, const int height ) {
     glViewport( 0, 0, width, height );
 }
 
@@ -62,7 +61,6 @@ void GLWindow::processInput( void ( *inputCallback )( GLFWwindow *window, unsign
     if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
         glfwSetWindowShouldClose( window, 1 );
     }
-
 
     if ( inputCallback != nullptr ) {
         glfwSetCharCallback( window, inputCallback );
