@@ -9,11 +9,12 @@ set(CMAKE_CXX_STANDARD 23)
 add_library(${PROJECT_NAME} STATIC
         Graphics/GLWindow.cpp Graphics/GLWindow.hpp
 
-        System/Game.cpp                        System/Game.hpp
-        System/GLGame.cpp                      System/GLGame.hpp
-        System/Application.cpp                 System/Application.hpp
+        System/BaseGame.cpp System/BaseGame.hpp
+        System/GLGame.cpp System/GLGame.hpp
+        System/Game.cpp System/Game.hpp
+        System/Application.cpp System/Application.hpp
 
-        Types/CommonColor.cpp                  Types/CommonColor.hpp
+        Types/CommonColor.cpp Types/CommonColor.hpp
         Types/Vec4.hpp
 
         Constants.hpp

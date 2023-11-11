@@ -4,15 +4,19 @@
 
 namespace Argo::System {
 
+/**
+ * \brief An Application provides a minimal structure for running a program.
+ * Consistenting of a `Setup` -> `Run` -> `Cleanup` cycle
+ */
 class Application {
   public:
     Application();
     virtual ~Application();
 
-    virtual bool init();
-    virtual void run();
+    virtual bool Setup();
+    virtual void Run();
 
-    virtual void cleanup();
+    virtual void Cleanup();
 };
 
 }  // namespace Argo::System

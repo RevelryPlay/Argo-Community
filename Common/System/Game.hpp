@@ -1,24 +1,10 @@
 #pragma once
-#include "Application.hpp"
 
 namespace Argo::System {
 
-class Game : Application {
-  public:
-    Game();
-    ~Game() override;
+/**
+ * \brief `Game` is an abstraction around the various Game types. Current only `BaseGame` and `GLGame` are supported.
+ */
 
-    bool init() override;
-    void run() override;
-
-    float deltaTime = 1.0F / Argo::Common::TARGET_FPS;
-
-    bool isRunning = false;
-
-    void cleanup() override;
-    virtual void handleEvents();
-    void update();
-    void render();
-};
-
+template <typename T> class Game : public T {};
 }  // namespace Argo::System

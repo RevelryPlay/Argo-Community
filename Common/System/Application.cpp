@@ -3,12 +3,12 @@
 namespace Argo::System {
 
 Application::Application() = default;
-Application::~Application() { Application::cleanup(); }
+Application::~Application() { Application::Cleanup(); }
 
-bool Application::init() { return true; }
-void Application::run() {}
+bool Application::Setup() { return true; }
+void Application::Run() {}
 
 
-void Application::cleanup() {}
+void Application::Cleanup() {}
 
 }  // namespace Argo::System
