@@ -23,13 +23,14 @@ class GLWindow {
         int height = Argo::Common::DEFAULT_WINDOW_HEIGHT );
 
     void update( float deltaTime, const function< int( float ) > &updateCallback );
+    void processInput( void ( *inputCallback )( GLFWwindow * window, unsigned int key) );
+
     static void cleanup();
 
   private:
     GLFWwindow *window{};
 
     static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
-    void processInput( void ( *inputCallback )( GLFWwindow * window, unsigned int key) );
 };
 
 }  // namespace Argo::Graphics
