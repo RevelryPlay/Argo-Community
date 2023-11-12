@@ -1,39 +1,54 @@
 #include "BaseGame.hpp"
-#include <chrono>
 
 namespace Argo::System {
 
 BaseGame::BaseGame() = default;
 
-BaseGame::~BaseGame() { BaseGame::Cleanup(); };
+BaseGame::~BaseGame() { BaseGame::Cleanup(); }
+bool BaseGame::Setup( const char * /*title*/,
+    int /*width*/,
+    int /*height*/,
+    const std::function< int() > &setup_callback ) {
+    if ( setup_callback != nullptr ) {
+        setup_callback();
+    }
 
-bool BaseGame::Setup() {
-    BaseGame::isRunning = true;
+    isRunning = true;
 
     return true;
 }
 
-void BaseGame::Run() {
-    // TODO: Investigate if this is reliable for games
+void BaseGame::Run( const std::function< int() > &run_callback,
+    const std::function< int( float ) > &update_callback,
+    const std::function< int( float ) > &delta_callback ) {
+
     auto previousTime = std::chrono::high_resolution_clock::now();
 
-    // TODO: Determine what qualifies as running,
-    // in a windowed environment this would be if the window is still open
-    // in a consoled / headless environment this would be some other condition
-    while ( BaseGame::isRunning ) {
+    if ( run_callback != nullptr ) {
+        run_callback();
+    }
 
+    // Update  before the run loop begins
+    update_callback( 0 );
+
+    while ( isRunning ) {
         // Handle Event Loop
         auto currentTime = std::chrono::high_resolution_clock::now();
-        BaseGame::deltaTime = std::chrono::duration< float, std::milli >( currentTime - previousTime ).count();
+        deltaTime = std::chrono::duration< float, std::milli >( currentTime - previousTime ).count();
 
-        // Game loop events
-        Update();
+        // Update the caller every iteration
+        if ( update_callback != nullptr ) {
+            update_callback( deltaTime );
+        }
 
-        previousTime = currentTime;
+        // Lock the window update calls to the target frame rate
+        if ( deltaTime > targetTime ) {
+            delta_callback( deltaTime );
+            previousTime = currentTime;
+        }
     }
-}
+};
 
-void BaseGame::Update() { }
-void BaseGame::Cleanup() { }
+void BaseGame::Cleanup() {}
 
 }  // namespace Argo::System

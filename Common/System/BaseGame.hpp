@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Application.hpp"
+#include <functional>
 
 namespace Argo::System {
 
@@ -12,14 +14,21 @@ class BaseGame : Application {
     BaseGame();
     ~BaseGame() override;
 
-    bool Setup() override;
-    void Run() override;
+    virtual bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
+        int width = Common::DEFAULT_WINDOW_WIDTH,
+        int height = Common::DEFAULT_WINDOW_HEIGHT,
+        const std::function< int() > &setup_callback = nullptr );
 
-    float deltaTime = 1.0F / Argo::Common::TARGET_FPS;
+    virtual void Run( const std::function< int() > &run_callback = nullptr,
+        const std::function< int( float ) > &update_callback = nullptr,
+        const std::function< int( float ) > &delta_callback = nullptr );
+
+    float deltaTime = 1.0F / Common::TARGET_FPS;
     bool isRunning = false;
 
+  private:
+    static float constexpr targetTime = 1.0F / Common::TARGET_FPS * 1000;
     void Cleanup() override;
-    void Update();
 };
 
 }  // namespace Argo::System

@@ -18,17 +18,15 @@ class GLGame : BaseGame {
     bool Setup( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
         int width = Argo::Common::DEFAULT_WINDOW_WIDTH,
         int height = Argo::Common::DEFAULT_WINDOW_HEIGHT,
-        const function< int() > &setup_callback = nullptr );
+        const std::function< int() > &setup_callback = nullptr ) override;
 
-    void Run( const function< int( float ) > &run_callback = nullptr );
+    void Run( const std::function< int() > &run_callback = nullptr,
+        const std::function< int( float ) > &update_callback = nullptr,
+        const std::function< int( float ) > &delta_callback = nullptr ) override;
 
+  private:
     GLWindow window;
-
     void Cleanup() override;
-
-    static void Update( float deltaTime, const function< int( float ) > &updateCallback = nullptr );
-
-    static int UpdateCallback( float deltaTime );
 };
 
 }  // namespace Argo::System
