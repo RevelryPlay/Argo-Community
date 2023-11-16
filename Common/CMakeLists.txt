@@ -7,7 +7,10 @@ project(ArgoCommon
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
-        Graphics/GLWindow.cpp Graphics/GLWindow.hpp
+        Graphics/OpenGL/GLCamera.cpp Graphics/OpenGL/GLCamera.hpp
+        Graphics/OpenGL/GLEntity.cpp Graphics/OpenGL/GLEntity.hpp
+        Graphics/OpenGL/GLScene.cpp Graphics/OpenGL/GLScene.hpp
+        Graphics/OpenGL/GLWindow.cpp Graphics/OpenGL/GLWindow.hpp
 
         System/BaseGame.cpp System/BaseGame.hpp
         System/GLGame.cpp System/GLGame.hpp
@@ -18,6 +21,8 @@ add_library(${PROJECT_NAME} STATIC
         Types/Vec4.hpp
 
         Constants.hpp
+        Graphics/OpenGL/GLSprite.cpp
+        Graphics/OpenGL/GLSprite.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
