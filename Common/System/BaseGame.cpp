@@ -1,5 +1,7 @@
 #include "BaseGame.hpp"
 
+#include <chrono>
+
 namespace Argo::System {
 
 BaseGame::BaseGame() = default;
