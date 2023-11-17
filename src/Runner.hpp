@@ -1,8 +1,5 @@
 #pragma once
-#include "Graphics/OpenGL/GLCamera.hpp"
-#include "Graphics/OpenGL/GLEntity.hpp"
 #include "Graphics/OpenGL/GLScene.hpp"
-#include "Graphics/OpenGL/GLSprite.hpp"
 #include "System/Game.hpp"
 
 namespace Argo {
@@ -10,6 +7,26 @@ namespace Argo {
 class Runner {
   public:
     int run() {
+        camera.width = 300;
+        camera.height = 200;
+        camera.xPos = 10;
+        camera.yPos = 20;
+
+        scene.camera = &camera;
+        scene.width = 12000;
+        scene.height = 500;
+
+        entity.sprite = &sprite;
+        scene.entities.push_back( &entity );
+
+        entity.height = 100;
+        entity.width = 50;
+        entity.xPos = 100;
+        entity.yPos = 75;
+
+        sprite.height = 100;
+        sprite.width = 50;
+
         if ( !game.Setup( Common::DEFAULT_WINDOW_TITLE,
                  Common::DEFAULT_WINDOW_WIDTH,
                  Common::DEFAULT_WINDOW_HEIGHT,
@@ -33,6 +50,7 @@ class Runner {
 
     static int setup_callback() {
         // fprintf( stdout, "initCallback\n" );
+
         return 0;
     }
 

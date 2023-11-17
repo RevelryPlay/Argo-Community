@@ -1,4 +1,5 @@
 #pragma once
+#include "GLSprite.hpp"
 
 namespace Argo::Graphics {
 
@@ -9,6 +10,8 @@ class GLEntity {
   public:
     // GUID
     // GUID spriteId
+
+    GLSprite *sprite;
 
     float xPos = 0;
     float yPos = 0;
