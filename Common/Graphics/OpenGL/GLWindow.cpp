@@ -1,8 +1,6 @@
 #include "GLWindow.hpp"
 
-void inputCallback(GLFWwindow * /* window */, const unsigned int key) {
-    cout << "Key Pressed: " << key << "\n";
-}
+void inputCallback( GLFWwindow * /* window */, const unsigned int key ) { cout << "Key Pressed: " << key << "\n"; }
 
 namespace Argo::Graphics {
 GLWindow::GLWindow() = default;
@@ -37,7 +35,7 @@ int GLWindow::init( const char *title, const int width, const int height ) {
     return 0;
 }
 
-void GLWindow::update( const float deltaTime, const function< int( float ) > &updateCallback ) {
+void GLWindow::update( const float deltaTime, int ( *update_callback )( float ) ) {
     if ( glfwWindowShouldClose( window ) != 0 ) {
         isOpen = false;
         return;
@@ -45,8 +43,8 @@ void GLWindow::update( const float deltaTime, const function< int( float ) > &up
 
     processInput( inputCallback );
 
-    if ( updateCallback != nullptr ) {
-        updateCallback( deltaTime );
+    if ( update_callback ) {
+        update_callback( deltaTime );
     }
 
     glfwSwapBuffers( window );
@@ -57,7 +55,7 @@ void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width, c
     glViewport( 0, 0, width, height );
 }
 
-void GLWindow::processInput( void ( *inputCallback )( GLFWwindow *window, unsigned int key) ) {
+void GLWindow::processInput( void ( *inputCallback )( GLFWwindow *window, unsigned int key ) ) {
     if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
         glfwSetWindowShouldClose( window, 1 );
     }

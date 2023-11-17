@@ -7,25 +7,23 @@ GLGame::GLGame() = default;
 
 GLGame::~GLGame() { GLGame::Cleanup(); };
 
-bool GLGame::Setup( const char *title, const int width, const int height, const function< int() > &setup_callback ) {
+bool GLGame::Setup( const char *title, const int width, const int height, int ( *setup_callback )() ) {
     window = new GLWindow();
     window->init( title, width, height );
 
-    if ( setup_callback != nullptr ) {
+    if ( setup_callback ) {
         setup_callback();
     }
 
     return window->isOpen;
 }
 
-void GLGame::Run( const function< int() > &run_callback,
-    const function< int( float ) > &update_callback,
-    const function< int( float ) > &delta_callback ) {
+void GLGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), int ( *delta_callback )( float ) ) {
     // TODO: Investigate if this is reliable for games
     auto previousTime = std::chrono::high_resolution_clock::now();
     float constexpr targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
-    if ( run_callback != nullptr ) {
+    if ( run_callback ) {
         run_callback();
     }
 
@@ -41,7 +39,7 @@ void GLGame::Run( const function< int() > &run_callback,
         // handleEvents();
 
         // Update the caller every iteration
-        if ( update_callback != nullptr ) {
+        if ( update_callback ) {
             update_callback( deltaTime );
         }
 

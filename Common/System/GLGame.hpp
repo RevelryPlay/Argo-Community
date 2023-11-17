@@ -18,11 +18,11 @@ class GLGame : BaseGame {
     bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
         int height = Common::DEFAULT_WINDOW_HEIGHT,
-        const std::function< int() > &setup_callback = nullptr ) override;
+        int ( *setup_callback )() = nullptr );
 
-    void Run( const std::function< int() > &run_callback = nullptr,
-        const std::function< int( float ) > &update_callback = nullptr,
-        const std::function< int( float ) > &delta_callback = nullptr ) override;
+    void Run( int ( *run_callback )() = nullptr,
+        int ( *update_callback )( float ) = nullptr,
+        int ( *delta_callback )( float ) = nullptr );
 
   private:
     GLWindow *window{};
