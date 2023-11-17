@@ -2,6 +2,9 @@
 
 namespace Argo::Graphics {
 
+/**
+ * \brief
+ */
 class GLSprite {
   public:
     // GUID

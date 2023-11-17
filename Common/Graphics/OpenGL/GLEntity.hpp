@@ -6,7 +6,6 @@ namespace Argo::Graphics {
  * \brief GLEntity describe an entity and its functionality.
  */
 class GLEntity {
-
   public:
     // GUID
     // GUID spriteId

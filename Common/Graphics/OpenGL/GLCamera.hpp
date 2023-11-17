@@ -2,6 +2,10 @@
 
 namespace Argo::Graphics {
 
+/**
+ * \brief
+ */
+
 class GLCamera {
   public:
     // GUID
