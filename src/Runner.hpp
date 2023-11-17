@@ -12,12 +12,8 @@ class Runner {
         camera.xPos = 10;
         camera.yPos = 20;
 
-        scene.camera = &camera;
         scene.width = 12000;
         scene.height = 500;
-
-        entity.sprite = &sprite;
-        scene.entities.push_back( &entity );
 
         entity.height = 100;
         entity.width = 50;
@@ -26,6 +22,10 @@ class Runner {
 
         sprite.height = 100;
         sprite.width = 50;
+
+        scene.camera = &camera;
+        entity.sprite = &sprite;
+        scene.entities.push_back( &entity );
 
         if ( !game.Setup( Common::DEFAULT_WINDOW_TITLE,
                  Common::DEFAULT_WINDOW_WIDTH,
