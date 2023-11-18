@@ -11,8 +11,8 @@ bool GLGame::Setup( const char *title, const int width, const int height, int ( 
     window = new GLWindow();
     window->init( title, width, height );
 
-    if ( setup_callback ) {
-        setup_callback();
+    if constexpr ( &setup_callback != nullptr ) {
+        (*setup_callback)();
     }
 
     return window->isOpen;
@@ -23,8 +23,8 @@ void GLGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), in
     auto previousTime = std::chrono::high_resolution_clock::now();
     float constexpr targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
-    if ( run_callback ) {
-        run_callback();
+    if constexpr ( &run_callback != nullptr ) {
+        (*run_callback)();
     }
 
     // Update the window before the run loop begins
@@ -39,8 +39,8 @@ void GLGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), in
         // handleEvents();
 
         // Update the caller every iteration
-        if ( update_callback ) {
-            update_callback( deltaTime );
+        if constexpr ( &update_callback != nullptr ) {
+            (*update_callback)( deltaTime );
         }
 
         // Lock the window update calls to the target frame rate

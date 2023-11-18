@@ -43,8 +43,8 @@ void GLWindow::update( const float deltaTime, int ( *update_callback )( float ) 
 
     processInput( inputCallback );
 
-    if ( update_callback ) {
-        update_callback( deltaTime );
+    if constexpr ( &update_callback != nullptr ) {
+        (*update_callback)( deltaTime );
     }
 
     glfwSwapBuffers( window );
