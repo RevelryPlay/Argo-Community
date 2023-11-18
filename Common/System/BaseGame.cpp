@@ -7,10 +7,7 @@ namespace Argo::System {
 BaseGame::BaseGame() = default;
 
 BaseGame::~BaseGame() { BaseGame::Cleanup(); }
-bool BaseGame::Setup( const char * /*title*/,
-    int /*width*/,
-    int /*height*/,
-    const std::function< int() > &setup_callback ) {
+bool BaseGame::Setup( const char * /*title*/, int /*width*/, int /*height*/, int ( *setup_callback )() ) {
     if ( setup_callback != nullptr ) {
         setup_callback();
     }
@@ -20,9 +17,7 @@ bool BaseGame::Setup( const char * /*title*/,
     return true;
 }
 
-void BaseGame::Run( const std::function< int() > &run_callback,
-    const std::function< int( float ) > &update_callback,
-    const std::function< int( float ) > &delta_callback ) {
+void BaseGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), int ( *delta_callback )( float ) ) {
 
     auto previousTime = std::chrono::high_resolution_clock::now();
 

@@ -23,6 +23,7 @@ class Runner {
         sprite.height = 100;
         sprite.width = 50;
 
+        game.activeScene = &scene;
         scene.camera = &camera;
         entity.sprite = &sprite;
         scene.entities.push_back( &entity );

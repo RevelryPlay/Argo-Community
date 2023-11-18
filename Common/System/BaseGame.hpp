@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Application.hpp"
-#include <functional>
 
 namespace Argo::System {
 
@@ -17,11 +16,11 @@ class BaseGame : Application {
     virtual bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
         int height = Common::DEFAULT_WINDOW_HEIGHT,
-        const std::function< int() > &setup_callback = nullptr );
+        int ( *setup_callback )() = nullptr );
 
-    virtual void Run( const std::function< int() > &run_callback = nullptr,
-        const std::function< int( float ) > &update_callback = nullptr,
-        const std::function< int( float ) > &delta_callback = nullptr );
+    virtual void Run( int ( *run_callback )() = nullptr,
+        int ( *update_callback )( float ) = nullptr,
+        int ( *delta_callback )( float ) = nullptr );
 
     float deltaTime = 1.0F / Common::TARGET_FPS;
     bool isRunning = false;

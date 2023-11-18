@@ -3,6 +3,9 @@
 #include "BaseGame.hpp"
 #include "Graphics/OpenGL/GLWindow.hpp"
 
+namespace Argo::Graphics {
+class GLScene;
+}
 namespace Argo::System {
 
 using namespace Argo::Graphics;
@@ -14,6 +17,8 @@ class GLGame : BaseGame {
   public:
     GLGame();
     ~GLGame() override;
+
+    GLScene *activeScene;
 
     bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
