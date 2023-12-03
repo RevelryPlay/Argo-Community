@@ -35,7 +35,7 @@ int GLWindow::init( const char *title, const int width, const int height ) {
     return 0;
 }
 
-void GLWindow::update( const float deltaTime, int ( *update_callback )( float ) ) {
+void GLWindow::update( const float deltaTime) {
     if ( glfwWindowShouldClose( window ) != 0 ) {
         isOpen = false;
         return;
@@ -43,9 +43,7 @@ void GLWindow::update( const float deltaTime, int ( *update_callback )( float ) 
 
     processInput( inputCallback );
 
-    if constexpr ( &update_callback != nullptr ) {
-        (*update_callback)( deltaTime );
-    }
+//    RunCallback("update", deltaTime);
 
     glfwSwapBuffers( window );
     glfwPollEvents();

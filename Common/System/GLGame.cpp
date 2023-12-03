@@ -7,28 +7,24 @@ GLGame::GLGame() = default;
 
 GLGame::~GLGame() { GLGame::Cleanup(); };
 
-bool GLGame::Setup( const char *title, const int width, const int height, int ( *setup_callback )() ) {
+bool GLGame::Setup( const char *title, const int width, const int height ) {
     window = new GLWindow();
     window->init( title, width, height );
 
-    if constexpr ( &setup_callback != nullptr ) {
-        (*setup_callback)();
-    }
+    RunCallback("setup", 0);
 
     return window->isOpen;
 }
 
-void GLGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), int ( *delta_callback )( float ) ) {
+void GLGame::Run() {
     // TODO: Investigate if this is reliable for games
     auto previousTime = std::chrono::high_resolution_clock::now();
     float constexpr targetTime = 1.0F / Argo::Common::TARGET_FPS * 1000;
 
-    if constexpr ( &run_callback != nullptr ) {
-        (*run_callback)();
-    }
+    RunCallback("run", 0);
 
     // Update the window before the run loop begins
-    window->update( 0, update_callback );
+    window->update( 0 );
 
     while ( window->isOpen ) {
         // Handle Event Loop
@@ -39,16 +35,17 @@ void GLGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), in
         // handleEvents();
 
         // Update the caller every iteration
-        if constexpr ( &update_callback != nullptr ) {
-            (*update_callback)( deltaTime );
-        }
+        RunCallback("update", deltaTime);
 
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime ) {
-            window->update( deltaTime, delta_callback );
+            window->update( deltaTime );
+            RunCallback("delta", deltaTime);
             previousTime = currentTime;
         }
     }
+
+    RunCallback("close", 0);
 }
 
 void GLGame::Cleanup() {

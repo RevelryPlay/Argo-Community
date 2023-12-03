@@ -15,9 +15,10 @@ class Runner {
     Graphics::GLEntity entity = *new Graphics::GLEntity();
     Graphics::GLSprite sprite = *new Graphics::GLSprite();
 
-    static int setup_callback();
-    static int run_callback();
-    static int update_callback( float deltaTime );
-    static int delta_callback( float deltaTime );
+    void setup_callback(float /*unused*/);
+    void run_callback(float /*unused*/);
+    void update_callback( float deltaTime );
+    void delta_callback( float deltaTime );
+    void close_callback(float /*unused*/);
 };
 }  // namespace Argo

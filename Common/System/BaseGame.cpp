@@ -7,26 +7,19 @@ namespace Argo::System {
 BaseGame::BaseGame() = default;
 
 BaseGame::~BaseGame() { BaseGame::Cleanup(); }
-bool BaseGame::Setup( const char * /*title*/, int /*width*/, int /*height*/, int ( *setup_callback )() ) {
-    if ( setup_callback != nullptr ) {
-        setup_callback();
-    }
+bool BaseGame::Setup( const char * /*title*/, int /*width*/, int /*height*/ ) {
+    RunCallback("setup", 0);
 
     isRunning = true;
-
     return true;
 }
 
-void BaseGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), int ( *delta_callback )( float ) ) {
-
+void BaseGame::Run() {
     auto previousTime = std::chrono::high_resolution_clock::now();
-
-    if ( run_callback != nullptr ) {
-        run_callback();
-    }
+    RunCallback("run", 0);
 
     // Update  before the run loop begins
-    update_callback( 0 );
+    RunCallback("update", 0);
 
     while ( isRunning ) {
         // Handle Event Loop
@@ -34,13 +27,11 @@ void BaseGame::Run( int ( *run_callback )(), int ( *update_callback )( float ), 
         deltaTime = std::chrono::duration< float, std::milli >( currentTime - previousTime ).count();
 
         // Update the caller every iteration
-        if ( update_callback != nullptr ) {
-            update_callback( deltaTime );
-        }
+        RunCallback("update", deltaTime);
 
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime ) {
-            delta_callback( deltaTime );
+            RunCallback("delta", deltaTime);
             previousTime = currentTime;
         }
     }

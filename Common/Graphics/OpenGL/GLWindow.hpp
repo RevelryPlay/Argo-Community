@@ -21,7 +21,7 @@ class GLWindow {
         int width = Argo::Common::DEFAULT_WINDOW_WIDTH,
         int height = Argo::Common::DEFAULT_WINDOW_HEIGHT );
 
-    void update( float deltaTime, int ( *update_callback )( float ) = nullptr );
+    void update( float deltaTime );
     void processInput( void ( *inputCallback )( GLFWwindow *window, unsigned int key ) );
 
     static void cleanup();
