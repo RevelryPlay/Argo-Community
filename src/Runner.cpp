@@ -76,7 +76,7 @@ void Runner::run_callback( float /*unused*/ ) {
         "\n"
         "void main()\n"
         "{\n"
-        "    FragColor = vec4(0.3f, 0.5f, 0.7f, 1.0f);\n"
+        "    FragColor = vec4(0.5f, 0.7f, 0.9f, 1.0f);\n"
         "} \0";
 
     unsigned int fragmentShader = 0;
@@ -138,7 +138,7 @@ void Runner::delta_callback( float deltaTime ) {
 
     glBindVertexArray( 0 );
 
-//    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
 void Runner::close_callback( float /*unused*/ ) {
