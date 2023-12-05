@@ -24,8 +24,6 @@ int GLWindow::init( const char *title, const int width, const int height ) {
         return -1;
     }
 
-    glViewport( 0, 0, width, height );
-
     // Window resize Callback
     glfwSetFramebufferSizeCallback( window, resizeWindowCallback );
 
