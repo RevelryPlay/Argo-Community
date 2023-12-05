@@ -24,11 +24,11 @@ int Runner::run() {
     entity.sprite = &sprite;
     scene.entities.push_back( &entity );
 
-    game.RegisterCallback( "setup", [ this ]( float delta ) { Runner::setup_callback( delta ); } );
-    game.RegisterCallback( "run", [ this ]( float delta ) { Runner::run_callback( delta ); } );
-    game.RegisterCallback( "update", [ this ]( float delta ) { Runner::update_callback( delta ); } );
-    game.RegisterCallback( "delta", [ this ]( float delta ) { Runner::delta_callback( delta ); } );
-    game.RegisterCallback( "close", [ this ]( float delta ) { Runner::close_callback( delta ); } );
+    game.RegisterCallback( "setup", [ this ]( const float delta ) { Runner::setup_callback( delta ); } );
+    game.RegisterCallback( "run", [ this ]( const float delta ) { Runner::run_callback( delta ); } );
+    game.RegisterCallback( "update", [ this ]( const float delta ) { Runner::update_callback( delta ); } );
+    game.RegisterCallback( "delta", [ this ]( const float delta ) { Runner::delta_callback( delta ); } );
+    game.RegisterCallback( "close", [ this ]( const float delta ) { Runner::close_callback( delta ); } );
 
     if ( !game.Setup( Common::DEFAULT_WINDOW_TITLE, Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT ) ) {
         fprintf( stderr, "Failed to initialize the game. See the logs about for more details." );

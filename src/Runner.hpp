@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include "Graphics/OpenGL/GLScene.hpp"
 #include "System/Game.hpp"
 
@@ -9,7 +8,7 @@ class Runner {
     int run();
 
   private:
-    System::Game< System::GLGame > game = *new System::Game< System::GLGame >();
+    System::Game< Graphics::GLGame > game = *new System::Game< Graphics::GLGame >();
     Graphics::GLScene scene = *new Graphics::GLScene();
     Graphics::GLCamera camera = *new Graphics::GLCamera();
 

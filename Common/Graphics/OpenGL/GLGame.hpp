@@ -1,19 +1,18 @@
 #pragma once
 
-#include "BaseGame.hpp"
-#include "Graphics/OpenGL/GLWindow.hpp"
+#include "../../System/BaseGame.hpp"
+#include "GLScene.hpp"
+#include "GLWindow.hpp"
+
 
 namespace Argo::Graphics {
-class GLScene;
-}
-namespace Argo::System {
 
-using namespace Argo::Graphics;
+// using namespace Argo::Graphics;
 
 /**
  * \brief `GLGame` expands on `BaseGame` to handle the creation and lifecycle of an OpenGL window
  */
-class GLGame : public BaseGame {
+class GLGame : public System::BaseGame {
   public:
     GLGame();
     ~GLGame() override;

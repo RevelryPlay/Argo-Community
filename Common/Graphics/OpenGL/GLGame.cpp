@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace Argo::System {
+namespace Argo::Graphics {
 GLGame::GLGame() = default;
 
 GLGame::~GLGame() { GLGame::Cleanup(); };
