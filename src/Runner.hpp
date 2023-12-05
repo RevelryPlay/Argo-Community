@@ -22,7 +22,7 @@ class Runner {
     void delta_callback( float deltaTime );
     void close_callback();
 
-    void key_pressed_callback(float key);
-    void key_released_callback(float key);
+    void key_pressed_callback( float key );
+    void key_released_callback( float key );
 };
 }  // namespace Argo

@@ -11,7 +11,7 @@ using namespace std;
 
 namespace Argo::Graphics {
 
-class GLWindow : public System::BaseWindow{
+class GLWindow : public System::BaseWindow {
   public:
     GLWindow();
 
@@ -25,13 +25,13 @@ class GLWindow : public System::BaseWindow{
 
     void update( float deltaTime );
 
-    static void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-    void HandleKey(int key, int scancode, int action, int mods);
+    static void ProcessInput( GLFWwindow *window, int key, int scancode, int action, int mods );
+    void HandleKey( int key, int scancode, int action, int mods );
 
     void cleanup();
 
   private:
-    GLFWwindow *window{nullptr};
+    GLFWwindow *window{ nullptr };
 
     static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
 };
