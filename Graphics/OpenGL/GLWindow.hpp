@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Constants.hpp"
+#include "../Common/Constants.hpp"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

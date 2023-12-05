@@ -1,22 +1,21 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(ArgoCommon
+project(ArgoGraphics
         VERSION 0.0.1
         LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
-        System/BaseGame.cpp System/BaseGame.hpp
-        System/Game.cpp System/Game.hpp
-        System/Application.cpp System/Application.hpp
-
-        Types/CommonColor.cpp Types/CommonColor.hpp
-        Types/Vec4.hpp
-        Types/Vertex2D.hpp
-
-        Constants.hpp
+        OpenGL/GLCamera.cpp OpenGL/GLCamera.hpp
+        OpenGL/GLEntity.cpp OpenGL/GLEntity.hpp
+        OpenGL/GLGame.cpp OpenGL/GLGame.hpp
+        OpenGL/GLScene.cpp OpenGL/GLScene.hpp
+        OpenGL/GLSprite.cpp OpenGL/GLSprite.hpp
+        OpenGL/GLWindow.cpp OpenGL/GLWindow.hpp
 )
+
+target_link_libraries(ArgoCommon)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -46,7 +45,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE robin_hood::robin_hood)
 find_package(Stb REQUIRED)
 target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
 
-# Install ArgoCommon
-
+# Install ArgoGraphics
 install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 install(FILES ${PROJECT_NAME} DESTINATION include)

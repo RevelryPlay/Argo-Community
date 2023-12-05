@@ -1,5 +1,5 @@
 #pragma once
-#include "Graphics/OpenGL/GLScene.hpp"
+#include "OpenGL/GLScene.hpp"
 #include "System/Game.hpp"
 
 namespace Argo {

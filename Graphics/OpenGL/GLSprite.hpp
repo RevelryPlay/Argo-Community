@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "Types/Vertex2D.hpp"
+#include "../Common/Types/Vertex2D.hpp"
 
 namespace Argo::Graphics {
 

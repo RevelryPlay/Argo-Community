@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../System/BaseGame.hpp"
+#include "../Common/System/BaseGame.hpp"
 #include "GLScene.hpp"
 #include "GLWindow.hpp"
 
@@ -21,9 +21,9 @@ class GLGame : public System::BaseGame {
 
     bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
-        int height = Common::DEFAULT_WINDOW_HEIGHT );
+        int height = Common::DEFAULT_WINDOW_HEIGHT ) override;
 
-    void Run();
+    void Run() override;
 
   private:
     GLWindow *window{};
