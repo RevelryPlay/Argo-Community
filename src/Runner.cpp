@@ -28,8 +28,8 @@ int Runner::run() {
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
     game.RegisterCallback( "update", [ this ]( const float delta ) { update_callback( delta ); } );
     game.RegisterCallback( "windowUpdate", [ this ]( const float delta ) { delta_callback( delta ); } );
-    game.RegisterCallback( "keyPressed", [this](const float key) { key_pressed_callback(key); });
-    game.RegisterCallback( "keyReleased", [this](const float key) { key_released_callback(key); });
+    game.RegisterCallback( "keyPressed", [ this ]( const float key ) { key_pressed_callback( key ); } );
+    game.RegisterCallback( "keyReleased", [ this ]( const float key ) { key_released_callback( key ); } );
     game.RegisterCallback( "close", [ this ]( const float /*delta*/ ) { close_callback(); } );
 
     if ( !game.Setup( Common::DEFAULT_WINDOW_TITLE, Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT ) ) {
@@ -137,19 +137,14 @@ void Runner::delta_callback( float deltaTime ) {
     glEnableVertexAttribArray( 0 );
 
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0 );
-
     glBindVertexArray( 0 );
 
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
-void Runner::key_pressed_callback(float key) {
-    cout << "Runner - Key Pressed: " << key << "\n";
-}
+void Runner::key_pressed_callback( float key ) { cout << "Runner - Key Pressed: " << key << "\n"; }
 
-void Runner::key_released_callback(float key) {
-    cout << "Runner - Key Released: " << key << "\n";
-}
+void Runner::key_released_callback( float key ) { cout << "Runner - Key Released: " << key << "\n"; }
 
 void Runner::close_callback() {
     //    fprintf(stdout, "Will Close");
