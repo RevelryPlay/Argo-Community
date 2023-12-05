@@ -1,13 +1,13 @@
 #include "GLSprite.hpp"
 
 namespace Argo::Graphics {
-std::vector< Types::Vertex2D > GLSprite::calculateRecVertices( float viewPortHeight, float viewPortWidth ) {
+std::vector< Types::Vertex > GLSprite::calculateRecVertices( float viewPortHeight, float viewPortWidth ) {
 
     // Normalize width and height to [-1.0, 1.0] range
     float norm_width = ( width / viewPortWidth );
     float norm_height = ( height / viewPortHeight );
 
-    std::vector< Types::Vertex2D > vertices( 4 );
+    std::vector< Types::Vertex > vertices( 4 );
 
     // Triangle 1
     // Vertex 0 - bottom left

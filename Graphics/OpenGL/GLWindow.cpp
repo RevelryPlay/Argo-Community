@@ -43,7 +43,7 @@ void GLWindow::update( const float deltaTime) {
 
     processInput( inputCallback );
 
-//    RunCallback("update", deltaTime);
+    RunCallback("windowUpdate", deltaTime);
 
     glfwSwapBuffers( window );
     glfwPollEvents();

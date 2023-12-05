@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Argo::Types {
-    struct Vertex2D {
+    struct Vertex {
         float x, y, z;
     };
 }

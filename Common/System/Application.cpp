@@ -8,7 +8,7 @@ Application::~Application() { Application::Cleanup(); }
 bool Application::Setup() { return true; }
 void Application::Run() {}
 
-void Application::RegisterCallback( const std::string title, const CallbackFunction &callback ) {
+void Application::RegisterCallback( const std::string title, const DeltaCallback &callback ) {
     callbacks[title] = callback;
 }
 

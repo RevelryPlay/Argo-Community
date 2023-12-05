@@ -16,7 +16,7 @@ int Runner::run() {
     entity.xPos = 100;
     entity.yPos = 75;
 
-    sprite.height = 512;
+    sprite.height = 200;
     sprite.width = 250;
 
     game.activeScene = &scene;
@@ -24,11 +24,11 @@ int Runner::run() {
     entity.sprite = &sprite;
     scene.entities.push_back( &entity );
 
-    game.RegisterCallback( "setup", [ this ]( const float delta ) { Runner::setup_callback( delta ); } );
-    game.RegisterCallback( "run", [ this ]( const float delta ) { Runner::run_callback( delta ); } );
-    game.RegisterCallback( "update", [ this ]( const float delta ) { Runner::update_callback( delta ); } );
-    game.RegisterCallback( "delta", [ this ]( const float delta ) { Runner::delta_callback( delta ); } );
-    game.RegisterCallback( "close", [ this ]( const float delta ) { Runner::close_callback( delta ); } );
+    game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
+    game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
+    game.RegisterCallback( "update", [ this ]( const float delta ) { update_callback( delta ); } );
+    game.RegisterCallback( "windowUpdate", [ this ]( const float delta ) { delta_callback( delta ); } );
+    game.RegisterCallback( "close", [ this ]( const float /*delta*/ ) { close_callback(); } );
 
     if ( !game.Setup( Common::DEFAULT_WINDOW_TITLE, Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT ) ) {
         fprintf( stderr, "Failed to initialize the game. See the logs about for more details." );
@@ -40,11 +40,11 @@ int Runner::run() {
     return 0;
 };
 
-void Runner::setup_callback( float /*unused*/ ){
-    //    fprintf( stdout, "initCallback\n" );
+void Runner::setup_callback(){
+    // fprintf( stdout, "initCallback\n" );
 };
 
-void Runner::run_callback( float /*unused*/ ) {
+void Runner::run_callback() {
     //     fprintf( stdout, "runCallback\n" );
 
     const char *vertexShaderSource =
@@ -104,11 +104,11 @@ void Runner::update_callback( float deltaTime ){
 
 void Runner::delta_callback( float deltaTime ) {
     // cout << "delta:" << deltaTime << '\n';
-    //     fprintf( stdout, "deltaCallback\n" );
+    // fprintf( stdout, "deltaCallback\n" );
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 
-    std::vector< Types::Vertex2D > const vertices =
+    std::vector< Types::Vertex > const vertices =
         sprite.calculateRecVertices( Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT );
 
     unsigned int const indices[] = {
@@ -128,7 +128,7 @@ void Runner::delta_callback( float deltaTime ) {
 
     glBindVertexArray( VAO );
     glBindBuffer( GL_ARRAY_BUFFER, VBO );
-    glBufferData( GL_ARRAY_BUFFER, sizeof( Types::Vertex2D ) * vertices.size(), vertices.data(), GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, sizeof( Types::Vertex ) * vertices.size(), vertices.data(), GL_STATIC_DRAW );
     glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, EBO );
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( indices ), indices, GL_STATIC_DRAW );
     glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( float ), ( void * ) 0 );
@@ -141,7 +141,7 @@ void Runner::delta_callback( float deltaTime ) {
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
-void Runner::close_callback( float /*unused*/ ) {
+void Runner::close_callback() {
     //    fprintf(stdout, "Will Close");
 }
 

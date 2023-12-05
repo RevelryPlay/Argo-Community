@@ -17,6 +17,7 @@ class GLGame : public System::BaseGame {
     ~GLGame() override;
 
     GLScene *activeScene;
+    System::Window<GLWindow> *window;
 
     bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
@@ -25,7 +26,6 @@ class GLGame : public System::BaseGame {
     void Run() override;
 
   private:
-    System::Window<GLWindow> *window{};
     void Cleanup() override;
 };
 

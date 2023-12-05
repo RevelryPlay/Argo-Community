@@ -15,7 +15,7 @@ add_library(${PROJECT_NAME} STATIC
 
         Types/CommonColor.cpp Types/CommonColor.hpp
         Types/Vec4.hpp
-        Types/Vertex2D.hpp
+        Types/Vertex.hpp
 
         Constants.hpp
 )

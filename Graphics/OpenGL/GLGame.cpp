@@ -10,6 +10,7 @@ GLGame::~GLGame() { GLGame::Cleanup(); };
 bool GLGame::Setup( const char *title, const int width, const int height ) {
     window = new System::Window<GLWindow>();
     window->init( title, width, height );
+    window->callbacks = callbacks;
 
     RunCallback("setup", 0);
 
@@ -40,7 +41,7 @@ void GLGame::Run() {
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime ) {
             window->update( deltaTime );
-            RunCallback("delta", deltaTime);
+            // RunCallback("delta", deltaTime);
             previousTime = currentTime;
         }
     }

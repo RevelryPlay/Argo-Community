@@ -1,8 +1,8 @@
 #pragma once
 
+#include "../Common/Types/Vertex.hpp"
 #include <string>
 #include <vector>
-#include "../Common/Types/Vertex2D.hpp"
 
 namespace Argo::Graphics {
 
@@ -22,7 +22,7 @@ class GLSprite {
 
     std::string filePath;
 
-    std::vector<Types::Vertex2D> calculateRecVertices(float viewPortWidth, float viewPortHeight);
+    std::vector<Types::Vertex> calculateRecVertices(float viewPortWidth, float viewPortHeight);
 
 };
 
