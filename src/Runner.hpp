@@ -1,4 +1,5 @@
 #pragma once
+#include "OpenGL/GLGame.hpp"
 #include "OpenGL/GLScene.hpp"
 #include "System/Game.hpp"
 

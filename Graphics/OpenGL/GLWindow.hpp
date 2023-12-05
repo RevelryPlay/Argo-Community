@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../Common/System/BaseWindow.hpp"
 #include "../Common/Constants.hpp"
 
 #include <glad/glad.h>
@@ -10,7 +11,7 @@ using namespace std;
 
 namespace Argo::Graphics {
 
-class GLWindow {
+class GLWindow : public System::BaseWindow{
   public:
     GLWindow();
     virtual ~GLWindow();

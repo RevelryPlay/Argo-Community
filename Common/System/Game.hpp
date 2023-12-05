@@ -1,6 +1,4 @@
 #pragma once
-#include "../Graphics/OpenGL/GLGame.hpp"
-#include "BaseGame.hpp"
 
 namespace Argo::System {
 

@@ -17,7 +17,7 @@ class BaseGame : public Application {
         int width = Common::DEFAULT_WINDOW_WIDTH,
         int height = Common::DEFAULT_WINDOW_HEIGHT);
 
-    virtual void Run();
+    void Run() override;
 
     float deltaTime = 1.0F / Common::TARGET_FPS;
     bool isRunning = false;

@@ -7,15 +7,18 @@ project(ArgoCommon
 set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
-        System/BaseGame.cpp System/BaseGame.hpp
-        System/Game.cpp System/Game.hpp
         System/Application.cpp System/Application.hpp
+        System/BaseGame.cpp System/BaseGame.hpp
+        System/Game.hpp
+        System/Window.hpp
 
         Types/CommonColor.cpp Types/CommonColor.hpp
         Types/Vec4.hpp
         Types/Vertex2D.hpp
 
         Constants.hpp
+        System/BaseWindow.cpp
+        System/BaseWindow.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

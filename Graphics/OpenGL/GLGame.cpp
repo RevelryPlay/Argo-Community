@@ -8,7 +8,7 @@ GLGame::GLGame() = default;
 GLGame::~GLGame() { GLGame::Cleanup(); };
 
 bool GLGame::Setup( const char *title, const int width, const int height ) {
-    window = new GLWindow();
+    window = new System::Window<GLWindow>();
     window->init( title, width, height );
 
     RunCallback("setup", 0);
