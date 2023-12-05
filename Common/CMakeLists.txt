@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 23)
 add_library(${PROJECT_NAME} STATIC
         System/Application.cpp System/Application.hpp
         System/BaseGame.cpp System/BaseGame.hpp
+        System/BaseWindow.cpp System/BaseWindow.hpp
         System/Game.hpp
         System/Window.hpp
 
@@ -17,8 +18,6 @@ add_library(${PROJECT_NAME} STATIC
         Types/Vertex2D.hpp
 
         Constants.hpp
-        System/BaseWindow.cpp
-        System/BaseWindow.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
