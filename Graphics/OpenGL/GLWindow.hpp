@@ -14,6 +14,7 @@ namespace Argo::Graphics {
 class GLWindow : public System::BaseWindow{
   public:
     GLWindow();
+
     virtual ~GLWindow();
 
     bool isOpen = false;
@@ -23,12 +24,14 @@ class GLWindow : public System::BaseWindow{
         int height = Argo::Common::DEFAULT_WINDOW_HEIGHT );
 
     void update( float deltaTime );
-    void processInput( void ( *inputCallback )( GLFWwindow *window, unsigned int key ) );
 
-    static void cleanup();
+    static void ProcessInput(GLFWwindow* window, int key, int scancode, int action, int mods);
+    void HandleKey(int key, int scancode, int action, int mods);
+
+    void cleanup();
 
   private:
-    GLFWwindow *window{};
+    GLFWwindow *window{nullptr};
 
     static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
 };

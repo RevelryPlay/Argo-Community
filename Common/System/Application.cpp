@@ -12,8 +12,8 @@ void Application::RegisterCallback( const std::string title, const DeltaCallback
     callbacks[title] = callback;
 }
 
-int Application::RunCallback( const std::string title, float deltaTime ) {
-    if (callbacks.find(title) == callbacks.end()) {
+int Application::RunCallback( const std::string title, const float deltaTime ) {
+    if (!callbacks.contains(title) ) {
         return -1;
     }
 
@@ -22,7 +22,7 @@ int Application::RunCallback( const std::string title, float deltaTime ) {
 }
 
 void Application::RemoveCallback( const std::string title ) {
-    auto iterator = callbacks.find(title);
+    const auto iterator = callbacks.find(title);
 
     if (iterator == callbacks.end()) {
         return;

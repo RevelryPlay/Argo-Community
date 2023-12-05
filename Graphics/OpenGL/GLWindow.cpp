@@ -1,7 +1,5 @@
 #include "GLWindow.hpp"
 
-void inputCallback( GLFWwindow * /* window */, const unsigned int key ) { cout << "Key Pressed: " << key << "\n"; }
-
 namespace Argo::Graphics {
 GLWindow::GLWindow() = default;
 GLWindow::~GLWindow() { cleanup(); };
@@ -31,19 +29,22 @@ int GLWindow::init( const char *title, const int width, const int height ) {
     // Window resize Callback
     glfwSetFramebufferSizeCallback( window, resizeWindowCallback );
 
+    // Set the key callback
+    glfwSetKeyCallback( window, ProcessInput );
+
+    glfwSetWindowUserPointer( window, this );
+
     isOpen = true;
     return 0;
 }
 
-void GLWindow::update( const float deltaTime) {
+void GLWindow::update( const float deltaTime ) {
     if ( glfwWindowShouldClose( window ) != 0 ) {
         isOpen = false;
         return;
     }
 
-    processInput( inputCallback );
-
-    RunCallback("windowUpdate", deltaTime);
+    RunCallback( "windowUpdate", deltaTime );
 
     glfwSwapBuffers( window );
     glfwPollEvents();
@@ -53,15 +54,32 @@ void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width, c
     glViewport( 0, 0, width, height );
 }
 
-void GLWindow::processInput( void ( *inputCallback )( GLFWwindow *window, unsigned int key ) ) {
+void GLWindow::ProcessInput( GLFWwindow *window, const int key, const int scancode, const int action, const int mods ) {
+
     if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
         glfwSetWindowShouldClose( window, 1 );
     }
 
-    if ( inputCallback != nullptr ) {
-        glfwSetCharCallback( window, inputCallback );
+    // Retrieve the user pointer to the GLWindow instance
+    auto *gl_window = static_cast< GLWindow * >( glfwGetWindowUserPointer( window ) );
+
+    // Call the actual function using GLWindow instance
+    gl_window->HandleKey( key, scancode, action, mods );
+}
+
+void GLWindow::HandleKey( const int key, const int /*scancode*/, const int action, const int /*mods*/ ) {
+    if ( action == GLFW_PRESS ) {
+        RunCallback( "keyPressed", key );
+    } else if ( action == GLFW_RELEASE ) {
+        RunCallback( "keyReleased", key );
     }
 }
 
-void GLWindow::cleanup() { glfwTerminate(); }
+void GLWindow::cleanup() {
+    if ( &window != nullptr ) {
+        glfwDestroyWindow( window );
+    }
+
+    glfwTerminate();
+}
 }  // namespace Argo::Graphics
