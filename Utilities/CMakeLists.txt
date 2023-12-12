@@ -6,9 +6,9 @@ project(ArgoUtilities
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(${PROJECT_NAME} SHARED
-        ColorConverter.cpp    ColorConverter.hpp
-        )
+add_library(${PROJECT_NAME} STATIC
+        ColorConverter.cpp ColorConverter.hpp
+)
 
 target_link_libraries(ArgoCommon)
 

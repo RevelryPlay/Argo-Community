@@ -20,7 +20,8 @@ configure_file(ArgoConfig.h.in ArgoConfig.h ESCAPE_QUOTES)
 add_executable(${PROJECT_NAME}
         ArgoConfig.h.in
         src/main.cpp
-        )
+        src/Runner.cpp src/Runner.hpp
+)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
@@ -28,11 +29,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 # %h for short hash
 # %H for full hash
 find_package(Git QUIET)
-if(GIT_FOUND)
+if (GIT_FOUND)
     option(GET_COMMIT_HASH "Get commit hash during build" ON)
-    if(NOT GET_COMMIT_HASH)
+    if (NOT GET_COMMIT_HASH)
         return()
-    endif()
+    endif ()
     execute_process(
             COMMAND ${GIT_EXECUTABLE} log -1 --format=%h
             WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
@@ -40,7 +41,7 @@ if(GIT_FOUND)
             OUTPUT_STRIP_TRAILING_WHITESPACE
     )
     message("Current Commit Hash: ${GIT_HASH}\n")
-endif()
+endif ()
 
 find_package(OpenGL REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
@@ -66,12 +67,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
 
 # Add Argo Libraries
 add_subdirectory(Common)
-add_subdirectory(Networking)
+add_subdirectory(Graphics)
 add_subdirectory(Utilities)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoCommon
-        ArgoNetworking
+        ArgoGraphics
         ArgoUtilities
 )
 
@@ -84,7 +85,7 @@ if (BUILD_TESTING)
 
     add_executable(${PROJECT_NAME}-tests)
     target_sources(${PROJECT_NAME}-tests PRIVATE
-            Utilities/ColorConverter.cpp    Utilities/ColorConverter.hpp
+            Utilities/ColorConverter.cpp Utilities/ColorConverter.hpp
             Utilities/ColorConverter.tests.cpp
     )
 
@@ -93,5 +94,5 @@ if (BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}-tests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
     target_compile_options(${PROJECT_NAME}-tests PRIVATE ${GTEST_CFLAGS})
 
-    add_test(test_color_converter ${PROJECT_NAME}-tests)
+    add_test(test_utilities ${PROJECT_NAME}-tests)
 endif ()
