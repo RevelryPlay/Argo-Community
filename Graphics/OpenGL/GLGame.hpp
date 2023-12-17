@@ -16,8 +16,8 @@ class GLGame : public System::BaseGame {
     GLGame();
     ~GLGame() override;
 
-    GLScene *activeScene;
-    System::Window<GLWindow> *window;
+    GLScene *activeScene{};
+    System::Window< GLWindow > *window{ nullptr };
 
     bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
@@ -29,4 +29,4 @@ class GLGame : public System::BaseGame {
     void Cleanup() override;
 };
 
-}  // namespace Argo::System
+}  // namespace Argo::Graphics

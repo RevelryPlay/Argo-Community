@@ -14,10 +14,9 @@ namespace Argo::Graphics {
 class GLWindow : public System::BaseWindow {
   public:
     GLWindow();
+    ~GLWindow() override;
 
-    virtual ~GLWindow();
-
-    bool isOpen = false;
+    bool isOpen{ false };
 
     int init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
         int width = Argo::Common::DEFAULT_WINDOW_WIDTH,

@@ -1,19 +1,19 @@
 #include "ColorConverter.hpp"
 
 namespace Argo::Utilities {
-auto const maxValue = 255.0F;
+constexpr auto maxValue{ 255.0F };
 
-CommonColor ConvertColor::FromRGBA( Vec4 rgba ) { return ConvertColor::FromRGBA( &rgba ); }
+CommonColor ConvertColor::FromRGBA( const Vec4 rgba ) { return ConvertColor::FromRGBA( &rgba ); }
 
-CommonColor ConvertColor::FromRGBA( Vec4 *rgba ) {
-    CommonColor color = { rgba->w / maxValue, rgba->x / maxValue, rgba->y / maxValue, rgba->z };
+CommonColor ConvertColor::FromRGBA( const Vec4 *rgba ) {
+    CommonColor const color{ rgba->w / maxValue, rgba->x / maxValue, rgba->y / maxValue, rgba->z };
     return color;
 }
 
-CommonColor ConvertColor::FromHex( unsigned int hex ) { return ConvertColor::FromHex( &hex ); }
+CommonColor ConvertColor::FromHex( const unsigned int hex ) { return ConvertColor::FromHex( &hex ); }
 
 CommonColor ConvertColor::FromHex( const unsigned int *hex ) {
-    CommonColor rgba = CommonColor();
+    auto rgba{ CommonColor() };
 
     rgba.red = ( ( *hex >> 24 ) & 0xFF ) / maxValue;
     rgba.green = ( ( *hex >> 16 ) & 0xFF ) / maxValue;
@@ -23,7 +23,7 @@ CommonColor ConvertColor::FromHex( const unsigned int *hex ) {
     return rgba;
 }
 
-CommonColor ConvertColor::FromHex( const std::string hex ) { return FromHex( &hex ); }
+CommonColor ConvertColor::FromHex( const std::string &hex ) { return FromHex( &hex ); }
 
 CommonColor ConvertColor::FromHex( const std::string *hex ) {
     if ( hex->length() != 6 && hex->length() != 8 ) {

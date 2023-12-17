@@ -28,7 +28,7 @@ struct ConvertColor {
      * alpha is a float between 0 and 1
      * @return CommonColor
      */
-    static CommonColor FromRGBA( Vec4 *rgba );
+    static CommonColor FromRGBA( const Vec4 *rgba );
 
     /**
      * Creates a CommonColor from a hexadecimal number value with alpha
@@ -49,7 +49,7 @@ struct ConvertColor {
      * @param hex - string
      * @return CommonColor
      */
-    static CommonColor FromHex( const string hex );
+    static CommonColor FromHex( const string &hex );
     static CommonColor FromHex( const string *hex );
 };
 }  // namespace Argo::Utilities

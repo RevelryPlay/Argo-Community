@@ -15,15 +15,15 @@ class BaseGame : public Application {
 
     virtual bool Setup( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,
-        int height = Common::DEFAULT_WINDOW_HEIGHT);
+        int height = Common::DEFAULT_WINDOW_HEIGHT );
 
     void Run() override;
 
-    float deltaTime = 1.0F / Common::TARGET_FPS;
-    bool isRunning = false;
+    float deltaTime{ 1.0F / Common::TARGET_FPS };
+    bool isRunning{ false };
 
   private:
-    static float constexpr targetTime = 1.0F / Common::TARGET_FPS * 1000;
+    static float constexpr targetTime{ 1.0F / Common::TARGET_FPS * 1000 };
     void Cleanup() override;
 };
 

@@ -1,11 +1,12 @@
 #include "GLSprite.hpp"
 
 namespace Argo::Graphics {
-std::vector< Types::Vertex > GLSprite::calculateRecVertices( float viewPortHeight, float viewPortWidth ) {
+std::vector< Types::Vertex > GLSprite::calculateRecVertices( const float viewPortWidth,
+    const float viewPortHeight ) const {
 
     // Normalize width and height to [-1.0, 1.0] range
-    float norm_width = ( width / viewPortWidth );
-    float norm_height = ( height / viewPortHeight );
+    const float norm_width = ( width / viewPortWidth );
+    const float norm_height = ( height / viewPortHeight );
 
     std::vector< Types::Vertex > vertices( 4 );
 
@@ -30,16 +31,16 @@ std::vector< Types::Vertex > GLSprite::calculateRecVertices( float viewPortHeigh
     vertices[ 3 ].x = -norm_width;
     vertices[ 3 ].y = norm_height;
     vertices[ 3 ].z = 0.0f;
-//
-//        // Vertex 4 - bottom right
-//        vertices[4].x = norm_width;
-//        vertices[4].y = -norm_height;
-//        vertices[4].z = 0.0f;
-//
-//        // Vertex 5 - top left
-//        vertices[5].x = -norm_width;
-//        vertices[5].y = norm_height;
-//        vertices[5].z = 0.0f;
+    //
+    //        // Vertex 4 - bottom right
+    //        vertices[4].x = norm_width;
+    //        vertices[4].y = -norm_height;
+    //        vertices[4].z = 0.0f;
+    //
+    //        // Vertex 5 - top left
+    //        vertices[5].x = -norm_width;
+    //        vertices[5].y = norm_height;
+    //        vertices[5].z = 0.0f;
 
     return vertices;
 }

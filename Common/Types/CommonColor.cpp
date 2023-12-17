@@ -2,8 +2,8 @@
 
 namespace Argo::Types {
 string CommonColor::decimalToHex( int decimal ) {
-    int remainder = 0;
-    int product = 1;
+    int remainder{ 0 };
+    int product{ 1 };
     string hex;
 
     while ( decimal != 0 ) {
@@ -22,7 +22,7 @@ string CommonColor::decimalToHex( int decimal ) {
         product *= 10;
     }
 
-    reverse( hex.begin(), hex.end() );
+    ranges::reverse( hex );
 
     return hex;
 }

@@ -9,12 +9,12 @@ class Runner {
     int run();
 
   private:
-    System::Game< Graphics::GLGame > game = *new System::Game< Graphics::GLGame >();
-    Graphics::GLScene scene = *new Graphics::GLScene();
-    Graphics::GLCamera camera = *new Graphics::GLCamera();
+    System::Game< Graphics::GLGame > game{ *new System::Game< Graphics::GLGame >() };
+    Graphics::GLScene scene{ *new Graphics::GLScene() };
+    Graphics::GLCamera camera{ *new Graphics::GLCamera() };
 
-    Graphics::GLEntity entity = *new Graphics::GLEntity();
-    Graphics::GLSprite sprite = *new Graphics::GLSprite();
+    Graphics::GLEntity entity{ *new Graphics::GLEntity() };
+    Graphics::GLSprite sprite{ *new Graphics::GLSprite() };
 
     void setup_callback();
     void run_callback();

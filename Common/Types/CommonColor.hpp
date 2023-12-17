@@ -11,10 +11,10 @@ namespace Argo::Types {
  * Generic color that can be used throughout Argo
  */
 struct CommonColor {
-    float red = 1.0f;
-    float green = 1.0f;
-    float blue = 1.0f;
-    float alpha = 1.0f;
+    float red{ 1.0f };
+    float green{ 1.0f };
+    float blue{ 1.0f };
+    float alpha{ 1.0f };
 
     /**
      * Returns an Vec4 for compatibility with other libraries

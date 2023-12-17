@@ -115,8 +115,12 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0, 1, 3,  // first triangle
-        1, 2, 3  // second triangle
+        0,
+        1,
+        3,  // first triangle
+        1,
+        2,
+        3  // second triangle
     };
 
     unsigned int VBO;
@@ -142,9 +146,9 @@ void Runner::delta_callback( float deltaTime ) {
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
-void Runner::key_pressed_callback( float key ) { cout << "Runner - Key Pressed: " << key << "\n"; }
+void Runner::key_pressed_callback( const float key ) { cout << "Runner - Key Pressed: " << key << "\n"; }
 
-void Runner::key_released_callback( float key ) { cout << "Runner - Key Released: " << key << "\n"; }
+void Runner::key_released_callback( const float key ) { cout << "Runner - Key Released: " << key << "\n"; }
 
 void Runner::close_callback() {
     //    fprintf(stdout, "Will Close");
