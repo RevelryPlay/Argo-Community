@@ -6,6 +6,9 @@ endif ()
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+
+# Options
+
 project(
         Argo-Community
         VERSION 0.0.1
@@ -13,6 +16,28 @@ project(
         HOMEPAGE_URL "https://www.revelryplay.com/Projects/Argo/"
         LANGUAGES CXX C
 )
+
+
+
+# Graphics pipeline
+# In the future multiple pipelines will be available,
+# for now only enable one of these options at a time
+
+SET(OPTS_USE_OPENGL ON) # Basic structure exists for 0.0.1; API incomplete
+SET(OPTS_USE_VULKAN OFF) # Incomplete
+# SET(USE_CONSOLE_ONLY OFF) # Not present at this time
+# SET(USE_METAL OFF) # Not present at this time
+# SET(USE_DX OFF) # Not present at this time
+
+# End of current options
+
+
+
+# Force one of the pipelines to be active
+# This is temporary as there will also be a console only pipeline
+if(NOT OPTS_USE_OPENGL AND NOT OPTS_USE_VULKAN)
+    SET(OPTS_USE_OPENGL ON)
+endif ()
 
 # Update version number in source file
 configure_file(ArgoConfig.h.in ArgoConfig.h ESCAPE_QUOTES)
@@ -43,27 +68,35 @@ if (GIT_FOUND)
     message("Current Commit Hash: ${GIT_HASH}\n")
 endif ()
 
-find_package(OpenGL REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
+if (OPTS_USE_OPENGL)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_OPENGL)
 
-find_package(glad CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
 
-find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+    find_package(glad CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glad::glad)
 
-find_package(glm CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
+    find_package(glfw3 CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
-find_package(imgui CONFIG REQUIRED)
-target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
+    find_package(glm CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
 
-find_package(robin_hood CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE robin_hood::robin_hood)
+    find_package(imgui CONFIG REQUIRED)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI_INCLUDE_DIR})
+    target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 
-find_package(Stb REQUIRED)
-target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
+    find_package(robin_hood CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE robin_hood::robin_hood)
+
+    find_package(Stb REQUIRED)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
+endif ()
+
+if (OPTS_USE_VULKAN)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN)
+endif ()
 
 # Add Argo Libraries
 add_subdirectory(Common)
