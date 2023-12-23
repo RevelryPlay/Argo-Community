@@ -47,6 +47,7 @@ void Runner::setup_callback(){
 };
 
 void Runner::run_callback() {
+#if USE_OPENGL
     //     fprintf( stdout, "runCallback\n" );
 
     const char *vertexShaderSource =
@@ -97,6 +98,7 @@ void Runner::run_callback() {
 
     glDeleteShader( vertexShader );
     glDeleteShader( fragmentShader );
+#endif
 };
 
 void Runner::update_callback( float deltaTime ){
@@ -105,6 +107,7 @@ void Runner::update_callback( float deltaTime ){
 };
 
 void Runner::delta_callback( float deltaTime ) {
+#if USE_OPENGL
     // cout << "delta:" << deltaTime << '\n';
     // fprintf( stdout, "deltaCallback\n" );
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
@@ -115,12 +118,8 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0,
-        1,
-        3,  // first triangle
-        1,
-        2,
-        3  // second triangle
+        0, 1, 3,  // first triangle
+        1, 2, 3  // second triangle
     };
 
     unsigned int VBO;
@@ -144,6 +143,7 @@ void Runner::delta_callback( float deltaTime ) {
     glBindVertexArray( 0 );
 
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+#endif
 }
 
 void Runner::key_pressed_callback( const float key ) { cout << "Runner - Key Pressed: " << key << "\n"; }
