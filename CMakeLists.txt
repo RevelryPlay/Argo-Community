@@ -69,7 +69,7 @@ if (GIT_FOUND)
 endif ()
 
 if (OPTS_USE_OPENGL)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_OPENGL)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE OPTS_USE_OPENGL)
 
     find_package(OpenGL REQUIRED)
     target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
@@ -95,7 +95,7 @@ if (OPTS_USE_OPENGL)
 endif ()
 
 if (OPTS_USE_VULKAN)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE OPTS_USE_VULKAN)
 endif ()
 
 # Add Argo Libraries
