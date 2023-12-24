@@ -1,15 +1,16 @@
 #pragma once
 
-#include "Application.hpp"
+#include "../System/Application.hpp"
 
-namespace Argo::System {
+namespace Argo::Types {
+
+using namespace Argo::System;
 
 /**
  * \brief `BaseGame` is a type of `Application` that provides game specific functionality such as an `Update` loop,
  * an input handler and the properties `isRunning` and `deltaTime`
  */
-class BaseGame : public Application {
-  public:
+struct  BaseGame : public Application {
     BaseGame();
     ~BaseGame() override;
 

@@ -8,12 +8,16 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
         System/Application.cpp System/Application.hpp
-        System/BaseGame.cpp System/BaseGame.hpp
-        System/BaseWindow.cpp System/BaseWindow.hpp
         System/Game.hpp
         System/Window.hpp
 
         Types/CommonColor.cpp Types/CommonColor.hpp
+        Types/BaseCamera.cpp Types/BaseCamera.hpp
+        Types/BaseEntity.cpp Types/BaseEntity.hpp
+        Types/BaseGame.cpp Types/BaseGame.hpp
+        Types/BaseScene.cpp Types/BaseScene.hpp
+        Types/BaseSprite.cpp Types/BaseSprite.hpp
+        Types/BaseWindow.cpp Types/BaseWindow.hpp
         Types/Vec4.hpp
         Types/Vertex.hpp
 

@@ -2,7 +2,7 @@
 
 #include <chrono>
 
-namespace Argo::System {
+namespace Argo::Types {
 
 BaseGame::BaseGame() = default;
 

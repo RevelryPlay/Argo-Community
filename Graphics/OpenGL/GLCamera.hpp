@@ -1,4 +1,5 @@
 #pragma once
+#include "../Common/Types/BaseCamera.hpp"
 
 namespace Argo::Graphics {
 
@@ -6,7 +7,7 @@ namespace Argo::Graphics {
  * \brief
  */
 
-class GLCamera {
+class GLCamera: public Types::BaseCamera {
   public:
     // GUID
 

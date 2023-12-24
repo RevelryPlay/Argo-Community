@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Common/System/BaseWindow.hpp"
+#include "../Common/Types/BaseWindow.hpp"
 #include "../Common/Constants.hpp"
 
 #include <glad/glad.h>

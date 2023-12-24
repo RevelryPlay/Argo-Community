@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Common/Types/Vertex.hpp"
+#include "../Common/Types/BaseSprite.hpp"
 #include <string>
 #include <vector>
 
@@ -9,7 +10,7 @@ namespace Argo::Graphics {
 /**
  * \brief GLSprite handles the rendering of a texture to a specific region
  */
-class GLSprite {
+class GLSprite: public Types::BaseSprite {
   public:
     // GUID
 

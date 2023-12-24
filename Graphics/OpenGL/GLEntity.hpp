@@ -1,12 +1,13 @@
 #pragma once
 #include "GLSprite.hpp"
+#include "../Common/Types/BaseEntity.hpp"
 
 namespace Argo::Graphics {
 
 /**
  * \brief GLEntity describe an entity and its functionality.
  */
-class GLEntity {
+class GLEntity: public Types::BaseEntity {
   public:
     // GUID
     // GUID spriteId

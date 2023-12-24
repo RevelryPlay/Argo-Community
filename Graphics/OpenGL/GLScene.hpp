@@ -1,6 +1,7 @@
 #pragma once
 #include "GLCamera.hpp"
 #include "GLEntity.hpp"
+#include "../Common/Types/BaseScene.hpp"
 
 #include <list>
 
@@ -9,7 +10,7 @@ namespace Argo::Graphics {
 /**
  * \brief
  */
-class GLScene {
+class GLScene : public Types::BaseScene {
   public:
     // GUID
 
