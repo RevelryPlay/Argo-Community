@@ -10,8 +10,8 @@
 #endif
 
 #include "System/Camera.hpp"
-#include "System/Game.hpp"
 #include "System/Entity.hpp"
+#include "System/Game.hpp"
 #include "System/Scene.hpp"
 #include "System/Sprite.hpp"
 
@@ -22,20 +22,20 @@ struct Runner {
   private:
 #if OPTS_USE_OPENGL
     System::Game< Graphics::GLGame > game{ *new System::Game< Graphics::GLGame >() };
-    System::Scene<Graphics::GLScene> scene{ *new System::Scene<Graphics::GLScene>() };
-    System::Camera<Graphics::GLCamera> camera{ *new System::Camera<Graphics::GLCamera>() };
+    System::Scene< Graphics::GLScene > scene{ *new System::Scene< Graphics::GLScene >() };
+    System::Camera< Graphics::GLCamera > camera{ *new System::Camera< Graphics::GLCamera >() };
 
-    System::Entity<Graphics::GLEntity> entity{ *new System::Entity<Graphics::GLEntity>() };
-    System::Sprite<Graphics::GLSprite> sprite{ *new System::Sprite<Graphics::GLSprite>() };
+    System::Entity< Graphics::GLEntity > entity{ *new System::Entity< Graphics::GLEntity >() };
+    System::Sprite< Graphics::GLSprite > sprite{ *new System::Sprite< Graphics::GLSprite >() };
 #endif
 
 #if OPTS_USE_VULKAN
     System::Game< Graphics::VKGame > game{ *new System::Game< Graphics::VKGame >() };
-    System::Scene<Graphics::VKScene> scene{ *new System::Scene<Graphics::VKScene>() };
-    System::Camera<Graphics::VKCamera> camera{ *new System::Camera<Graphics::VKCamera>() };
+    System::Scene< Graphics::VKScene > scene{ *new System::Scene< Graphics::VKScene >() };
+    System::Camera< Graphics::VKCamera > camera{ *new System::Camera< Graphics::VKCamera >() };
 
-    System::Entity<Graphics::VKEntity> entity{ *new System::Entity<Graphics::VKEntity>() };
-    System::Sprite<Graphics::VKSprite> sprite{ *new System::Sprite<Graphics::VKSprite>() };
+    System::Entity< Graphics::VKEntity > entity{ *new System::Entity< Graphics::VKEntity >() };
+    System::Sprite< Graphics::VKSprite > sprite{ *new System::Sprite< Graphics::VKSprite >() };
 #endif
 
     void setup_callback();
