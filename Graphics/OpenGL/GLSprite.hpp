@@ -10,8 +10,7 @@ namespace Argo::Graphics {
 /**
  * \brief GLSprite handles the rendering of a texture to a specific region
  */
-class GLSprite: public Types::BaseSprite {
-  public:
+struct  GLSprite: Types::BaseSprite {
     // GUID
 
     float xPos{ 0 };
@@ -23,7 +22,7 @@ class GLSprite: public Types::BaseSprite {
 
     std::string filePath{};
 
-    std::vector< Types::Vertex > calculateRecVertices( float viewPortWidth, float viewPortHeight ) const;
+    [[nodiscard]] std::vector< Types::Vertex > calculateRecVertices( float viewPortWidth, float viewPortHeight ) const;
 };
 
 }  // namespace Argo::Graphics

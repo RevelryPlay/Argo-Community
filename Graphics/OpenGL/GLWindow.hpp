@@ -11,8 +11,7 @@ using namespace std;
 
 namespace Argo::Graphics {
 
-class GLWindow : public System::BaseWindow {
-  public:
+struct GLWindow : Types::BaseWindow {
     GLWindow();
     ~GLWindow() override;
 

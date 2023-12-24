@@ -11,8 +11,7 @@ namespace Argo::Graphics {
 /**
  * \brief `GLGame` expands on `BaseGame` to handle the creation and lifecycle of an OpenGL window
  */
-class GLGame : public Types::BaseGame {
-  public:
+struct GLGame : Types::BaseGame {
     GLGame();
     ~GLGame() override;
 

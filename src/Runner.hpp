@@ -12,8 +12,7 @@
 #include "System/Game.hpp"
 
 namespace Argo {
-class Runner {
-  public:
+struct Runner {
     int run();
 
   private:

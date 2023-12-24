@@ -21,8 +21,7 @@ template< typename T > class Callback : public T {};
  * \brief An Application provides a minimal structure for running a program.
  * Consisting of a `Setup` -> `Run` -> `Cleanup` cycle
  */
-class Application {
-  public:
+struct Application {
     Application();
     virtual ~Application();
 

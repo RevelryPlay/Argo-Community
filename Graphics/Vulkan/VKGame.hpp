@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Common/System/Window.hpp"
-#include "../Common/System/BaseGame.hpp"
+#include "../Common/System/Window.hpp"
+#include "../Common/Types/BaseGame.hpp"
 #include "VKScene.hpp"
 #include "VKWindow.hpp"
 
@@ -10,8 +10,7 @@ namespace Argo::Graphics {
 /**
  * \brief `GLGame` expands on `BaseGame` to handle the creation and lifecycle of an OpenGL window
  */
-class VKGame : public System::BaseGame {
-  public:
+struct VKGame : Types::BaseGame {
     VKGame();
     ~VKGame() override;
 

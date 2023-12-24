@@ -7,8 +7,7 @@ namespace Argo::Graphics {
  * \brief
  */
 
-class GLCamera: public Types::BaseCamera {
-  public:
+struct GLCamera : Types::BaseCamera {
     // GUID
 
     float xPos{ 0 };

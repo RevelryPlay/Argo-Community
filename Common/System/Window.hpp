@@ -4,9 +4,8 @@ namespace Argo::System {
 
 /**
  * \brief `Window` is an abstraction around the various window types.
- * Currently only `BaseWindow` and `GLWindow` are supported.
  */
 
-template< typename T > class Window : public T {};
+template< typename T > struct  Window : T {};
 
 }  // namespace Argo::System
