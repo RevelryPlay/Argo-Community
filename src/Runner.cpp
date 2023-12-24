@@ -47,7 +47,7 @@ void Runner::setup_callback(){
 };
 
 void Runner::run_callback() {
-#if USE_OPENGL
+#if OPTS_USE_OPENGL
     //     fprintf( stdout, "runCallback\n" );
 
     const char *vertexShaderSource =
@@ -107,7 +107,7 @@ void Runner::update_callback( float deltaTime ){
 };
 
 void Runner::delta_callback( float deltaTime ) {
-#if USE_OPENGL
+#if OPTS_USE_OPENGL
     // cout << "delta:" << deltaTime << '\n';
     // fprintf( stdout, "deltaCallback\n" );
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
