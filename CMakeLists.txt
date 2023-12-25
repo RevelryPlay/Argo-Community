@@ -127,5 +127,7 @@ if (BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}-tests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
     target_compile_options(${PROJECT_NAME}-tests PRIVATE ${GTEST_CFLAGS})
 
-    add_test(test_utilities ${PROJECT_NAME}-tests)
+    include(GoogleTest)
+
+    gtest_discover_tests(${PROJECT_NAME}-tests)
 endif ()
