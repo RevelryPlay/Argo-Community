@@ -15,18 +15,16 @@ struct GLWindow : Types::BaseWindow {
     GLWindow();
     ~GLWindow() override;
 
-    bool isOpen{ false };
+    int init( const char *title = Common::DEFAULT_WINDOW_TITLE,
+        int width = Common::DEFAULT_WINDOW_WIDTH,
+        int height = Common::DEFAULT_WINDOW_HEIGHT ) override;
 
-    int init( const char *title = Argo::Common::DEFAULT_WINDOW_TITLE,
-        int width = Argo::Common::DEFAULT_WINDOW_WIDTH,
-        int height = Argo::Common::DEFAULT_WINDOW_HEIGHT );
-
-    void update( float deltaTime );
+    void update( float deltaTime ) override;
 
     static void ProcessInput( GLFWwindow *window, int key, int scancode, int action, int mods );
-    void HandleKey( int key, int scancode, int action, int mods );
+    void HandleKey( int key, int scancode, int action, int mods ) override;
 
-    void cleanup();
+    void Cleanup() override;
 
   private:
     GLFWwindow *window{ nullptr };

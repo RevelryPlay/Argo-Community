@@ -2,7 +2,7 @@
 
 namespace Argo::Graphics {
 GLWindow::GLWindow() = default;
-GLWindow::~GLWindow() { cleanup(); };
+GLWindow::~GLWindow() { GLWindow::Cleanup(); };
 
 int GLWindow::init( const char *title, const int width, const int height ) {
     glfwInit();
@@ -73,7 +73,7 @@ void GLWindow::HandleKey( const int key, const int /*scancode*/, const int actio
     }
 }
 
-void GLWindow::cleanup() {
+void GLWindow::Cleanup() {
     if ( &window != nullptr ) {
         glfwDestroyWindow( window );
     }

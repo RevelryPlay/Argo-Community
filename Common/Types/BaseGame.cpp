@@ -7,8 +7,11 @@ namespace Argo::Types {
 BaseGame::BaseGame() = default;
 
 BaseGame::~BaseGame() { BaseGame::Cleanup(); }
+
+bool BaseGame::Setup() { return Setup( "", 0, 0 ); }
+
 bool BaseGame::Setup( const char * /*title*/, int /*width*/, int /*height*/ ) {
-    RunCallback("setup", 0);
+    RunCallback( "setup", 0 );
 
     isRunning = true;
     return true;
@@ -16,10 +19,10 @@ bool BaseGame::Setup( const char * /*title*/, int /*width*/, int /*height*/ ) {
 
 void BaseGame::Run() {
     auto previousTime = std::chrono::high_resolution_clock::now();
-    RunCallback("run", 0);
+    RunCallback( "run", 0 );
 
     // Update  before the run loop begins
-    RunCallback("update", 0);
+    RunCallback( "update", 0 );
 
     while ( isRunning ) {
         // Handle Event Loop
@@ -27,11 +30,11 @@ void BaseGame::Run() {
         deltaTime = std::chrono::duration< float, std::milli >( currentTime - previousTime ).count();
 
         // Update the caller every iteration
-        RunCallback("update", deltaTime);
+        RunCallback( "update", deltaTime );
 
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime ) {
-            RunCallback("delta", deltaTime);
+            RunCallback( "delta", deltaTime );
             previousTime = currentTime;
         }
     }
@@ -39,4 +42,4 @@ void BaseGame::Run() {
 
 void BaseGame::Cleanup() {}
 
-}  // namespace Argo::System
+}  // namespace Argo::Types

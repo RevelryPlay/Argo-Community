@@ -1,9 +1,12 @@
 #pragma once
 
+#include "../Common/Types/BaseEntity.hpp"
 #include "VKSprite.hpp"
 
-#include "../Common/Types/BaseEntity.hpp"
-
 namespace Argo::Graphics {
-struct VKEntity : Types::BaseEntity {};
+
+struct VKEntity : Types::BaseEntity {
+    VKSprite *sprite{};
+};
+
 }  // namespace Argo::Graphics

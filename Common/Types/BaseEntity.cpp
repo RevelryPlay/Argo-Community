@@ -1,3 +1,3 @@
 #include "BaseEntity.hpp"
 
-namespace Argo::System {}
+namespace Argo::Types {}

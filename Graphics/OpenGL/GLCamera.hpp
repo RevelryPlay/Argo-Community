@@ -8,12 +8,7 @@ namespace Argo::Graphics {
  */
 
 struct GLCamera : Types::BaseCamera {
-    // GUID
 
-    float xPos{ 0 };
-    float yPos{ 0 };
-    float width{ 0 };
-    float height{ 0 };
 };
 
 }  // namespace Argo::Graphics

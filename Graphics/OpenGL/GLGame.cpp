@@ -51,7 +51,7 @@ void GLGame::Run() {
 
 void GLGame::Cleanup() {
     // NOTE: Destroy instances in reverse order of creation
-    window->cleanup();
+    window->Cleanup();
 }
 
 }  // namespace Argo::Graphics
