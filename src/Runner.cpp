@@ -1,5 +1,8 @@
 #include "Runner.hpp"
 
+
+#include <iostream>
+
 namespace Argo {
 
 int Runner::run() {
@@ -146,9 +149,9 @@ void Runner::delta_callback( float deltaTime ) {
 #endif
 }
 
-void Runner::key_pressed_callback( const float key ) { cout << "Runner - Key Pressed: " << key << "\n"; }
+void Runner::key_pressed_callback( const float key ) { std::cout << "Runner - Key Pressed: " << key << "\n"; }
 
-void Runner::key_released_callback( const float key ) { cout << "Runner - Key Released: " << key << "\n"; }
+void Runner::key_released_callback( const float key ) { std::cout << "Runner - Key Released: " << key << "\n"; }
 
 void Runner::close_callback() {
     //    fprintf(stdout, "Will Close");
