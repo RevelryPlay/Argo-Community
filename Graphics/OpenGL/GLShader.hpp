@@ -2,6 +2,6 @@
 
 namespace Argo::Graphics {
 
-struct GLShader {}
+struct GLShader {};
 
 }  // namespace Argo::Graphics
