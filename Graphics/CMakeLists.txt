@@ -11,7 +11,9 @@ if (OPTS_USE_OPENGL)
             OpenGL/GLCamera.cpp OpenGL/GLCamera.hpp
             OpenGL/GLEntity.cpp OpenGL/GLEntity.hpp
             OpenGL/GLGame.cpp OpenGL/GLGame.hpp
+            OpenGL/GLLight.cpp OpenGL/GLLight.hpp
             OpenGL/GLScene.cpp OpenGL/GLScene.hpp
+            OpenGL/GLShader.cpp OpenGL/GLShader.hpp
             OpenGL/GLSprite.cpp OpenGL/GLSprite.hpp
             OpenGL/GLWindow.cpp OpenGL/GLWindow.hpp
     )
@@ -22,9 +24,11 @@ if (OPTS_USE_VULKAN)
             Vulkan/VKCamera.cpp Vulkan/VKCamera.hpp
             Vulkan/VKEntity.cpp Vulkan/VKEntity.hpp
             Vulkan/VKGame.cpp Vulkan/VKGame.hpp
+            Vulkan/VKLight.cpp Vulkan/VKLight.hpp
             Vulkan/VKScene.cpp Vulkan/VKScene.hpp
             Vulkan/VKSprite.cpp Vulkan/VKSprite.hpp
             Vulkan/VKWindow.cpp Vulkan/VKWindow.hpp
+            Vulkan/VKShader.cpp Vulkan/VKShader.hpp
     )
 endif ()
 

@@ -11,6 +11,7 @@ add_library(${PROJECT_NAME} STATIC
         System/Camera.hpp
         System/Entity.hpp
         System/Game.hpp
+        System/Light.hpp
         System/Scene.hpp
         System/Sprite.hpp
         System/Window.hpp
@@ -19,6 +20,7 @@ add_library(${PROJECT_NAME} STATIC
         Types/BaseCamera.cpp Types/BaseCamera.hpp
         Types/BaseEntity.cpp Types/BaseEntity.hpp
         Types/BaseGame.cpp Types/BaseGame.hpp
+        Types/BaseLight.cpp Types/BaseLight.hpp
         Types/BaseScene.cpp Types/BaseScene.hpp
         Types/BaseSprite.cpp Types/BaseSprite.hpp
         Types/BaseWindow.cpp Types/BaseWindow.hpp

@@ -121,17 +121,21 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0, 1, 3,  // first triangle
-        1, 2, 3  // second triangle
+        0,
+        1,
+        3,  // first triangle
+        1,
+        2,
+        3  // second triangle
     };
 
-    unsigned int VBO;
+    unsigned int VBO = 0;
     glGenBuffers( 1, &VBO );
 
-    unsigned int VAO;
+    unsigned int VAO = 0;
     glGenVertexArrays( 1, &VAO );
 
-    unsigned int EBO;
+    unsigned int EBO = 0;
     glGenBuffers( 1, &EBO );
 
     glBindVertexArray( VAO );
@@ -139,10 +143,10 @@ void Runner::delta_callback( float deltaTime ) {
     glBufferData( GL_ARRAY_BUFFER, sizeof( Types::Vertex ) * vertices.size(), vertices.data(), GL_STATIC_DRAW );
     glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, EBO );
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( indices ), indices, GL_STATIC_DRAW );
-    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( float ), ( void * ) 0 );
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( float ), static_cast< void * >( nullptr ) );
     glEnableVertexAttribArray( 0 );
 
-    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0 );
+    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
     glBindVertexArray( 0 );
 
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );

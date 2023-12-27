@@ -15,7 +15,7 @@ using DeltaCallback = std::function< void( float deltaTime ) >;
 using KeyPressCallback = std::function< void( unsigned int key ) >;
 // using WindowResizeCallback = std::function<void (Window<Graphics::GLWindow>, float width, float height)>;
 
-template< typename T > class Callback : public T {};
+template< typename T > struct  Callback : T {};
 
 /**
  * \brief An Application provides a minimal structure for running a program.
