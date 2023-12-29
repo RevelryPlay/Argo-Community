@@ -40,6 +40,8 @@ void GLGame::Run() {
 
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime ) {
+            UpdateFPS();
+
             window->update( deltaTime );
             // RunCallback("delta", deltaTime);
             previousTime = currentTime;

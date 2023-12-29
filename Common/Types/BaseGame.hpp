@@ -2,6 +2,7 @@
 
 #include "../System/Application.hpp"
 #include "BaseScene.hpp"
+#include <chrono>
 
 namespace Argo::Types {
 
@@ -23,12 +24,20 @@ struct BaseGame : Application {
     void Run() override;
 
     int AddScene( BaseScene *scene );
+    void UpdateFPS();
+    [[nodiscard]] float GetFPS() const;
 
     float deltaTime{ 1.0F / Common::TARGET_FPS };
+
     bool isRunning{ false };
 
   private:
     static float constexpr targetTime_{ 1.0F / Common::TARGET_FPS * 1000 };
+
+    float fpsCounter{ 0 };
+    float fps{ 0 };
+    std::chrono::time_point< std::chrono::steady_clock > fpsPreviousTime{ std::chrono::high_resolution_clock::now() };
+
     void Cleanup() override;
 };
 

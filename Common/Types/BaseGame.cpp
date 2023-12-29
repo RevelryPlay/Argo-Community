@@ -1,6 +1,7 @@
 #include "BaseGame.hpp"
 
-#include <chrono>
+
+#include <iostream>
 
 namespace Argo::Types {
 
@@ -34,11 +35,30 @@ void BaseGame::Run() {
 
         // Lock the window update calls to the target frame rate
         if ( deltaTime > targetTime_ ) {
+            this->UpdateFPS();
+
             RunCallback( "delta", deltaTime );
             previousTime = currentTime;
         }
     }
 }
+
+void BaseGame::UpdateFPS() {
+    const std::chrono::time_point< std::chrono::steady_clock > currentTime = std::chrono::high_resolution_clock::now();
+    const float deltaTime = std::chrono::duration< float, std::milli >( currentTime - fpsPreviousTime ).count();
+
+    fpsCounter++;
+
+    if ( deltaTime > 1000 ) {
+        fps = fpsCounter;
+        fpsCounter = 0;
+        fpsPreviousTime = currentTime;
+
+        std::cout << "FPS: " << fps << '\n';
+    }
+}
+
+float BaseGame::GetFPS() const {}
 
 
 void BaseGame::Cleanup() {}

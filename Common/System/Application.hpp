@@ -14,7 +14,8 @@ namespace Argo::System {
 using BaseCallback = std::function< void() >;
 using DeltaCallback = std::function< void( float deltaTime ) >;
 using KeyPressCallback = std::function< void( unsigned int key ) >;
-// using WindowResizeCallback = std::function<void (Window<Graphics::GLWindow>, float width, float height)>;
+// using EntityCallback = std::function< void( Types::BaseEntity entity, float deltaTime ) >;
+// using WindowResizeCallback = std::function<void (Window<Types::BaseWindow>, float width, float height)>;
 
 template< typename T > struct Callback : T {};
 

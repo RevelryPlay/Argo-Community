@@ -105,9 +105,10 @@ void Runner::update_callback( float deltaTime ){
 };
 
 void Runner::delta_callback( float deltaTime ) {
-#if OPTS_USE_OPENGL
     // cout << "delta:" << deltaTime << '\n';
     // fprintf( stdout, "deltaCallback\n" );
+
+#if OPTS_USE_OPENGL
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 
@@ -116,12 +117,8 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0,
-        1,
-        3,  // first triangle
-        1,
-        2,
-        3  // second triangle
+        0, 1, 3,  // first triangle
+        1, 2, 3  // second triangle
     };
 
     unsigned int VBO = 0;
