@@ -25,7 +25,6 @@ int Runner::run() {
     sprite.width = 250;
 
     game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
-    game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback_2(); } );
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
     game.RegisterCallback( "update", [ this ]( const float delta ) { update_callback( delta ); } );
     game.RegisterCallback( "windowUpdate", [ this ]( const float delta ) { delta_callback( delta ); } );
@@ -43,13 +42,7 @@ int Runner::run() {
     return 0;
 };
 
-void Runner::setup_callback(){
-    fprintf( stdout, "setup Callback 1\n" );
-};
-
-void Runner::setup_callback_2(){
-    fprintf( stdout, "setup Callback 2\n" );
-};
+void Runner::setup_callback() { fprintf( stdout, "setup Callback\n" ); };
 
 void Runner::run_callback() {
 #if OPTS_USE_OPENGL
@@ -123,8 +116,12 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0, 1, 3,  // first triangle
-        1, 2, 3  // second triangle
+        0,
+        1,
+        3,  // first triangle
+        1,
+        2,
+        3  // second triangle
     };
 
     unsigned int VBO = 0;

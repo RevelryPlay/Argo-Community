@@ -48,6 +48,7 @@ void GLGame::Run() {
 
     RunCallback( "close", 0 );
 }
+
 GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
     // Create a new scene
     auto *const scene{ new GLScene( width, height ) };

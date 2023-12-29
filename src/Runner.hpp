@@ -30,7 +30,6 @@ struct Runner {
 #endif
 
     void setup_callback();
-    void setup_callback_2();
     void run_callback();
     void update_callback( float deltaTime );
     void delta_callback( float deltaTime );
