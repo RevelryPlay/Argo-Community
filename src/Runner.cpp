@@ -25,6 +25,7 @@ int Runner::run() {
     sprite.width = 250;
 
     game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
+    game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback_2(); } );
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
     game.RegisterCallback( "update", [ this ]( const float delta ) { update_callback( delta ); } );
     game.RegisterCallback( "windowUpdate", [ this ]( const float delta ) { delta_callback( delta ); } );
@@ -43,7 +44,11 @@ int Runner::run() {
 };
 
 void Runner::setup_callback(){
-    // fprintf( stdout, "initCallback\n" );
+    fprintf( stdout, "setup Callback 1\n" );
+};
+
+void Runner::setup_callback_2(){
+    fprintf( stdout, "setup Callback 2\n" );
 };
 
 void Runner::run_callback() {

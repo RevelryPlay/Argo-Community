@@ -16,7 +16,7 @@ using DeltaCallback = std::function< void( float deltaTime ) >;
 using KeyPressCallback = std::function< void( unsigned int key ) >;
 // using WindowResizeCallback = std::function<void (Window<Graphics::GLWindow>, float width, float height)>;
 
-template< typename T > struct  Callback : T {};
+template< typename T > struct Callback : T {};
 
 /**
  * \brief An Application provides a minimal structure for running a program.
@@ -31,13 +31,15 @@ struct Application {
 
     void RegisterCallback( const std::string &title, const DeltaCallback &callback );
     int RunCallback( const std::string &title, float deltaTime );
-    void RemoveCallback( const std::string &title );
+    void RemoveCallback( const std::string &title, const DeltaCallback &callback );
+    void RemoveAllCallbacksWithTitle( const std::string &title );
+    void RemoveAllCallbacks();
 
     virtual void Cleanup();
 
     // Normally I would not make this public. I am doing so as a shortcut to be able to set windows to use the same
     // callbacks as Application
-    std::unordered_map< std::string, DeltaCallback > callbacks;
+    std::unordered_map< std::string, std::list< DeltaCallback > > callbacks;
 };
 
 }  // namespace Argo::System
