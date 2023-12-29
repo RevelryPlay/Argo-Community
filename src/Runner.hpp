@@ -1,7 +1,8 @@
 #pragma once
 #if OPTS_USE_OPENGL
+#include "OpenGL/GLEntity.hpp"
 #include "OpenGL/GLGame.hpp"
-#include "OpenGL/GLScene.hpp"
+#include "OpenGL/GLSprite.hpp"
 #endif
 
 #if OPTS_USE_VULKAN
@@ -9,24 +10,14 @@
 #include "Vulkan/VKScene.hpp"
 #endif
 
-#include "System/Camera.hpp"
-#include "System/Entity.hpp"
-#include "System/Game.hpp"
-#include "System/Scene.hpp"
-#include "System/Sprite.hpp"
-
 namespace Argo {
 struct Runner {
     int run();
 
   private:
 #if OPTS_USE_OPENGL
-    System::Game< Graphics::GLGame > game{ *new System::Game< Graphics::GLGame >() };
-    System::Scene< Graphics::GLScene > scene{ *new System::Scene< Graphics::GLScene >() };
-    System::Camera< Graphics::GLCamera > camera{ *new System::Camera< Graphics::GLCamera >() };
-
-    System::Entity< Graphics::GLEntity > entity{ *new System::Entity< Graphics::GLEntity >() };
-    System::Sprite< Graphics::GLSprite > sprite{ *new System::Sprite< Graphics::GLSprite >() };
+    Graphics::GLGame game{ *new Graphics::GLGame() };
+    Graphics::GLSprite sprite{ *new Graphics::GLSprite() };
 #endif
 
 #if OPTS_USE_VULKAN

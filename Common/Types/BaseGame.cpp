@@ -33,12 +33,13 @@ void BaseGame::Run() {
         RunCallback( "update", deltaTime );
 
         // Lock the window update calls to the target frame rate
-        if ( deltaTime > targetTime ) {
+        if ( deltaTime > targetTime_ ) {
             RunCallback( "delta", deltaTime );
             previousTime = currentTime;
         }
     }
-};
+}
+
 
 void BaseGame::Cleanup() {}
 

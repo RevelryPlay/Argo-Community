@@ -1,12 +1,14 @@
 #pragma once
 
 namespace Argo::Types {
+
 struct BaseCamera {
     // GUID
 
-    float xPos{ 0 };
-    float yPos{ 0 };
-    float width{ 0 };
-    float height{ 0 };
+    int xPos{ 0 };
+    int yPos{ 0 };
+    int width{ 0 };
+    int height{ 0 };
 };
+
 }  // namespace Argo::Types

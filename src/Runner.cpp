@@ -1,31 +1,28 @@
 #include "Runner.hpp"
-
-
 #include <iostream>
 
 namespace Argo {
 
 int Runner::run() {
-    camera.width = 300;
-    camera.height = 200;
-    camera.xPos = 10;
-    camera.yPos = 20;
+    auto *scene = game.CreateScene( 12000, 500 );
+    game.SetActiveScene( scene );
 
-    scene.width = 12000;
-    scene.height = 500;
+    scene->CreateCamera( 300, 200, 10, 20 );
+    scene->SetActiveCamera( scene->GetCameras().front() );
 
-    entity.height = 250;
-    entity.width = 100;
-    entity.xPos = 100;
-    entity.yPos = 75;
+    auto *entity = scene->CreateEntity();
+
+    // Creating a sprite is currently done in a temporary way a more permanent solution would be:
+    // auto *sprite = entity->CreateSprite();
+
+    entity->sprite = &sprite;
+    entity->height = 250;
+    entity->width = 100;
+    entity->xPos = 100;
+    entity->yPos = 75;
 
     sprite.height = 512;
     sprite.width = 250;
-
-    game.activeScene = &scene;
-    scene.camera = &camera;
-    entity.sprite = &sprite;
-    scene.entities.push_back( &entity );
 
     game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
@@ -121,12 +118,8 @@ void Runner::delta_callback( float deltaTime ) {
 
     unsigned int const indices[] = {
         // note that we start from 0!
-        0,
-        1,
-        3,  // first triangle
-        1,
-        2,
-        3  // second triangle
+        0, 1, 3,  // first triangle
+        1, 2, 3  // second triangle
     };
 
     unsigned int VBO = 0;

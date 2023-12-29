@@ -24,3 +24,4 @@ struct VKWindow : Types::BaseWindow {
 };
 
 }  // namespace Argo::Graphics
+

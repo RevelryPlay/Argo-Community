@@ -48,10 +48,41 @@ void GLGame::Run() {
 
     RunCallback( "close", 0 );
 }
+GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
+    // Create a new scene
+    auto *const scene{ new GLScene( width, height ) };
+
+    // Add the scene to the list of scenes
+    scenes_.push_back( scene );
+
+    // return the scene pointer
+    return scene;
+}
+std::list< GLScene * > GLGame::GetScenes() { return scenes_; }
+
+// void GLGame::AddScene( System::Scene< GLScene > *scene ) { scenes_.push_back( scene ); }
+
+void GLGame::RemoveScene( GLScene *scene ) {
+    // Remove the scene from the list of scenes
+    scenes_.remove( scene );
+
+    // Delete the scene
+    delete scene;
+}
+
+void GLGame::SetActiveScene( GLScene *scene ) { activeScene_ = scene; }
+
+GLScene *GLGame::GetActiveScene() const { return activeScene_; }
 
 void GLGame::Cleanup() {
     // NOTE: Destroy instances in reverse order of creation
+
+    for ( GLScene *scene : scenes_ ) {
+        RemoveScene( scene );
+    }
+
     window->Cleanup();
+    window = nullptr;
 }
 
 }  // namespace Argo::Graphics

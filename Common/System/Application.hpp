@@ -3,6 +3,7 @@
 #include "Window.hpp"
 
 #include <functional>
+#include <list>
 #include <string>
 #include <unordered_map>
 
