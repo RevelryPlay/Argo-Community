@@ -2,7 +2,6 @@
 
 #include "Vec4.hpp"
 #include <algorithm>
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -28,18 +27,8 @@ struct CommonColor {
      * Returns a hexadecimal string for the current CommonColor
      * @return string
      */
-    [[nodiscard]] auto ToHex() const {
-        string hexRet;
+    [[nodiscard]] string ToHex() const;
 
-        hexRet += decimalToHex( red * 255 );
-        hexRet += decimalToHex( green * 255 );
-        hexRet += decimalToHex( blue * 255 );
-        hexRet += decimalToHex( alpha * 255 );
-
-        return hexRet;
-    }
-
-  private:
     static string decimalToHex( int decimal );
 };
 }  // namespace Argo::Types

@@ -1,6 +1,17 @@
 #include "CommonColor.hpp"
 
 namespace Argo::Types {
+string CommonColor::ToHex() const {
+    string hexRet;
+
+    hexRet += decimalToHex( red * 255 );
+    hexRet += decimalToHex( green * 255 );
+    hexRet += decimalToHex( blue * 255 );
+    hexRet += decimalToHex( alpha * 255 );
+
+    return hexRet;
+}
+
 string CommonColor::decimalToHex( int decimal ) {
     string hexString;
     int quotient = decimal;

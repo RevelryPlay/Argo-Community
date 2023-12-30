@@ -1,5 +1,7 @@
 #include "BaseGame.hpp"
+#include <chrono>
 #include <gtest/gtest.h>
+#include <thread>
 
 TEST( BaseGame, BaseGameSetup ) {
     Argo::Types::BaseGame *game = new Argo::Types::BaseGame();

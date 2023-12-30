@@ -123,6 +123,13 @@ if (BUILD_TESTING)
             Common/Types/BaseGame.tests.cpp
             Common/Types/BaseGame.cpp Common/Types/BaseGame.hpp
 
+            Common/Types/BaseScene.tests.cpp
+            Common/Types/BaseScene.cpp Common/Types/BaseScene.hpp
+
+            Common/Types/CommonColor.tests.cpp
+            Common/Types/CommonColor.cpp Common/Types/CommonColor.hpp
+            Common/Types/Vec4.hpp
+
             # Graphics/OpenGL/GLGame.tests.cpp
 
             Utilities/ColorConverter.cpp Utilities/ColorConverter.hpp

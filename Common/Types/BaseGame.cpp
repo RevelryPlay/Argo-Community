@@ -1,6 +1,4 @@
 #include "BaseGame.hpp"
-
-
 #include <iostream>
 
 namespace Argo::Types {
@@ -64,8 +62,6 @@ void BaseGame::UpdateFPS() {
         fps_ = fpsCounter_;
         fpsCounter_ = 0;
         fpsPreviousTime_ = currentTime;
-
-        std::cout << "FPS: " << fps_ << '\n';
     }
 }
 
