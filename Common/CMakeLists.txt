@@ -25,7 +25,7 @@ add_library(${PROJECT_NAME} STATIC
         Types/BaseSprite.cpp Types/BaseSprite.hpp
         Types/BaseWindow.cpp Types/BaseWindow.hpp
         Types/Vec4.hpp
-        Types/Vertex.hpp
+        Types/Vec3.hpp
 
         Constants.hpp
 )

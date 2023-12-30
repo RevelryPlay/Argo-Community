@@ -2,28 +2,27 @@
 
 namespace Argo::Types {
 string CommonColor::decimalToHex( int decimal ) {
-    int remainder{ 0 };
-    int product{ 1 };
-    string hex;
+    string hexString;
+    int quotient = decimal;
+    int remainder = 0;
 
-    while ( decimal != 0 ) {
-        remainder = decimal % 16;
-        char ch = 0;
+    while ( quotient != 0 ) {
+        remainder = quotient % 16;
 
-        if ( remainder >= 10 ) {
-            ch = remainder + 55;
+        if ( remainder < 10 ) {
+            hexString.insert( 0, 1, static_cast< char >( remainder + 48 ) );
         } else {
-            ch = remainder + 48;
+            hexString.insert( 0, 1, static_cast< char >( remainder + 55 ) );
         }
 
-        hex += ch;
-
-        decimal = decimal / 16;
-        product *= 10;
+        quotient /= 16;
     }
 
-    ranges::reverse( hex );
+    if ( hexString.length() == 1 ) {
+        hexString.insert( 0, 1, '0' );
+    }
 
-    return hex;
+    return hexString;
 }
+
 }  // namespace Argo::Types

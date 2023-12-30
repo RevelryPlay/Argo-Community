@@ -112,7 +112,7 @@ void Runner::delta_callback( float deltaTime ) {
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 
-    std::vector< Types::Vertex > const vertices =
+    std::vector< Types::Vec3 > const vertices =
         sprite.calculateRecVertices( Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT );
 
     unsigned int const indices[] = {
@@ -132,7 +132,7 @@ void Runner::delta_callback( float deltaTime ) {
 
     glBindVertexArray( VAO );
     glBindBuffer( GL_ARRAY_BUFFER, VBO );
-    glBufferData( GL_ARRAY_BUFFER, sizeof( Types::Vertex ) * vertices.size(), vertices.data(), GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, sizeof( Types::Vec3 ) * vertices.size(), vertices.data(), GL_STATIC_DRAW );
     glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, EBO );
     glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( indices ), indices, GL_STATIC_DRAW );
     glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( float ), static_cast< void * >( nullptr ) );

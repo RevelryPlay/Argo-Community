@@ -58,9 +58,7 @@ void BaseGame::UpdateFPS() {
     }
 }
 
-float BaseGame::GetFPS() const {
-    return fps;
-}
+float BaseGame::GetFPS() const { return fps; }
 
 
 void BaseGame::Cleanup() {}
