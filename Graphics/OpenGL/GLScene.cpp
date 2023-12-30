@@ -11,6 +11,12 @@ GLScene::~GLScene() { Cleanup(); }
 GLCamera *GLScene::CreateCamera( const int width, const int height, const int xPos, const int yPos ) {
     GLCamera *camera = new GLCamera( width, height, xPos, yPos );
     cameras_.push_back( camera );
+
+    // Set the camera active if no other camera is already active
+    if ( activeCamera_ == nullptr ) {
+        activeCamera_ = camera;
+    }
+
     return camera;
 }
 
@@ -33,7 +39,7 @@ std::list< GLEntity * > GLScene::GetEntities() { return entities_; }
 void GLScene::RemoveEntity( GLEntity *entity ) { entities_.remove( entity ); }
 
 GLLight *GLScene::CreateLight() {
-    GLLight *light = new GLLight();
+    auto *light = new GLLight();
     lights_.push_back( light );
     return light;
 }
@@ -43,6 +49,8 @@ std::list< GLLight * > GLScene::GetLights() { return lights_; }
 void GLScene::RemoveLight( GLLight *light ) { lights_.remove( light ); }
 
 void GLScene::Cleanup() {
+    activeCamera_ = nullptr;
+
     for ( const auto &camera : cameras_ ) {
         delete camera;
     }

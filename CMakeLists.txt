@@ -134,6 +134,8 @@ if (BUILD_TESTING)
             Graphics/OpenGL/GLCamera.cpp Graphics/OpenGL/GLCamera.hpp
             Graphics/OpenGL/GLGame.cpp Graphics/OpenGL/GLGame.hpp
             Graphics/OpenGL/GLLight.cpp Graphics/OpenGL/GLLight.hpp
+
+            Graphics/OpenGL/GLScene.tests.cpp
             Graphics/OpenGL/GLScene.cpp Graphics/OpenGL/GLScene.hpp
             Graphics/OpenGL/GLWindow.cpp Graphics/OpenGL/GLWindow.hpp
             Common/Types/BaseWindow.cpp Common/Types/BaseWindow.hpp
