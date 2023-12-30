@@ -6,17 +6,18 @@ TEST( Application, ApplicationSetup ) {
     EXPECT_TRUE( app->Setup() );
 }
 
-TEST( Application, ApplicationRun ) {
-    auto *app = new Argo::System::Application();
-    app->Setup();
-    app->Run();
-}
-
-TEST( Application, ApplicationCleanup ) {
-    auto *app = new Argo::System::Application();
-    app->Setup();
-    app->Cleanup();
-}
+// These tests are not yet well defined and need something to test against
+// TEST( Application, ApplicationRun ) {
+//     auto *app = new Argo::System::Application();
+//     app->Setup();
+//     app->Run();
+// }
+//
+// TEST( Application, ApplicationCleanup ) {
+//     auto *app = new Argo::System::Application();
+//     app->Setup();
+//     app->Cleanup();
+// }
 
 TEST( Application, ApplicationRegisterCallback ) {
     auto *app = new Argo::System::Application();
