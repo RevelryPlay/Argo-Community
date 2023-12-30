@@ -1,5 +1,5 @@
 #pragma once
-#include "../Common/Types/BaseScene.hpp"
+#include "../../Common/Types/BaseScene.hpp"
 #include "GLCamera.hpp"
 #include "GLEntity.hpp"
 #include "GLLight.hpp"

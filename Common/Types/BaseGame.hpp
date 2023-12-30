@@ -20,7 +20,7 @@ struct BaseGame : Application {
         int width = Common::DEFAULT_WINDOW_WIDTH,
         int height = Common::DEFAULT_WINDOW_HEIGHT );
 
-    void Run() override;
+    int Run() override;
 
     [[nodiscard]] int GetWidth() const;
     void SetWidth( const int width );
@@ -41,7 +41,7 @@ struct BaseGame : Application {
     void UpdateFPS();
     [[nodiscard]] float GetFPS() const;
 
-    void Cleanup() override;
+    int Cleanup() override;
 
   private:
     static float constexpr targetTime_{ 1.0F / Common::TARGET_FPS * 1000 };

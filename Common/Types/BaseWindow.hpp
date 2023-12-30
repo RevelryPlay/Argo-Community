@@ -16,6 +16,6 @@ struct BaseWindow : System::Application {
 
     virtual void HandleKey( int key, int scancode, int action, int mods );
 
-    void Cleanup() override;
+    int Cleanup() override;
 };
 }  // namespace Argo::Types

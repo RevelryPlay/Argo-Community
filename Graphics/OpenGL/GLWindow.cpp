@@ -73,11 +73,13 @@ void GLWindow::HandleKey( const int key, const int /*scancode*/, const int actio
     }
 }
 
-void GLWindow::Cleanup() {
+int GLWindow::Cleanup() {
     if ( &window != nullptr ) {
         glfwDestroyWindow( window );
     }
 
     glfwTerminate();
+
+    return 0;
 }
 }  // namespace Argo::Graphics

@@ -28,7 +28,7 @@ struct Application {
     virtual ~Application();
 
     virtual bool Setup();
-    virtual void Run();
+    virtual int Run();
 
     void RegisterCallback( const std::string &title, const DeltaCallback &callback );
     int RunCallback( const std::string &title, float deltaTime );
@@ -36,7 +36,7 @@ struct Application {
     void RemoveAllCallbacksWithTitle( const std::string &title );
     void RemoveAllCallbacks();
 
-    virtual void Cleanup();
+    virtual int Cleanup();
 
     // Normally I would not make this public. I am doing so as a shortcut to be able to set windows to use the same
     // callbacks as Application

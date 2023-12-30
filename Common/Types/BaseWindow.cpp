@@ -11,6 +11,9 @@ int BaseWindow::init( const char * /*title*/, int /*width*/, int /*height*/ ) {
 
 void BaseWindow::update( float /*deltaTime*/ ) {}
 void BaseWindow::HandleKey( int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/ ) {}
-void BaseWindow::Cleanup() { Application::Cleanup(); }
+int BaseWindow::Cleanup() {
+    Application::Cleanup();
+    return 0;
+}
 
 }  // namespace Argo::Types

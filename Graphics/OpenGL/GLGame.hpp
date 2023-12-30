@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../Common/System/Scene.hpp"
-#include "../Common/System/Window.hpp"
-#include "../Common/Types/BaseGame.hpp"
+#include "../../Common/Types/BaseGame.hpp"
 #include "GLScene.hpp"
 #include "GLWindow.hpp"
 #include <list>
@@ -23,7 +21,7 @@ struct GLGame : Types::BaseGame {
         int width = Common::DEFAULT_WINDOW_WIDTH,
         int height = Common::DEFAULT_WINDOW_HEIGHT ) override;
 
-    void Run() override;
+    int Run() override;
 
     // void AddScene( System::Scene< GLScene > *scene );
     GLScene *CreateScene( const int width, const int height );
@@ -32,7 +30,7 @@ struct GLGame : Types::BaseGame {
     void SetActiveScene( GLScene *scene );
     [[nodiscard]] GLScene *GetActiveScene() const;
 
-    void Cleanup() override;
+    int Cleanup() override;
 
   private:
     GLScene *activeScene_ = nullptr;

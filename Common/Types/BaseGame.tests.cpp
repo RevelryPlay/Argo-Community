@@ -1,18 +1,16 @@
 #include "BaseGame.hpp"
-#include <chrono>
 #include <gtest/gtest.h>
-#include <thread>
 
-TEST( BaseGame, BaseGameSetup ) {
-    Argo::Types::BaseGame *game = new Argo::Types::BaseGame();
+TEST( BaseGame, Setup ) {
+    auto *game = new Argo::Types::BaseGame();
     EXPECT_TRUE( game->Setup( "Test Game", 800, 600 ) );
 
     EXPECT_EQ( game->GetWidth(), 800 );
     EXPECT_EQ( game->GetHeight(), 600 );
 }
 
-TEST( BaseGame, BaseGameSetWidth ) {
-    Argo::Types::BaseGame *game = new Argo::Types::BaseGame();
+TEST( BaseGame, SetWidth ) {
+    auto *game = new Argo::Types::BaseGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_EQ( game->GetWidth(), 800 );
@@ -20,8 +18,8 @@ TEST( BaseGame, BaseGameSetWidth ) {
     EXPECT_EQ( game->GetWidth(), 1024 );
 }
 
-TEST( BaseGame, BaseGameSetHeight ) {
-    Argo::Types::BaseGame *game = new Argo::Types::BaseGame();
+TEST( BaseGame, SetHeight ) {
+    auto *game = new Argo::Types::BaseGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_EQ( game->GetHeight(), 600 );
@@ -29,8 +27,8 @@ TEST( BaseGame, BaseGameSetHeight ) {
     EXPECT_EQ( game->GetHeight(), 768 );
 }
 
-TEST( BaseGame, BaseGameIsRunning ) {
-    Argo::Types::BaseGame *game = new Argo::Types::BaseGame();
+TEST( BaseGame, IsRunning ) {
+    auto *game = new Argo::Types::BaseGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_TRUE( game->GetIsRunning() );

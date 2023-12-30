@@ -1,5 +1,5 @@
 #pragma once
-#include "../Common/Types/BaseEntity.hpp"
+#include "../../Common/Types/BaseEntity.hpp"
 #include "GLSprite.hpp"
 
 namespace Argo::Graphics {

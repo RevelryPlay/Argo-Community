@@ -20,7 +20,7 @@ bool GLGame::Setup( const char *title, const int width, const int height ) {
     return window->isOpen;
 }
 
-void GLGame::Run() {
+int GLGame::Run() {
     // TODO: Investigate if this is reliable for games
     auto previousTime{ std::chrono::high_resolution_clock::now() };
     float constexpr targetTime{ 1.0F / Argo::Common::TARGET_FPS * 1000 };
@@ -52,6 +52,7 @@ void GLGame::Run() {
     }
 
     RunCallback( "close", 0 );
+    return 0;
 }
 
 GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
@@ -61,6 +62,11 @@ GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
     // Add the scene to the list of scenes
     scenes_.push_back( scene );
 
+    // Set the scene to active if no other scene is active
+    if ( activeScene_ == nullptr ) {
+        activeScene_ = scene;
+    }
+
     // return the scene pointer
     return scene;
 }
@@ -69,6 +75,11 @@ std::list< GLScene * > GLGame::GetScenes() { return scenes_; }
 // void GLGame::AddScene( System::Scene< GLScene > *scene ) { scenes_.push_back( scene ); }
 
 void GLGame::RemoveScene( GLScene *scene ) {
+    // Remove the scene from being active
+    if ( activeScene_ == scene ) {
+        activeScene_ = nullptr;
+    }
+
     // Remove the scene from the list of scenes
     scenes_.remove( scene );
 
@@ -80,15 +91,21 @@ void GLGame::SetActiveScene( GLScene *scene ) { activeScene_ = scene; }
 
 GLScene *GLGame::GetActiveScene() const { return activeScene_; }
 
-void GLGame::Cleanup() {
+int GLGame::Cleanup() {
     // NOTE: Destroy instances in reverse order of creation
+    activeScene_ = nullptr;
 
-    for ( GLScene *scene : scenes_ ) {
-        RemoveScene( scene );
+    // Remove all scenes
+    for ( const GLScene *scene : scenes_ ) {
+        delete scene;
     }
+
+    scenes_.clear();
 
     window->Cleanup();
     window = nullptr;
+
+    return 0;
 }
 
 }  // namespace Argo::Graphics

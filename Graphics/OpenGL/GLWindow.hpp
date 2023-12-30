@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Common/Types/BaseWindow.hpp"
-#include "../Common/Constants.hpp"
+#include "../../Common/Types/BaseWindow.hpp"
+#include "../../Common/Constants.hpp"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -24,7 +24,7 @@ struct GLWindow : Types::BaseWindow {
     static void ProcessInput( GLFWwindow *window, int key, int scancode, int action, int mods );
     void HandleKey( int key, int scancode, int action, int mods ) override;
 
-    void Cleanup() override;
+    int Cleanup() override;
 
   private:
     GLFWwindow *window{ nullptr };

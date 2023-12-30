@@ -19,7 +19,7 @@ bool BaseGame::Setup( const char * /*title*/, const int width, const int height 
     return true;
 }
 
-void BaseGame::Run() {
+int BaseGame::Run() {
     auto previousTime = std::chrono::high_resolution_clock::now();
     RunCallback( "run", 0 );
 
@@ -42,6 +42,8 @@ void BaseGame::Run() {
             previousTime = currentTime;
         }
     }
+
+    return 0;
 }
 
 int BaseGame::GetWidth() const { return width_; }
@@ -68,9 +70,11 @@ void BaseGame::UpdateFPS() {
 float BaseGame::GetFPS() const { return fps_; }
 
 
-void BaseGame::Cleanup() {
+int BaseGame::Cleanup() {
     RunCallback( "cleanup", 0 );
     isRunning_ = false;
+
+    return 0;
 }
 
 }  // namespace Argo::Types

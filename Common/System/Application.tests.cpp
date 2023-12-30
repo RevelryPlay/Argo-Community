@@ -1,25 +1,25 @@
 #include "Application.hpp"
 #include <gtest/gtest.h>
 
-TEST( Application, ApplicationSetup ) {
+TEST( Application, Setup ) {
     auto *app = new Argo::System::Application();
     EXPECT_TRUE( app->Setup() );
 }
 
 // These tests are not yet well defined and need something to test against
-// TEST( Application, ApplicationRun ) {
+// TEST( Application, Run ) {
 //     auto *app = new Argo::System::Application();
 //     app->Setup();
 //     app->Run();
 // }
 //
-// TEST( Application, ApplicationCleanup ) {
+// TEST( Application, Cleanup ) {
 //     auto *app = new Argo::System::Application();
 //     app->Setup();
 //     app->Cleanup();
 // }
 
-TEST( Application, ApplicationRegisterCallback ) {
+TEST( Application, RegisterCallback ) {
     auto *app = new Argo::System::Application();
     app->Setup();
     app->RegisterCallback( "Test", []( float deltaTime ) {} );
@@ -27,7 +27,7 @@ TEST( Application, ApplicationRegisterCallback ) {
     app->Cleanup();
 }
 
-TEST( Application, ApplicationRunCallback ) {
+TEST( Application, RunCallback ) {
     auto *app = new Argo::System::Application();
     bool callbackRan = false;
 
@@ -39,7 +39,7 @@ TEST( Application, ApplicationRunCallback ) {
     app->Cleanup();
 }
 
-TEST( Application, ApplicationMultipleCallbacksWithSameTitle ) {
+TEST( Application, MultipleCallbacksWithSameTitle ) {
     auto *app = new Argo::System::Application();
     bool firstCallbackRan = false;
     bool secondCallbackRan = false;
@@ -59,7 +59,7 @@ TEST( Application, ApplicationMultipleCallbacksWithSameTitle ) {
 }
 
 // TODO: This test is for not yet implemented functionality
-// TEST( Application, ApplicationRemoveCallback ) {
+// TEST( Application, RemoveCallback ) {
 //     auto app = new Argo::System::Application();
 //     app->Setup();
 //     app->RegisterCallback( "Test", []( float deltaTime ) {} );
@@ -69,7 +69,7 @@ TEST( Application, ApplicationMultipleCallbacksWithSameTitle ) {
 //     app->Cleanup();
 // }
 
-TEST( Application, ApplicationRemoveAllCallbacks ) {
+TEST( Application, RemoveAllCallbacks ) {
     auto *app = new Argo::System::Application();
     app->Setup();
     app->RegisterCallback( "Test", []( float deltaTime ) {} );
@@ -79,7 +79,7 @@ TEST( Application, ApplicationRemoveAllCallbacks ) {
     app->Cleanup();
 }
 
-TEST( Application, ApplicationRemoveAllCallbacksWithTitle ) {
+TEST( Application, RemoveAllCallbacksWithTitle ) {
     auto *app = new Argo::System::Application();
     app->Setup();
     app->RegisterCallback( "Test", []( float deltaTime ) {} );

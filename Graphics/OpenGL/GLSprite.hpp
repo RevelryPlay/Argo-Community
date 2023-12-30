@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Common/Types/BaseSprite.hpp"
+#include "../../Common/Types/BaseSprite.hpp"
 
 namespace Argo::Graphics {
 

@@ -130,11 +130,34 @@ if (BUILD_TESTING)
             Common/Types/CommonColor.cpp Common/Types/CommonColor.hpp
             Common/Types/Vec4.hpp
 
-            # Graphics/OpenGL/GLGame.tests.cpp
+            Graphics/OpenGL/GLGame.tests.cpp
+            Graphics/OpenGL/GLCamera.cpp Graphics/OpenGL/GLCamera.hpp
+            Graphics/OpenGL/GLGame.cpp Graphics/OpenGL/GLGame.hpp
+            Graphics/OpenGL/GLLight.cpp Graphics/OpenGL/GLLight.hpp
+            Graphics/OpenGL/GLScene.cpp Graphics/OpenGL/GLScene.hpp
+            Graphics/OpenGL/GLWindow.cpp Graphics/OpenGL/GLWindow.hpp
+            Common/Types/BaseWindow.cpp Common/Types/BaseWindow.hpp
+            Common/System/Window.hpp
 
             Utilities/ColorConverter.cpp Utilities/ColorConverter.hpp
             Utilities/ColorConverter.tests.cpp
     )
+
+    target_include_directories(${PROJECT_NAME}-tests PUBLIC ${PROJECT_BINARY_DIR})
+
+    target_compile_definitions(${PROJECT_NAME}-tests PRIVATE OPTS_USE_OPENGL)
+
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(${PROJECT_NAME}-tests PRIVATE OpenGL::GL)
+
+    find_package(glad CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME}-tests PRIVATE glad::glad)
+
+    find_package(glfw3 CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME}-tests PRIVATE glfw)
+
+    find_package(glm CONFIG REQUIRED)
+    target_link_libraries(${PROJECT_NAME}-tests PRIVATE glm::glm)
 
     enable_testing()
 
