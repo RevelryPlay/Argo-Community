@@ -4,6 +4,9 @@
 #include "GLEntity.hpp"
 #include "GLLight.hpp"
 
+
+#include <list>
+
 namespace Argo::Graphics {
 
 /**

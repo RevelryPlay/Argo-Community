@@ -1,20 +1,23 @@
 #pragma once
-#include "BaseCamera.hpp"
-#include "BaseEntity.hpp"
-#include "BaseLight.hpp"
-
-#include <list>
 
 namespace Argo::Types {
 struct BaseScene {
     BaseScene() = default;
-    BaseScene( const int width, const int height ) : width( width ), height( height ){};
+    BaseScene( const int width, const int height );
+
     // GUID
 
     // list<GUID> entityIds = [];
     // list<GUID> lightIds = [];
 
-    int width{ 0 };
-    int height{ 0 };
+    void SetWidth( const int width );
+    [[nodiscard]] int GetWidth() const;
+
+    void SetHeight( const int height );
+    [[nodiscard]] int GetHeight() const;
+
+  private:
+    int width_{ 0 };
+    int height_{ 0 };
 };
 }  // namespace Argo::Types

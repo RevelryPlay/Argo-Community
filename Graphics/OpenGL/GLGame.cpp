@@ -14,6 +14,9 @@ bool GLGame::Setup( const char *title, const int width, const int height ) {
 
     RunCallback( "setup", 0 );
 
+    SetWidth( width );
+    SetHeight( height );
+
     return window->isOpen;
 }
 

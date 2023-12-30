@@ -32,11 +32,11 @@ struct GLGame : Types::BaseGame {
     void SetActiveScene( GLScene *scene );
     [[nodiscard]] GLScene *GetActiveScene() const;
 
+    void Cleanup() override;
+
   private:
     GLScene *activeScene_ = nullptr;
     std::list< GLScene * > scenes_{};
-
-    void Cleanup() override;
 };
 
 }  // namespace Argo::Graphics

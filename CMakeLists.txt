@@ -18,7 +18,6 @@ project(
 )
 
 
-
 # Graphics pipeline
 # In the future multiple pipelines will be available,
 # for now only enable one of these options at a time
@@ -32,10 +31,9 @@ SET(OPTS_USE_VULKAN OFF) # Incomplete
 # End of current options
 
 
-
 # Force one of the pipelines to be active
 # This is temporary as there will also be a console only pipeline
-if(NOT OPTS_USE_OPENGL AND NOT OPTS_USE_VULKAN)
+if (NOT OPTS_USE_OPENGL AND NOT OPTS_USE_VULKAN)
     SET(USE_OPENGL ON)
 endif ()
 
@@ -117,7 +115,16 @@ if (BUILD_TESTING)
     find_package(GTest CONFIG REQUIRED)
 
     add_executable(${PROJECT_NAME}-tests)
+
     target_sources(${PROJECT_NAME}-tests PRIVATE
+            Common/System/Application.tests.cpp
+            Common/System/Application.cpp Common/System/Application.hpp
+
+            Common/Types/BaseGame.tests.cpp
+            Common/Types/BaseGame.cpp Common/Types/BaseGame.hpp
+
+            # Graphics/OpenGL/GLGame.tests.cpp
+
             Utilities/ColorConverter.cpp Utilities/ColorConverter.hpp
             Utilities/ColorConverter.tests.cpp
     )

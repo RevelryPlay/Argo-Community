@@ -5,7 +5,6 @@
 #include <chrono>
 
 namespace Argo::Types {
-
 using namespace Argo::System;
 
 /**
@@ -23,22 +22,38 @@ struct BaseGame : Application {
 
     void Run() override;
 
-    int AddScene( BaseScene *scene );
-    void UpdateFPS();
-    [[nodiscard]] float GetFPS() const;
+    [[nodiscard]] int GetWidth() const;
+    void SetWidth( const int width );
+
+    [[nodiscard]] int GetHeight() const;
+    void SetHeight( const int height );
 
     float deltaTime{ 1.0F / Common::TARGET_FPS };
 
-    bool isRunning{ false };
+    [[nodiscard]] bool GetIsRunning() const;
+
+    // virtual BaseScene *CreateScene( const int width, const int height );
+    // virtual std::list< BaseScene * > GetScenes();
+    // virtual void RemoveScene( BaseScene *scene );
+    // virtual void SetActiveScene( BaseScene *scene );
+    // [[nodiscard]] virtual BaseScene *GetActiveScene() const;
+
+    void UpdateFPS();
+    [[nodiscard]] float GetFPS() const;
+
+    void Cleanup() override;
 
   private:
     static float constexpr targetTime_{ 1.0F / Common::TARGET_FPS * 1000 };
 
-    float fpsCounter{ 0 };
-    float fps{ 0 };
-    std::chrono::time_point< std::chrono::steady_clock > fpsPreviousTime{ std::chrono::high_resolution_clock::now() };
+    float fpsCounter_{ 0 };
+    float fps_{ 0 };
+    std::chrono::time_point< std::chrono::steady_clock > fpsPreviousTime_{ std::chrono::high_resolution_clock::now() };
 
-    void Cleanup() override;
+    int width_{ 0 };
+    int height_{ 0 };
+
+    bool isRunning_{ false };
 };
 
 }  // namespace Argo::Types

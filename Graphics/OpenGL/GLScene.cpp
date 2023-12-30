@@ -1,9 +1,9 @@
 #include "GLScene.hpp"
 
 namespace Argo::Graphics {
-GLScene::GLScene( int _width, const int _height ) {
-    width = _width;
-    height = _height;
+GLScene::GLScene( const int width, const int height ) {
+    SetWidth( width );
+    SetHeight( height );
 };
 
 GLScene::~GLScene() { Cleanup(); }
