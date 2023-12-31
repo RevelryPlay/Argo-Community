@@ -1,16 +1,16 @@
-#include "GLGame.hpp"
+#include "GL2DGame.hpp"
 #include <gtest/gtest.h>
 
-TEST( GLGame, Setup ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, Setup ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     EXPECT_TRUE( game->Setup( "Test Game", 800, 600 ) );
 
     EXPECT_EQ( game->GetWidth(), 800 );
     EXPECT_EQ( game->GetHeight(), 600 );
 }
 
-TEST( GLGame, SetWidth ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, SetWidth ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_EQ( game->GetWidth(), 800 );
@@ -18,8 +18,8 @@ TEST( GLGame, SetWidth ) {
     EXPECT_EQ( game->GetWidth(), 1024 );
 }
 
-TEST( GLGame, SetHeight ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, SetHeight ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_EQ( game->GetHeight(), 600 );
@@ -28,8 +28,8 @@ TEST( GLGame, SetHeight ) {
 }
 // This test depends on the OpenGL context being created which is not desirable in a test environment
 // I will need to find a way to mock the OpenGL context
-// TEST( GLGame, IsRunning ) {
-//     auto *game = new Argo::Graphics::GLGame();
+// TEST( GL2DGame, IsRunning ) {
+//     auto *game = new Argo::Graphics::GL2DGame();
 //     game->Setup( "Test Game", 800, 600 );
 //     game->Run();
 //
@@ -38,15 +38,15 @@ TEST( GLGame, SetHeight ) {
 //     EXPECT_FALSE( game->GetIsRunning() );
 // }
 
-TEST( GLGame, GetActiveScene ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, GetActiveScene ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     EXPECT_EQ( game->GetActiveScene(), nullptr );
 }
 
-TEST( GLGame, CreateScene ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, CreateScene ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     auto *scene = game->CreateScene( 800, 600 );
@@ -54,8 +54,8 @@ TEST( GLGame, CreateScene ) {
     EXPECT_EQ( game->GetActiveScene(), scene );
 }
 
-TEST( GLGame, GetScenes ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, GetScenes ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     auto *scene = game->CreateScene( 800, 600 );
@@ -67,8 +67,8 @@ TEST( GLGame, GetScenes ) {
     EXPECT_EQ( scenes.front(), scene );
 }
 
-TEST( GLGame, RemoveScene ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, RemoveScene ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     auto *scene = game->CreateScene( 800, 600 );
@@ -85,8 +85,8 @@ TEST( GLGame, RemoveScene ) {
     EXPECT_EQ( game->GetActiveScene(), nullptr );
 }
 
-TEST( GLGame, SetActiveScene ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, SetActiveScene ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     auto *scene = game->CreateScene( 800, 600 );
@@ -106,8 +106,8 @@ TEST( GLGame, SetActiveScene ) {
 }
 
 // This test also needs to have a mocked OpenGL context
-// TEST( GLGame, Run ) {
-//     auto *game = new Argo::Graphics::GLGame();
+// TEST( GL2DGame, Run ) {
+//     auto *game = new Argo::Graphics::GL2DGame();
 //     game->Setup( "Test Game", 800, 600 );
 //
 //     auto *scene = game->CreateScene( 800, 600 );
@@ -129,8 +129,8 @@ TEST( GLGame, SetActiveScene ) {
 //     EXPECT_FALSE( game->GetIsRunning() );
 // }
 
-TEST( GLGame, Cleanup ) {
-    auto *game = new Argo::Graphics::GLGame();
+TEST( GL2DGame, Cleanup ) {
+    auto *game = new Argo::Graphics::GL2DGame();
     game->Setup( "Test Game", 800, 600 );
 
     auto *scene = game->CreateScene( 800, 600 );

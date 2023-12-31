@@ -2,6 +2,6 @@
 
 namespace Argo::Graphics {
 
-struct GLLight {};
+struct GL2DShader {};
 
 }  // namespace Argo::Graphics

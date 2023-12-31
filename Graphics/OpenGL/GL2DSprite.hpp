@@ -5,9 +5,9 @@
 namespace Argo::Graphics {
 
 /**
- * \brief GLSprite handles the rendering of a texture to a specific region
+ * \brief GL2DSprite handles the rendering of a texture to a specific region
  */
-struct GLSprite : Types::BaseSprite {
+struct GL2DSprite : Types::BaseSprite {
     /**
      * \brief Calculates the vertices of the sprite based on the viewport width and height
      * \param viewPortWidth The width of the viewport

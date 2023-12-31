@@ -1,8 +1,8 @@
-#include "GLSprite.hpp"
+#include "GL2DSprite.hpp"
 #include <__algorithm/clamp.h>
 
 namespace Argo::Graphics {
-std::vector< Types::Vec3 > GLSprite::calculateRecVertices( const int viewPortWidth, const int viewPortHeight ) const {
+std::vector< Types::Vec3 > GL2DSprite::calculateRecVertices( const int viewPortWidth, const int viewPortHeight ) const {
     // Calculate the vertices of the sprite based on the viewport width and height and the sprite's width and height
     // preserving aspect ratio The sprite's width and height are in pixels, the viewport's width and height are in
     // pixels Scale the sprite's width and height proportionally to the viewport's width and height

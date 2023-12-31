@@ -11,9 +11,9 @@ using namespace std;
 
 namespace Argo::Graphics {
 
-struct GLWindow : Types::BaseWindow {
-    GLWindow();
-    ~GLWindow() override;
+struct GL2DWindow : Types::BaseWindow {
+    GL2DWindow();
+    ~GL2DWindow() override;
 
     int init( const char *title = Common::DEFAULT_WINDOW_TITLE,
         int width = Common::DEFAULT_WINDOW_WIDTH,

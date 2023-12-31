@@ -24,21 +24,21 @@ if (BUILD_TESTING)
             Common/Types/CommonColor.cpp Common/Types/CommonColor.hpp
             Common/Types/Vec4.hpp
 
-            Graphics/OpenGL/GLCamera.cpp Graphics/OpenGL/GLCamera.hpp
-            Graphics/OpenGL/GLEntity.cpp Graphics/OpenGL/GLEntity.hpp
+            Graphics/OpenGL/GL2DCamera.cpp Graphics/OpenGL/GL2DCamera.hpp
+            Graphics/OpenGL/GL2DEntity.cpp Graphics/OpenGL/GL2DEntity.hpp
 
-            Graphics/OpenGL/GLGame.tests.cpp
-            Graphics/OpenGL/GLGame.cpp Graphics/OpenGL/GLGame.hpp
+            Graphics/OpenGL/GL2DGame.tests.cpp
+            Graphics/OpenGL/GL2DGame.cpp Graphics/OpenGL/GL2DGame.hpp
 
-            Graphics/OpenGL/GLLight.cpp Graphics/OpenGL/GLLight.hpp
+            Graphics/OpenGL/GL2DLight.cpp Graphics/OpenGL/GL2DLight.hpp
 
-            Graphics/OpenGL/GLScene.tests.cpp
-            Graphics/OpenGL/GLScene.cpp Graphics/OpenGL/GLScene.hpp
+            Graphics/OpenGL/GL2DScene.tests.cpp
+            Graphics/OpenGL/GL2DScene.cpp Graphics/OpenGL/GL2DScene.hpp
 
-            Graphics/OpenGL/GLSprite.tests.cpp
-            Graphics/OpenGL/GLSprite.cpp Graphics/OpenGL/GLSprite.hpp
+            Graphics/OpenGL/GL2DSprite.tests.cpp
+            Graphics/OpenGL/GL2DSprite.cpp Graphics/OpenGL/GL2DSprite.hpp
 
-            Graphics/OpenGL/GLWindow.cpp Graphics/OpenGL/GLWindow.hpp
+            Graphics/OpenGL/GL2DWindow.cpp Graphics/OpenGL/GL2DWindow.hpp
 
             Common/Types/BaseWindow.cpp Common/Types/BaseWindow.hpp
             Common/System/Window.hpp

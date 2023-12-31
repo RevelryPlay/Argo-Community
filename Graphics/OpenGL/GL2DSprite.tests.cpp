@@ -1,12 +1,12 @@
-#include "GLSprite.hpp"
+#include "GL2DSprite.hpp"
 #include <gtest/gtest.h>
 
-TEST( GLSprite, calculateRecVertices ) {
-    Argo::Graphics::GLSprite sprite;
+TEST( GL2DSprite, calculateRecVertices ) {
+    Argo::Graphics::GL2DSprite sprite;
     sprite.width = 100;
     sprite.height = 100;
 
-    auto vertices = sprite.calculateRecVertices( 100, 100 );
+    const auto vertices = sprite.calculateRecVertices( 100, 100 );
 
     EXPECT_EQ( vertices[ 0 ].x, -1.0F );
     EXPECT_EQ( vertices[ 0 ].y, -1.0F );
@@ -25,8 +25,8 @@ TEST( GLSprite, calculateRecVertices ) {
     EXPECT_EQ( vertices[ 3 ].z, 0.0F );
 }
 
-TEST( GLSprite, calculateRecVerticesWithDifferentViewport ) {
-    Argo::Graphics::GLSprite sprite;
+TEST( GL2DSprite, calculateRecVerticesWithDifferentViewport ) {
+    Argo::Graphics::GL2DSprite sprite;
     sprite.width = 100;
     sprite.height = 100;
 
@@ -49,8 +49,8 @@ TEST( GLSprite, calculateRecVerticesWithDifferentViewport ) {
     EXPECT_EQ( vertices[ 3 ].z, 0.0F );
 }
 
-TEST( GLSprite, calculateRecVerticesWithDifferentViewportAndDifferentSpriteSize ) {
-    Argo::Graphics::GLSprite sprite;
+TEST( GL2DSprite, calculateRecVerticesWithDifferentViewportAndDifferentSpriteSize ) {
+    Argo::Graphics::GL2DSprite sprite;
     sprite.width = 50;
     sprite.height = 50;
 
@@ -73,8 +73,8 @@ TEST( GLSprite, calculateRecVerticesWithDifferentViewportAndDifferentSpriteSize 
     EXPECT_EQ( vertices[ 3 ].z, 0.0F );
 }
 
-TEST( GLSprite, calculateRecVerticesWithDifferentViewportAndDifferentSpriteSizeAndDifferentSpritePosition ) {
-    Argo::Graphics::GLSprite sprite;
+TEST( GL2DSprite, calculateRecVerticesWithDifferentViewportAndDifferentSpriteSizeAndDifferentSpritePosition ) {
+    Argo::Graphics::GL2DSprite sprite;
     sprite.width = 50;
     sprite.height = 50;
     sprite.xPos = 50;

@@ -1,3 +1,3 @@
-#include "GlShader.hpp"
+#include "GL2DLight.hpp"
 
 namespace Argo::Graphics {}

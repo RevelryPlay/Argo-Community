@@ -1,14 +1,14 @@
-#include "GLGame.hpp"
+#include "GL2DGame.hpp"
 
 #include <iostream>
 
 namespace Argo::Graphics {
-GLGame::GLGame() = default;
+GL2DGame::GL2DGame() = default;
 
-GLGame::~GLGame() { GLGame::Cleanup(); };
+GL2DGame::~GL2DGame() { GL2DGame::Cleanup(); };
 
-bool GLGame::Setup( const char *title, const int width, const int height ) {
-    window = new System::Window< GLWindow >();
+bool GL2DGame::Setup( const char *title, const int width, const int height ) {
+    window = new System::Window< GL2DWindow >();
     window->init( title, width, height );
     window->callbacks = callbacks;
 
@@ -20,7 +20,7 @@ bool GLGame::Setup( const char *title, const int width, const int height ) {
     return window->isOpen;
 }
 
-int GLGame::Run() {
+int GL2DGame::Run() {
     // TODO: Investigate if this is reliable for games
     auto previousTime{ std::chrono::high_resolution_clock::now() };
     float constexpr targetTime{ 1.0F / Argo::Common::TARGET_FPS * 1000 };
@@ -55,9 +55,9 @@ int GLGame::Run() {
     return 0;
 }
 
-GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
+GL2DScene *GL2DGame::CreateScene( const int width = 0, const int height = 0 ) {
     // Create a new scene
-    auto *const scene{ new GLScene( width, height ) };
+    auto *const scene{ new GL2DScene( width, height ) };
 
     // Add the scene to the list of scenes
     scenes_.push_back( scene );
@@ -70,11 +70,11 @@ GLScene *GLGame::CreateScene( const int width = 0, const int height = 0 ) {
     // return the scene pointer
     return scene;
 }
-std::list< GLScene * > GLGame::GetScenes() { return scenes_; }
+std::list< GL2DScene * > GL2DGame::GetScenes() { return scenes_; }
 
-// void GLGame::AddScene( System::Scene< GLScene > *scene ) { scenes_.push_back( scene ); }
+// void GL2DGame::AddScene( System::Scene< GL2DScene > *scene ) { scenes_.push_back( scene ); }
 
-void GLGame::RemoveScene( GLScene *scene ) {
+void GL2DGame::RemoveScene( GL2DScene *scene ) {
     // Remove the scene from being active
     if ( activeScene_ == scene ) {
         activeScene_ = nullptr;
@@ -87,16 +87,16 @@ void GLGame::RemoveScene( GLScene *scene ) {
     delete scene;
 }
 
-void GLGame::SetActiveScene( GLScene *scene ) { activeScene_ = scene; }
+void GL2DGame::SetActiveScene( GL2DScene *scene ) { activeScene_ = scene; }
 
-GLScene *GLGame::GetActiveScene() const { return activeScene_; }
+GL2DScene *GL2DGame::GetActiveScene() const { return activeScene_; }
 
-int GLGame::Cleanup() {
+int GL2DGame::Cleanup() {
     // NOTE: Destroy instances in reverse order of creation
     activeScene_ = nullptr;
 
     // Remove all scenes
-    for ( const GLScene *scene : scenes_ ) {
+    for ( const GL2DScene *scene : scenes_ ) {
         delete scene;
     }
 

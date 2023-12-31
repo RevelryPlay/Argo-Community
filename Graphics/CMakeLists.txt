@@ -8,14 +8,14 @@ set(CMAKE_CXX_STANDARD 23)
 
 if (OPTS_USE_OPENGL)
     add_library(${PROJECT_NAME} STATIC
-            OpenGL/GLCamera.cpp OpenGL/GLCamera.hpp
-            OpenGL/GLEntity.cpp OpenGL/GLEntity.hpp
-            OpenGL/GLGame.cpp OpenGL/GLGame.hpp
-            OpenGL/GLLight.cpp OpenGL/GLLight.hpp
-            OpenGL/GLScene.cpp OpenGL/GLScene.hpp
-            OpenGL/GLShader.cpp OpenGL/GLShader.hpp
-            OpenGL/GLSprite.cpp OpenGL/GLSprite.hpp
-            OpenGL/GLWindow.cpp OpenGL/GLWindow.hpp
+            OpenGL/GL2DCamera.cpp OpenGL/GL2DCamera.hpp
+            OpenGL/GL2DEntity.cpp OpenGL/GL2DEntity.hpp
+            OpenGL/GL2DGame.cpp OpenGL/GL2DGame.hpp
+            OpenGL/GL2DLight.cpp OpenGL/GL2DLight.hpp
+            OpenGL/GL2DScene.cpp OpenGL/GL2DScene.hpp
+            OpenGL/GL2DShader.cpp OpenGL/GL2DShader.hpp
+            OpenGL/GL2DSprite.cpp OpenGL/GL2DSprite.hpp
+            OpenGL/GL2DWindow.cpp OpenGL/GL2DWindow.hpp
     )
 endif ()
 

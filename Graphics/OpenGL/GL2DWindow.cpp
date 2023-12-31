@@ -1,10 +1,10 @@
-#include "GLWindow.hpp"
+#include "GL2DWindow.hpp"
 
 namespace Argo::Graphics {
-GLWindow::GLWindow() = default;
-GLWindow::~GLWindow() { GLWindow::Cleanup(); };
+GL2DWindow::GL2DWindow() = default;
+GL2DWindow::~GL2DWindow() { GL2DWindow::Cleanup(); };
 
-int GLWindow::init( const char *title, const int width, const int height ) {
+int GL2DWindow::init( const char *title, const int width, const int height ) {
     glfwInit();
     glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 4 );
     glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 1 );
@@ -36,7 +36,7 @@ int GLWindow::init( const char *title, const int width, const int height ) {
     return 0;
 }
 
-void GLWindow::update( const float deltaTime ) {
+void GL2DWindow::update( const float deltaTime ) {
     if ( glfwWindowShouldClose( window ) != 0 ) {
         isOpen = false;
         return;
@@ -48,35 +48,35 @@ void GLWindow::update( const float deltaTime ) {
     glfwPollEvents();
 }
 
-void GLWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width, const int height ) {
+void GL2DWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width, const int height ) {
     glViewport( 0, 0, width, height );
 }
 
-void GLWindow::ProcessInput( GLFWwindow *window, const int key, const int scancode, const int action, const int mods ) {
+void GL2DWindow::ProcessInput( GLFWwindow *window, const int key, const int scancode, const int action, const int mods ) {
 
     if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
         glfwSetWindowShouldClose( window, 1 );
     }
 
-    // Retrieve the user pointer to the GLWindow instance
-    auto *gl_window = static_cast< GLWindow * >( glfwGetWindowUserPointer( window ) );
+    // Retrieve the user pointer to the GL2DWindow instance
+    auto *gl_window = static_cast< GL2DWindow * >( glfwGetWindowUserPointer( window ) );
 
-    // Call the actual function using GLWindow instance
+    // Call the actual function using GL2DWindow instance
     gl_window->HandleKey( key, scancode, action, mods );
 }
 
-void GLWindow::HandleKey( const int key, const int /*scancode*/, const int action, const int /*mods*/ ) {
+void GL2DWindow::HandleKey( const int key, const int /*scancode*/, const int action, const int /*mods*/ ) {
     if ( action == GLFW_PRESS ) {
         RunCallback( "keyPressed", key );
     } else if ( action == GLFW_RELEASE ) {
         RunCallback( "keyReleased", key );
     }
 }
-GLFWwindow *GLWindow::GetPipelineWindow() const {
+GLFWwindow *GL2DWindow::GetPipelineWindow() const {
     return window;
 }
 
-int GLWindow::Cleanup() {
+int GL2DWindow::Cleanup() {
     if ( &window != nullptr ) {
         glfwDestroyWindow( window );
     }

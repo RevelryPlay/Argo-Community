@@ -2,9 +2,9 @@
 #include <cstdint>
 
 #if OPTS_USE_OPENGL
-#include "OpenGL/GLEntity.hpp"
-#include "OpenGL/GLGame.hpp"
-#include "OpenGL/GLSprite.hpp"
+#include "OpenGL/GL2DEntity.hpp"
+#include "OpenGL/GL2DGame.hpp"
+#include "OpenGL/GL2DSprite.hpp"
 #endif
 
 #if OPTS_USE_VULKAN
@@ -32,8 +32,8 @@ struct Runner {
     int spriteDirection{ 0 };
 
 #if OPTS_USE_OPENGL
-    Graphics::GLGame game{ *new Graphics::GLGame() };
-    Graphics::GLSprite sprite{ *new Graphics::GLSprite() };
+    Graphics::GL2DGame game{ *new Graphics::GL2DGame() };
+    Graphics::GL2DSprite sprite{ *new Graphics::GL2DSprite() };
 #endif
 
 #if OPTS_USE_VULKAN
