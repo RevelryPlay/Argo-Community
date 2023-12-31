@@ -24,6 +24,8 @@ struct GLWindow : Types::BaseWindow {
     static void ProcessInput( GLFWwindow *window, int key, int scancode, int action, int mods );
     void HandleKey( int key, int scancode, int action, int mods ) override;
 
+    [[nodiscard]] GLFWwindow *GetPipelineWindow() const;
+
     int Cleanup() override;
 
   private:

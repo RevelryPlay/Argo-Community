@@ -13,7 +13,6 @@ struct BaseSprite {
     float width{ 0 };
     float height{ 0 };
     float rotation{ 0 };
-    float scale{ 1.0F };
 
     std::string filePath{};
 };

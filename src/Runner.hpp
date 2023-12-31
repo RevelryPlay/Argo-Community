@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdint>
+
 #if OPTS_USE_OPENGL
 #include "OpenGL/GLEntity.hpp"
 #include "OpenGL/GLGame.hpp"
@@ -15,6 +17,20 @@ struct Runner {
     int run();
 
   private:
+    // uint8_t enum for sprite direction
+    enum SpriteDirection : uint8_t {
+        UP = 0,
+        UP_RIGHT = 1,
+        UP_LEFT = 2,
+        DOWN = 3,
+        DOWN_RIGHT = 4,
+        DOWN_LEFT = 5,
+        LEFT = 6,
+        RIGHT = 7
+    };
+
+    int spriteDirection{ 0 };
+
 #if OPTS_USE_OPENGL
     Graphics::GLGame game{ *new Graphics::GLGame() };
     Graphics::GLSprite sprite{ *new Graphics::GLSprite() };

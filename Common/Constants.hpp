@@ -7,5 +7,5 @@ const char *const DEFAULT_WINDOW_TITLE{ "New Window" };
 
 // Lock the window updates to a target framerate.
 // Use -1 to not limit the window updates
-constexpr short TARGET_FPS{ 60 };
+constexpr short TARGET_FPS{ 120 };
 }  // namespace Argo::Common

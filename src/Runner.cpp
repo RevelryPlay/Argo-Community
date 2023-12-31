@@ -21,8 +21,10 @@ int Runner::run() {
     entity->xPos = 100;
     entity->yPos = 75;
 
-    sprite.height = 512;
-    sprite.width = 250;
+    sprite.height = 100;
+    sprite.width = 100;
+    sprite.xPos = -460;
+    sprite.yPos = 460;
 
     game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
@@ -108,12 +110,91 @@ void Runner::delta_callback( float deltaTime ) {
     // cout << "delta:" << deltaTime << '\n';
     // fprintf( stdout, "deltaCallback\n" );
 
+    constexpr float max = 460;
+
+    // move the sprite based on sprite direction
+    switch ( spriteDirection ) {
+    case UP:
+        sprite.yPos += 1;
+
+        if ( sprite.yPos >= max ) {
+            spriteDirection = DOWN_RIGHT;
+        }
+
+        break;
+    case UP_RIGHT:
+        sprite.xPos += 1;
+        sprite.yPos += 1;
+
+        if ( sprite.xPos >= max ) {
+            spriteDirection = LEFT;
+        }
+
+        break;
+    case UP_LEFT:
+        sprite.xPos -= 1;
+        sprite.yPos += 1;
+
+        if ( sprite.xPos <= -max ) {
+            spriteDirection = DOWN;
+        }
+
+        break;
+    case DOWN:
+        sprite.yPos -= 1;
+
+        if ( sprite.yPos <= -max ) {
+            spriteDirection = UP_RIGHT;
+        }
+
+        break;
+    case DOWN_RIGHT:
+        sprite.xPos += 1;
+        sprite.yPos -= 1;
+
+        if ( sprite.xPos >= max ) {
+            spriteDirection = UP_LEFT;
+        }
+
+        break;
+    case DOWN_LEFT:
+        sprite.xPos -= 1;
+        sprite.yPos -= 1;
+
+        if ( sprite.xPos <= -max ) {
+            spriteDirection = UP_RIGHT;
+        }
+
+        break;
+    case LEFT:
+        sprite.xPos -= 1;
+
+        if ( sprite.xPos <= -max ) {
+            spriteDirection = DOWN_RIGHT;
+        }
+
+        break;
+    case RIGHT:
+        sprite.xPos += 1;
+
+        if ( sprite.xPos >= max ) {
+            spriteDirection = LEFT;
+        }
+
+        break;
+
+    default:
+        break;
+    }
+
 #if OPTS_USE_OPENGL
     glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
 
-    std::vector< Types::Vec3 > const vertices =
-        sprite.calculateRecVertices( Common::DEFAULT_WINDOW_WIDTH, Common::DEFAULT_WINDOW_HEIGHT );
+    int windowWidth, windowHeight;
+    glfwGetWindowSize( game.window->GetPipelineWindow(), &windowWidth, &windowHeight );
+
+    std::vector< Types::Vec3 > const vertices = sprite.calculateRecVertices( windowWidth, windowHeight );
 
     unsigned int const indices[] = {
         // note that we start from 0!

@@ -1,48 +1,44 @@
 #include "GLSprite.hpp"
+#include <__algorithm/clamp.h>
 
 namespace Argo::Graphics {
-std::vector< Types::Vec3 > GLSprite::calculateRecVertices( const float viewPortWidth,
-    const float viewPortHeight ) const {
+std::vector< Types::Vec3 > GLSprite::calculateRecVertices( const int viewPortWidth, const int viewPortHeight ) const {
+    // Calculate the vertices of the sprite based on the viewport width and height and the sprite's width and height
+    // preserving aspect ratio The sprite's width and height are in pixels, the viewport's width and height are in
+    // pixels Scale the sprite's width and height proportionally to the viewport's width and height
+    // Vertices are in normalized device coordinates (NDC) which range from -1 to 1
 
-    // Normalize width and height to [-1.0, 1.0] range
-    const float norm_width = ( width / viewPortWidth );
-    const float norm_height = ( height / viewPortHeight );
+    // Calculate the aspect ratio of the sprite
+    const float aspectRatio = width / height;
 
-    std::vector< Types::Vec3 > vertices( 4 );
+    // Calculate the aspect ratio of the viewport
+    const float viewPortAspectRatio = viewPortWidth / viewPortHeight;
 
-    // Triangle 1
-    // Vertex 0 - bottom left
-    vertices[ 0 ].x = -norm_width;
-    vertices[ 0 ].y = -norm_height;
-    vertices[ 0 ].z = 0.0F;
+    // Calculate the scale of the sprite
+    const auto scale = std::clamp( viewPortAspectRatio / aspectRatio, 0.0F, 1.0F );
 
-    // Vertex 1 - top left
-    vertices[ 1 ].x = norm_width;
-    vertices[ 1 ].y = -norm_height;
-    vertices[ 1 ].z = 0.0F;
+    // Calculate the scaled width and height of the sprite
+    const auto scaledWidth = width * scale;
+    const auto scaledHeight = height * scale;
 
-    // Vertex 2 - bottom right
-    vertices[ 2 ].x = norm_width;
-    vertices[ 2 ].y = norm_height;
-    vertices[ 2 ].z = 0.0F;
+    // Calculate the x and y coordinates of the sprite
+    const auto x = xPos / viewPortWidth * 2.0F;
+    const auto y = yPos / viewPortHeight * 2.0F;
 
-    // Triangle 2
-    // Vertex 3 - top right
-    vertices[ 3 ].x = -norm_width;
-    vertices[ 3 ].y = norm_height;
-    vertices[ 3 ].z = 0.0F;
+    // Calculate normalized device coordinates (NDC) for the sprite
+    const auto left = x - scaledWidth / viewPortWidth;
+    const auto right = x + scaledWidth / viewPortWidth;
 
-    // // Vertex 4 - bottom right
-    // vertices[4].x = norm_width;
-    // vertices[4].y = -norm_height;
-    // vertices[4].z = 0.0F;
+    const auto top = y + scaledHeight / viewPortHeight;
+    const auto bottom = y - scaledHeight / viewPortHeight;
 
-    // // Vertex 5 - top left
-    // vertices[5].x = -norm_width;
-    // vertices[5].y = norm_height;
-    // vertices[5].z = 0.0F;
-
-    return vertices;
+    // Calculate the vertices of the sprite
+    return {
+        { left, bottom, 0.0F },
+        { right, bottom, 0.0F },
+        { right, top, 0.0F },
+        { left, top, 0.0F },
+    };
 }
 
 

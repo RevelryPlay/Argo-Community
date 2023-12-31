@@ -72,6 +72,9 @@ void GLWindow::HandleKey( const int key, const int /*scancode*/, const int actio
         RunCallback( "keyReleased", key );
     }
 }
+GLFWwindow *GLWindow::GetPipelineWindow() const {
+    return window;
+}
 
 int GLWindow::Cleanup() {
     if ( &window != nullptr ) {
