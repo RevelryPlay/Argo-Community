@@ -1,5 +1,6 @@
 #include "GL2DSprite.hpp"
-#include <__algorithm/clamp.h>
+
+#include <algorithm>
 
 namespace Argo::Graphics {
 std::vector< Types::Vec3 > GL2DSprite::calculateRecVertices( const int viewPortWidth, const int viewPortHeight ) const {

@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_library(${PROJECT_NAME} STATIC
         ColorConverter.cpp ColorConverter.hpp
+        ConsoleMenu.cpp ConsoleMenu.hpp
 )
 
 target_link_libraries(ArgoCommon)
