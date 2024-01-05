@@ -38,18 +38,51 @@ namespace Argo::Utilities {
                     std::cout << "unrecognized name: " << name << '\n';
                 }
             }
-            else if (input == "ls") {
-                std::cout << "submenus: ";
-                for (const auto&name: this->submenus | std::views::keys) {
-                    std::cout << name << " ";
-                }
+            else if (input == "help") {
+                std::cout << "back: return to the previous menu\n";
+                std::cout << " exit: exit the program\n";
+                std::cout << " info <name>: get the description of a submenu or action\n";
+                std::cout << " help: show this help message\n";
+                std::cout << " ls: list the submenus and actions for the current menu\n";
+
                 std::cout << '\n';
 
-                std::cout << " actions: ";
-                for (const auto&name: this->actions | std::views::keys) {
-                    std::cout << name << " ";
+                if (!this->submenus.empty()) {
+                    std::cout << "Submenus: ";
+                    for (const auto&name: this->submenus | std::views::keys) {
+                        std::cout << name << " ";
+                    }
+                    std::cout << '\n';
                 }
-                std::cout << '\n';
+
+                if (!this->actions.empty()) {
+                    std::cout << " Actions: \n";
+                    for (const auto&name: this->actions | std::views::keys) {
+                        std::cout << " " << name << ": " << this->actions[name].Description << '\n';
+                    }
+                    std::cout << '\n';
+                }
+            }
+            else if (input == "ls") {
+                if (!this->submenus.empty()) {
+                    std::cout << "Submenus: ";
+                    for (const auto&name: this->submenus | std::views::keys) {
+                        std::cout << name << " ";
+                    }
+                    std::cout << '\n';
+                }
+
+                if (!this->actions.empty()) {
+                    std::cout << "Actions: \n";
+                    for (const auto&name: this->actions | std::views::keys) {
+                        std::cout << " " << name << ": " << this->actions[name].Description << '\n';
+                    }
+                    std::cout << '\n';
+                }
+
+                if (this->submenus.empty() && this->actions.empty()) {
+                    std::cout << "This menu has no submenus or actions\n";
+                }
             }
             else {
                 std::cout << "unrecognized name: " << input << '\n';
