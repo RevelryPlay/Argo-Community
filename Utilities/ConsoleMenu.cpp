@@ -5,6 +5,24 @@
 #include "ConsoleMenu.hpp"
 
 namespace Argo::Utilities {
+    void Menu::GetActions() {
+        if (!this->submenus.empty()) {
+            std::cout << "Submenus: ";
+            for (const auto&name: this->submenus | std::views::keys) {
+                std::cout << name << " ";
+            }
+            std::cout << '\n';
+        }
+
+        if (!this->actions.empty()) {
+            std::cout << " Actions: \n";
+            for (const auto&name: this->actions | std::views::keys) {
+                std::cout << " " << name << ": " << this->actions[name].Description << '\n';
+            }
+            std::cout << '\n';
+        }
+    }
+
     void Menu::Init(const std::string&menu_path) {
         const std::string full_path = menu_path + this->Name;
         std::string input;
@@ -47,38 +65,10 @@ namespace Argo::Utilities {
 
                 std::cout << '\n';
 
-                if (!this->submenus.empty()) {
-                    std::cout << "Submenus: ";
-                    for (const auto&name: this->submenus | std::views::keys) {
-                        std::cout << name << " ";
-                    }
-                    std::cout << '\n';
-                }
-
-                if (!this->actions.empty()) {
-                    std::cout << " Actions: \n";
-                    for (const auto&name: this->actions | std::views::keys) {
-                        std::cout << " " << name << ": " << this->actions[name].Description << '\n';
-                    }
-                    std::cout << '\n';
-                }
+                GetActions();
             }
             else if (input == "ls") {
-                if (!this->submenus.empty()) {
-                    std::cout << "Submenus: ";
-                    for (const auto&name: this->submenus | std::views::keys) {
-                        std::cout << name << " ";
-                    }
-                    std::cout << '\n';
-                }
-
-                if (!this->actions.empty()) {
-                    std::cout << "Actions: \n";
-                    for (const auto&name: this->actions | std::views::keys) {
-                        std::cout << " " << name << ": " << this->actions[name].Description << '\n';
-                    }
-                    std::cout << '\n';
-                }
+                GetActions();
 
                 if (this->submenus.empty() && this->actions.empty()) {
                     std::cout << "This menu has no submenus or actions\n";
