@@ -2,8 +2,9 @@
 
 namespace Argo::Types {
 struct BaseEntity {
-    // GUID
-    // GUID spriteId
+
+    BaseEntity() = default;
+    virtual ~BaseEntity() = default;
 
     float xPos{ 0 };
     float yPos{ 0 };

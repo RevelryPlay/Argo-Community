@@ -9,6 +9,9 @@ namespace Argo::Graphics {
  */
 struct GL2DEntity : Types::BaseEntity {
     GL2DSprite *sprite{};
+
+    // Set the sprite of the entity.
+    void setSprite( GL2DSprite *_sprite );
 };
 
 }  // namespace Argo::Graphics

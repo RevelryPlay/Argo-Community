@@ -77,7 +77,7 @@ GLFWwindow *GL2DWindow::GetPipelineWindow() const {
 }
 
 int GL2DWindow::Cleanup() {
-    if ( &window != nullptr ) {
+    if ( window != nullptr ) {
         glfwDestroyWindow( window );
     }
 

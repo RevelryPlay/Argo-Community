@@ -60,11 +60,14 @@ TEST( Application, MultipleCallbacksWithSameTitle ) {
 
 // TODO: This test is for not yet implemented functionality
 // TEST( Application, RemoveCallback ) {
-//     auto app = new Argo::System::Application();
+//     auto *app = new Argo::System::Application();
 //     app->Setup();
-//     app->RegisterCallback( "Test", []( float deltaTime ) {} );
+//
+//     auto callback = []( float deltaTime ) {};
+//
+//     app->RegisterCallback( "Test", callback );
 //     EXPECT_EQ( app->callbacks.size(), 1 );
-//     app->RemoveCallback( "Test", []( float deltaTime ) {} );
+//     app->RemoveCallback( "Test", callback );
 //     EXPECT_EQ( app->callbacks.size(), 0 );
 //     app->Cleanup();
 // }

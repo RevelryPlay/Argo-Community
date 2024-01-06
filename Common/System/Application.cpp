@@ -6,9 +6,7 @@ Application::Application() = default;
 Application::~Application() { Application::Cleanup(); }
 
 bool Application::Setup() { return true; }
-int Application::Run() {
-    return 0;
-}
+int Application::Run() { return 0; }
 
 void Application::RegisterCallback( const std::string &title, const DeltaCallback &callback ) {
     if ( callbacks.contains( title ) ) {
@@ -38,7 +36,6 @@ void Application::RemoveCallback( const std::string &title, const DeltaCallback 
     //     return;
     // }
     //
-    // // remove the callback from the sub list of callbacks
     // callbacks[ title ].remove( callback );
 }
 
@@ -47,9 +44,7 @@ void Application::RemoveAllCallbacks() { callbacks.clear(); }
 void Application::RemoveAllCallbacksWithTitle( const std::string &title ) { callbacks.erase( title ); }
 
 
-int Application::Cleanup() {
-    return 0;
-}
+int Application::Cleanup() { return 0; }
 
 
 }  // namespace Argo::System
