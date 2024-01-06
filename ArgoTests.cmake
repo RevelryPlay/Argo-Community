@@ -45,6 +45,9 @@ if (BUILD_TESTING)
 
             Utilities/ColorConverter.cpp Utilities/ColorConverter.hpp
             Utilities/ColorConverter.tests.cpp
+
+            Utilities/ConsoleMenu.tests.cpp
+            Utilities/ConsoleMenu.cpp Utilities/ConsoleMenu.hpp
     )
 
     target_include_directories(${PROJECT_NAME}-tests PUBLIC ${PROJECT_BINARY_DIR})
