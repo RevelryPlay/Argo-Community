@@ -1,4 +1,5 @@
 #include "GL2DScene.hpp"
+#include <algorithm>
 
 namespace Argo::Graphics {
 GL2DScene::GL2DScene( const int width, const int height ) {
@@ -24,19 +25,31 @@ void GL2DScene::SetActiveCamera( GL2DCamera *camera ) { activeCamera_ = camera; 
 
 GL2DCamera *GL2DScene::GetActiveCamera() const { return activeCamera_; }
 
-std::list< GL2DCamera * > GL2DScene::GetCameras() { return cameras_; }
+std::vector< GL2DCamera * > GL2DScene::GetCameras() { return cameras_; }
 
-void GL2DScene::RemoveCamera( GL2DCamera *camera ) { cameras_.remove( camera ); }
+void GL2DScene::RemoveCamera( GL2DCamera *camera ) {
+    const auto ind = std::ranges::find( cameras_, camera );
+
+    if ( ind != cameras_.end() ) {
+        cameras_.erase( ind );
+    }
+}
 
 GL2DEntity *GL2DScene::CreateEntity() {
-    GL2DEntity *entity = new GL2DEntity();
+    auto *entity = new GL2DEntity();
     entities_.push_back( entity );
     return entity;
 }
 
-std::list< GL2DEntity * > GL2DScene::GetEntities() { return entities_; }
+std::vector< GL2DEntity * > GL2DScene::GetEntities() { return entities_; }
 
-void GL2DScene::RemoveEntity( GL2DEntity *entity ) { entities_.remove( entity ); }
+void GL2DScene::RemoveEntity( const GL2DEntity *entity ) {
+    const auto ind = std::ranges::find( entities_, entity );
+
+    if ( ind != entities_.end() ) {
+        entities_.erase( ind );
+    }
+}
 
 GL2DLight *GL2DScene::CreateLight() {
     auto *light = new GL2DLight();
@@ -44,9 +57,15 @@ GL2DLight *GL2DScene::CreateLight() {
     return light;
 }
 
-std::list< GL2DLight * > GL2DScene::GetLights() { return lights_; }
+std::vector< GL2DLight * > GL2DScene::GetLights() { return lights_; }
 
-void GL2DScene::RemoveLight( GL2DLight *light ) { lights_.remove( light ); }
+void GL2DScene::RemoveLight( GL2DLight *light ) {
+    const auto ind = std::ranges::find( lights_, light );
+
+    if ( ind != lights_.end() ) {
+        lights_.erase( ind );
+    }
+}
 
 void GL2DScene::Cleanup() {
     activeCamera_ = nullptr;
