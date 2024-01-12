@@ -43,8 +43,9 @@ int Runner::run() {
     return 0;
 };
 
-void Runner::setup_callback(){
+void Runner::setup_callback() {
     // fprintf( stdout, "setupCallback\n" );
+    game.window->SetClearColor( { 0.1F, 0.1F, 0.2F, 1.0F } );
 };
 
 void Runner::run_callback() {
@@ -189,8 +190,6 @@ void Runner::delta_callback( float deltaTime ) {
     }
 
 #if OPTS_USE_OPENGL
-    glClearColor( 0.1f, 0.1f, 0.2f, 1.0f );
-    glClear( GL_COLOR_BUFFER_BIT );
 
     int windowWidth, windowHeight;
     glfwGetWindowSize( game.window->GetPipelineWindow(), &windowWidth, &windowHeight );
@@ -223,7 +222,7 @@ void Runner::delta_callback( float deltaTime ) {
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
     glBindVertexArray( 0 );
 
-    // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
     // Clear any memory that was allocated
     glDeleteVertexArrays( 1, &VAO );

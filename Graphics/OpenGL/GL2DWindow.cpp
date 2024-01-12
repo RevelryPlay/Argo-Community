@@ -42,6 +42,10 @@ void GL2DWindow::update( const float deltaTime ) {
         return;
     }
 
+    const auto [ red, green, blue, alpha ]{ clearColor_ };
+    glClearColor( red, green, blue, alpha );
+    glClear( GL_COLOR_BUFFER_BIT );
+
     RunCallback( "windowUpdate", deltaTime );
 
     glfwSwapBuffers( window );
@@ -52,7 +56,11 @@ void GL2DWindow::resizeWindowCallback( GLFWwindow * /*window*/, const int width,
     glViewport( 0, 0, width, height );
 }
 
-void GL2DWindow::ProcessInput( GLFWwindow *window, const int key, const int scancode, const int action, const int mods ) {
+void GL2DWindow::ProcessInput( GLFWwindow *window,
+    const int key,
+    const int scancode,
+    const int action,
+    const int mods ) {
 
     if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
         glfwSetWindowShouldClose( window, 1 );
@@ -72,9 +80,10 @@ void GL2DWindow::HandleKey( const int key, const int /*scancode*/, const int act
         RunCallback( "keyReleased", key );
     }
 }
-GLFWwindow *GL2DWindow::GetPipelineWindow() const {
-    return window;
-}
+
+void GL2DWindow::SetClearColor( const Types::CommonColor color ) { clearColor_ = color; }
+
+GLFWwindow *GL2DWindow::GetPipelineWindow() const { return window; }
 
 int GL2DWindow::Cleanup() {
     if ( window != nullptr ) {

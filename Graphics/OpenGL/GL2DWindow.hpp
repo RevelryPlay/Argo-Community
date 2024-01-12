@@ -1,7 +1,8 @@
 #pragma once
 
-#include "../../Common/Types/BaseWindow.hpp"
 #include "../../Common/Constants.hpp"
+#include "../../Common/Types/BaseWindow.hpp"
+#include "../../Common/Types/CommonColor.hpp"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -24,11 +25,14 @@ struct GL2DWindow : Types::BaseWindow {
     static void ProcessInput( GLFWwindow *window, int key, int scancode, int action, int mods );
     void HandleKey( int key, int scancode, int action, int mods ) override;
 
+    void SetClearColor( const Types::CommonColor color );
+
     [[nodiscard]] GLFWwindow *GetPipelineWindow() const;
 
     int Cleanup() override;
 
   private:
+    Types::CommonColor clearColor_{ 0.0F, 0.0F, 0.0F, 1.0F };
     GLFWwindow *window{ nullptr };
 
     static void resizeWindowCallback( GLFWwindow * /*window*/, int width, int height );
