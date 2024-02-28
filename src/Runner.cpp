@@ -15,15 +15,9 @@ int Runner::run() {
     // auto *sprite = entity->CreateSprite();
 
     entity->sprite = &sprite;
-    entity->height = 250;
-    entity->width = 100;
-    entity->xPos = 100;
-    entity->yPos = 75;
 
-    sprite.height = 100;
-    sprite.width = 100;
-    sprite.xPos = -460;
-    sprite.yPos = 460;
+    sprite.height = 250;
+    sprite.width = 250;
 
     game.RegisterCallback( "setup", [ this ]( const float /*delta*/ ) { setup_callback(); } );
     game.RegisterCallback( "run", [ this ]( const float /*delta*/ ) { run_callback(); } );
@@ -45,7 +39,7 @@ int Runner::run() {
 
 void Runner::setup_callback() {
     // fprintf( stdout, "setupCallback\n" );
-    game.window->SetClearColor( { 0.1F, 0.1F, 0.2F, 1.0F } );
+    game.window->SetClearColor( { 0.25F, 0.2F, 0.4F, 1.0F } );
 };
 
 void Runner::run_callback() {
@@ -81,7 +75,7 @@ void Runner::run_callback() {
         "\n"
         "void main()\n"
         "{\n"
-        "    FragColor = vec4(0.5f, 0.7f, 0.9f, 1.0f);\n"
+        "    FragColor = vec4(0.6f, 0.5f, 0.9f, 1.0f);\n"
         "} \0";
 
     unsigned int fragmentShader = 0;
@@ -111,83 +105,6 @@ void Runner::update_callback( float deltaTime ){
 void Runner::delta_callback( float deltaTime ) {
     // cout << "delta:" << deltaTime << '\n';
     // fprintf( stdout, "deltaCallback\n" );
-
-    constexpr float max = 460;
-
-    // move the sprite based on sprite direction
-    switch ( spriteDirection ) {
-    case UP:
-        sprite.yPos += 1;
-
-        if ( sprite.yPos >= max ) {
-            spriteDirection = DOWN_RIGHT;
-        }
-
-        break;
-    case UP_RIGHT:
-        sprite.xPos += 1;
-        sprite.yPos += 1;
-
-        if ( sprite.xPos >= max ) {
-            spriteDirection = LEFT;
-        }
-
-        break;
-    case UP_LEFT:
-        sprite.xPos -= 1;
-        sprite.yPos += 1;
-
-        if ( sprite.xPos <= -max ) {
-            spriteDirection = DOWN;
-        }
-
-        break;
-    case DOWN:
-        sprite.yPos -= 1;
-
-        if ( sprite.yPos <= -max ) {
-            spriteDirection = UP_RIGHT;
-        }
-
-        break;
-    case DOWN_RIGHT:
-        sprite.xPos += 1;
-        sprite.yPos -= 1;
-
-        if ( sprite.xPos >= max ) {
-            spriteDirection = UP_LEFT;
-        }
-
-        break;
-    case DOWN_LEFT:
-        sprite.xPos -= 1;
-        sprite.yPos -= 1;
-
-        if ( sprite.xPos <= -max ) {
-            spriteDirection = UP_RIGHT;
-        }
-
-        break;
-    case LEFT:
-        sprite.xPos -= 1;
-
-        if ( sprite.xPos <= -max ) {
-            spriteDirection = DOWN_RIGHT;
-        }
-
-        break;
-    case RIGHT:
-        sprite.xPos += 1;
-
-        if ( sprite.xPos >= max ) {
-            spriteDirection = LEFT;
-        }
-
-        break;
-
-    default:
-        break;
-    }
 
 #if OPTS_USE_OPENGL
 
@@ -222,7 +139,8 @@ void Runner::delta_callback( float deltaTime ) {
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
     glBindVertexArray( 0 );
 
-    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+
 
     // Clear any memory that was allocated
     glDeleteVertexArrays( 1, &VAO );
