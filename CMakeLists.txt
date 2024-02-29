@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(
         Argo-Community
-        VERSION 0.0.1
+        VERSION 0.0.1.0
         DESCRIPTION "Argo game engine written in C++"
         HOMEPAGE_URL "https://www.revelryplay.com/Projects/Argo/"
         LANGUAGES CXX C
@@ -101,10 +101,15 @@ add_subdirectory(Common)
 add_subdirectory(Graphics)
 add_subdirectory(Utilities)
 
+#add_library(libTesting STATIC IMPORTED)
+#set_property(TARGET libTesting PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/libLibTesting.a)
+#target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoCommon
         ArgoGraphics
         ArgoUtilities
+#        libTesting
 )
 
 include(ArgoTests.cmake)

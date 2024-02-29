@@ -2,6 +2,8 @@
 #include "Runner.hpp"
 
 #include "ArgoConfig.h"
+
+// #include <libTesting/helloWorld.h>
 #include <exception>
 #include <iostream>
 
@@ -29,6 +31,11 @@ int main(int /*unused*/, char** /*unused*/) {
                 runner.run();
             }
         });
+        //
+        // main.AddAction( {
+        // "lib", "Testing loading a lib file built from another project", [] {
+        //     hello();
+        // }});
 
         main.Init();
     } catch (const std::exception& e) {

@@ -1,0 +1,6 @@
+#ifndef LIBTESTING_LIBRARY_H
+#define LIBTESTING_LIBRARY_H
+
+void hello();
+
+#endif //LIBTESTING_LIBRARY_H
