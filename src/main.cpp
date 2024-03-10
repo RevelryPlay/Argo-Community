@@ -3,7 +3,7 @@
 
 #include "ArgoConfig.h"
 
-// #include <libTesting/helloWorld.h>
+#include <ArgoDraft/ArgoDraft.h>
 #include <exception>
 #include <iostream>
 
@@ -31,11 +31,11 @@ int main(int /*unused*/, char** /*unused*/) {
                 runner.run();
             }
         });
-        //
-        // main.AddAction( {
-        // "lib", "Testing loading a lib file built from another project", [] {
-        //     hello();
-        // }});
+
+        main.AddAction( {
+        "ArgoDraft", "Show the ArgoDraft library about text", [] {
+            ArgoDraft::about();
+        }});
 
         main.Init();
     } catch (const std::exception& e) {

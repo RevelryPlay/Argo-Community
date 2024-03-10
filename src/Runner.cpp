@@ -141,7 +141,6 @@ void Runner::delta_callback( float deltaTime ) {
 
     // glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
-
     // Clear any memory that was allocated
     glDeleteVertexArrays( 1, &VAO );
     glDeleteBuffers( 1, &VBO );

@@ -22,6 +22,9 @@
 *.a
 *.lib
 
+# Include specific prebuilt libraries
+!/lib/libArgoDraft.a
+
 # Executables
 *.exe
 *.out

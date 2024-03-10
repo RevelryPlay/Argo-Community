@@ -101,15 +101,15 @@ add_subdirectory(Common)
 add_subdirectory(Graphics)
 add_subdirectory(Utilities)
 
-#add_library(libTesting STATIC IMPORTED)
-#set_property(TARGET libTesting PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/libLibTesting.a)
-#target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(ArgoDraft STATIC IMPORTED)
+set_property(TARGET ArgoDraft PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/libArgoDraft.a)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoCommon
         ArgoGraphics
         ArgoUtilities
-#        libTesting
+        ArgoDraft
 )
 
 include(ArgoTests.cmake)
