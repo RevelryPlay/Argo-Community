@@ -3,7 +3,7 @@
 
 #include "ArgoConfig.h"
 
-#include <ArgoDraft/ArgoDraft.h>
+#include <ArgoDraft/ArgoDraft.hpp>
 #include <exception>
 #include <iostream>
 
