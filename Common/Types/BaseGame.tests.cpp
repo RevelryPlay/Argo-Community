@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 
 TEST( BaseGame, Setup ) {
-    auto *game = new Argo::Types::BaseGame();
+    auto game = new Argo::Types::BaseGame();
     EXPECT_TRUE( game->Setup( "Test Game", 800, 600 ) );
 
     EXPECT_EQ( game->GetWidth(), 800 );

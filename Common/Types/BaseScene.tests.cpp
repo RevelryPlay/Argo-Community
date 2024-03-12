@@ -2,13 +2,13 @@
 #include <gtest/gtest.h>
 
 TEST( BaseScene, DefaultConstructor ) {
-    Argo::Types::BaseScene scene;
+    constexpr Argo::Types::BaseScene scene;
     EXPECT_EQ( scene.GetWidth(), 0 );
     EXPECT_EQ( scene.GetHeight(), 0 );
 }
 
 TEST( BaseScene, Constructor ) {
-    Argo::Types::BaseScene scene( 100, 200 );
+    Argo::Types::BaseScene const scene( 100, 200 );
     EXPECT_EQ( scene.GetWidth(), 100 );
     EXPECT_EQ( scene.GetHeight(), 200 );
 }
